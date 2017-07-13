@@ -1,0 +1,18 @@
+//1366*768
+.baseFont(@fs:14px){
+  font-size: @fs;
+}
+.container{
+  .baseFont;
+  .cus-top-nav{
+    .navbar-brand{
+
+    }
+  }
+}
+@media (max-width: 1366px){
+  .container{
+    width:1366px;
+    .baseFont(0.8rem)
+  }
+}
