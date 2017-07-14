@@ -5,8 +5,8 @@ define(function () {
     return Configure;
 })
 var Configure={
-    psIndex:['/js/partial/home/psIndex.js'],
-    saIndex:['/js/partial/statisticsAnalysis/saIndex.js'],
-    rmIndex:['/js/partial/reportManagement/rmIndex.js'],
-    amIndex:['/js/partial/alramManagement/amIndex.js']
+    "partial/home/psIndex":{loadJs:['./partial/home/psIndex'],styles:['css!../css/partial/home/psIndex.css']},
+    "partial/statisticsAnalysis/saIndex":{loadJs:['./partial/statisticsAnalysis/saIndex'],styles:''},
+    "partial/reportManagement/rmIndex":{loadJs:['./partial/reportManagement/rmIndex'],styles:''},
+    "partial/alramManagement/amIndex":{loadJs:['./partial/alramManagement/amIndex'],styles:''}
 }

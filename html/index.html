@@ -3,33 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <meta name="viewport" content="width=1236, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 </head>
 <body>
-<nav class="cus-top-nav navbar navbar-default" role="navigation">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="#">能源互联网管理系统</a>
-        </div>
-        <ul class="nav navbar-nav navbar-right">
-            <li><a href="#"><span class="glyphicon glyphicon-user"></span> admin 欢迎您</a></li>
-            <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> 退出</a></li>
-        </ul>
+<div class="cus-top-nav-massage clearfix">
+    <div class="logo">
+        <img src="../images/index/logo.png" alt="logo">
+        <span>SynPower 能源互联网管理系统</span>
     </div>
-</nav>
-<nav class="navbar navbar-default navbar-static-top" role="navigation">
-    <div class="container-fluid">
-        <div>
-            <ul class="nav navbar-nav" id="topNav">
-                <li class="active"><a attr-href="partial/home/psIndex.html" id="psIndex">电站状态</a></li>
-                <li><a attr-href="partial/alramManagement/amIndex.html" id="amIndex">告警管理</a></li>
-                <li><a attr-href="partial/statisticsAnalysis/saIndex.html" id="saIndex">统计分析</a></li>
-                <li><a attr-href="partial/reportManagement/rmIndex.html" id="rmIndex">报表管理</a></li>
-            </ul>
-        </div>
+    <div class="toolbar">
+        <a class="cus-item"><img src="../images/index/admin.png" alt="user"><span id="userName">admin</span>&nbsp;欢迎您</a>
+        <b class="split cus-item">|</b>
+        <a class="cus-item">退出</a>
     </div>
-</nav>
-<div class="container" id="mainContainer">
-123
+</div>
+<div class="cus-main-navbar clearfix">
+    <ul class="cus-navbar-nav" id="topNav">
+        <li class="active"><a class="psIndex" attr-href="partial/home/psIndex.html" id="psIndex">电站状态</a></li>
+        <li><a class="amIndex" attr-href="partial/alramManagement/amIndex.html" id="amIndex">告警管理</a></li>
+        <li><a class="saIndex" attr-href="partial/statisticsAnalysis/saIndex.html" id="saIndex">统计分析</a></li>
+        <li><a class="rmIndex" attr-href="partial/reportManagement/rmIndex.html" id="rmIndex">报表管理</a></li>
+    </ul>
+</div>
+<div class="" id="mainContainer">
+
 </div>
 <script type="text/javascript" src="/js/require.js" data-main="/js/main/index.js" defer async></script>
 </body>

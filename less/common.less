@@ -1,7 +1,18 @@
 //1366*768
-.baseFont(@fs:14px){
-  font-size: @fs;
+@fs:14px;
+.baseFont(@f:@fs){
+  font-size: @f;
 }
+body{font-family:'微软雅黑';text-align:center;margin:0 auto;padding:0;background:#FFF;font-size:14px;color:#333;}
+body > div{text-align:center;margin-right:auto;margin-left:auto;}
+div,form,ul,ol,li,span,p{margin:0;padding:0;border:0;}
+img,a img{border:0;margin:0;padding:0;}
+h1,h2,h3,h4,h5,h6{margin:0;padding:0;font-size:@fs;font-weight:normal;}
+ul,ol,li{list-style:none}
+table,td,input{font-size:@fs}
+
+a{outline-style:none;text-decoration:none;color: inherit;}
+a:hover{text-decoration:none;cursor:pointer;color: inherit}
 .container{
   .baseFont;
   .cus-top-nav{
@@ -10,9 +21,11 @@
     }
   }
 }
+
+.clearfix:after{centent:"";height:0;line-height:0;display:block;visibility:hidden;clear:both}
+.clearfix{zoom:1;}
 @media (max-width: 1366px){
   .container{
-    width:1366px;
     .baseFont(0.8rem)
   }
 }

@@ -9,10 +9,10 @@ var gulp = require('gulp'),
         htmlDir: 'dest',
         css: 'css/*.css',
         cssDir: 'dest/css',
-        less: 'less/*.less',
+        less: 'less/**/*.less',
         js: 'js/**/*.js',
         jsDir: 'dest/js',
-        images: 'images/*.+(jpg|png|gif|svg)',
+        images: 'images/**/*.+(jpg|png|gif|svg)',
         imagesDir: 'dest/images',
         MockData: './dataJs/*'
     },
@@ -82,6 +82,7 @@ gulp.task('html', function () {
 });
 //压缩图片，压缩后的文件放入dest/images
 gulp.task('image', function () {
+    console.log('ewcute image');
     gulp.src(path.images)
         .pipe(plugins.imagemin({
             optimizationLevel: 5, //类型：Number  默认：3  取值范围：0-7（优化等级）

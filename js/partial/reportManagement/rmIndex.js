@@ -1,1 +1,8 @@
-console.log(3);
+define(function(){
+    return rmIndex
+});
+var rmIndex = {
+    Render:function () {
+        console.log(3);
+    }
+}

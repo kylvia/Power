@@ -1,1 +1,8 @@
-console.log(2);
+define(function(){
+    return psIndex
+});
+var psIndex = {
+    Render:function () {
+        console.log(2);
+    }
+}
