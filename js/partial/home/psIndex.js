@@ -16,9 +16,17 @@ var psIndex = {
         if(items.length){
             var loadPageContainer = items.find('.cus-item');
             loadPageContainer.each(function (index,item) {
-                console.log(item);
                 var toPage = $(item).attr('attr-href');
                 !!toPage && $(item).find('.section').loadPage(toPage);
+            })
+        }
+        var cItems = $('.c-main');
+        if(cItems.length){
+            var loadPageContainer = cItems.find('.cus-item');
+            loadPageContainer.each(function (index,item) {
+                var toPage = $(item).attr('attr-href');
+                console.log('[toPage]',toPage);
+                !!toPage && $(item).loadPage(toPage);
             })
         }
     }

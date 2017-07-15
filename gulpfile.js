@@ -9,6 +9,9 @@ var gulp = require('gulp'),
         htmlDir: 'dest',
         css: 'css/*.css',
         cssDir: 'dest/css',
+        jscss: 'js/**/*.css',
+        jscssDir: 'dest/js/',
+        jsimage: 'js/**/*.+(jpg|png|gif|svg)',
         less: 'less/**/*.less',
         js: 'js/**/*.js',
         jsDir: 'dest/js',
@@ -35,6 +38,12 @@ gulp.task('minifycss', function () {
     return gulp.src(path.css)
         .pipe(plugins.cssmin()) //压缩
         .pipe(gulp.dest(path.cssDir));//输出
+});
+//压缩插件中的css,压缩后的文件放入dest/js
+gulp.task('minifyjscss', function () {
+    return gulp.src(path.jscss)
+        .pipe(plugins.cssmin()) //压缩
+        .pipe(gulp.dest(path.jsDir));//输出
 });
 
 //合并并压缩css，合并压缩后的文件放入dest/css
@@ -82,7 +91,6 @@ gulp.task('html', function () {
 });
 //压缩图片，压缩后的文件放入dest/images
 gulp.task('image', function () {
-    console.log('ewcute image');
     gulp.src(path.images)
         .pipe(plugins.imagemin({
             optimizationLevel: 5, //类型：Number  默认：3  取值范围：0-7（优化等级）
@@ -91,6 +99,17 @@ gulp.task('image', function () {
             multipass: true //类型：Boolean 默认：false 多次优化svg直到完全优化
         }))
         .pipe(gulp.dest(path.imagesDir));//输出
+});
+//压缩图片，压缩后的文件放入dest/images
+gulp.task('jsimage', function () {
+    gulp.src(path.jsimage)
+        .pipe(plugins.imagemin({
+            optimizationLevel: 5, //类型：Number  默认：3  取值范围：0-7（优化等级）
+            progressive: true, //类型：Boolean 默认：false 无损压缩jpg图片
+            interlaced: true, //类型：Boolean 默认：false 隔行扫描gif进行渲染
+            multipass: true //类型：Boolean 默认：false 多次优化svg直到完全优化
+        }))
+        .pipe(gulp.dest(path.jsDir));//输出
 });
 
 //执行压缩前，先删除dest文件夹里的内容
@@ -108,13 +127,15 @@ gulp.task("less", function () {
 //监视文件的变化
 gulp.task("watch", function () {
     gulp.watch(path.less, ['less']);
-    gulp.watch(path.css, ['concatminifycss']);
+    gulp.watch(path.jscss, ['minifyjscss']);
+    gulp.watch(path.css, ['minifycss']);
     gulp.watch(path.html, ['html']);
     gulp.watch(path.js, ['minifyjs']);
     gulp.watch(path.images, ['image']);
+    gulp.watch(path.jsimage, ['jsimage']);
 });
 gulp.task("build", ["clean"], function (cb) {
-    plugins.runSequence(['concatminifycss', 'image', 'less', 'vendor', 'minifyjs', 'html', "watch"], cb);
+    plugins.runSequence(['minifycss', 'minifyjscss', 'image', 'jsimage', 'less', 'vendor', 'minifyjs', 'html', "watch"], cb);
 });
 //同步刷新
 gulp.task("serve", ["build"], function () {

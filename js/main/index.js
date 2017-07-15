@@ -10,16 +10,22 @@ require.config({
         'bootstrap-table': 'vendor/bootstrap-table/bootstrap-table',
         'App': 'plugins/App',
         'main': 'main',
+        'leaflet': 'plugins/leaflet/leaflet',
+        'leafletCluster': 'plugins/laafletMarkercluster/leaflet.markercluster',
     },
     shim:{
         'bootstrap':['jquery','css!vendor/bootstrap/css/bootstrap.css'],
         'bootstrap-table':['jquery','css!vendor/bootstrap-table/bootstrap-table.css'],
+        'leaflet':['css!plugins/leaflet/leaflet.css'],
+        'leafletCluster':['css!plugins/laafletMarkercluster/MarkerCluster.css','css!plugins/laafletMarkercluster/MarkerCluster.Default.css'],
     }
 })
 // 使用 Mock
 require(["jquery",
     "bootstrap",
-    "bootstrap-table"],function($){
+    "bootstrap-table",
+    "leaflet",
+    "leafletCluster"],function($){
     require(["main",
         "css!/css/index.css"],function(){
         $(function(){
