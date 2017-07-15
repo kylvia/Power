@@ -8,14 +8,15 @@
   .cus-tit{
     text-align: left;
     font-size: 1.14em;
-    .pad
+    padding-left: calc(~'(100% - 275px)/2');
   }
   .cus-bar{
+    margin: auto;
+    width: 98%;
     margin-top: 3.2%;
-    .pad
   }
   .cus-value{
-    float: left;
+    display: inline-block;
     >span{
       font-size: 2.17em;
       display: inline-block;
@@ -28,13 +29,9 @@
     }
   }
   .cus-unit{
-    margin-left: 10px;
-    /* display: inline-block; */
-    /* min-width: 30px; */
-    /* text-align: left; */
-    float: left;
     margin-top: 22px;
-    /* vertical-align: baseline; */
+    display: inline-block;
+    width: 30px;
   }
 }
 .cus-two{
@@ -48,8 +45,8 @@
 
 @media screen and (max-width: 1500px) {
   .cus-column {
-    .cus-tit ,.cus-bar{
-      .pad(4%)
+    .cus-tit {
+      padding-left: calc(~'(100% - 236px)/2');
     }
     .cus-value {
       span {
@@ -60,8 +57,8 @@
 }
 @media screen and (max-width: 1600px) {
   .cus-column {
-    .cus-tit ,.cus-bar{
-      .pad(5%)
+    .cus-tit {
+      padding-left: calc(~'(100% - 256px)/2');
     }
     .cus-value {
       span {
