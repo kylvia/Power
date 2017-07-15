@@ -3,10 +3,10 @@
 .baseFont(@f:@fs){
   font-size: @f;
 }
-body{font-family:'微软雅黑';text-align:center;margin:0 auto;padding:0;background:#FFF;font-size:14px;color:#333;}
-body > div{text-align:center;margin-right:auto;margin-left:auto;}
+body{font-family:'微软雅黑';text-align:center;margin:0 auto;padding:0;background:#FFF;font-size:@fs;color:#333;}
+body > div{margin-right:auto;margin-left:auto;}
 div,form,ul,ol,li,span,p{margin:0;padding:0;border:0;}
-img,a img{border:0;margin:0;padding:0;}
+img,a img{border:0;margin:0;padding:0;outline: none}
 h1,h2,h3,h4,h5,h6{margin:0;padding:0;font-size:@fs;font-weight:normal;}
 ul,ol,li{list-style:none}
 table,td,input{font-size:@fs}
@@ -24,8 +24,32 @@ a:hover{text-decoration:none;cursor:pointer;color: inherit}
 
 .clearfix:after{centent:"";height:0;line-height:0;display:block;visibility:hidden;clear:both}
 .clearfix{zoom:1;}
-@media (max-width: 1366px){
-  .container{
-    .baseFont(0.8rem)
+
+
+
+html,body{height: 100%}
+body{
+  background: url("/images/bac.jpg") 0 0 no-repeat;
+  //background-size: 100% 100%;
+}
+.cus-top-nav-massage,.cus-main-navbar,.mainContainer{
+  width:100%;
+}
+
+@media screen and (max-width: 1500px){
+  body{
+    font-size: 12px;
   }
 }
+@media screen and (max-width: 1366px){
+  .cus-top-nav-massage,.cus-main-navbar,.mainContainer{
+    width:1500px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .carousel-indicators {
+    bottom: 40%;
+  }
+}
+
+
