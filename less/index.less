@@ -1,15 +1,16 @@
 @import './common.less';
 .cus-top-nav-massage{
-  height: 40px;
+  height: 3.7%;
+  line-height: 2;
   background-color: #030a13;
   color: #a5e2f9;
   .logo{
-    margin-top: 7px;
+    //margin-top: 7px;
     float: left;
     img{
       margin-left: 10px;
       vertical-align: middle;
-      margin-bottom: 4px;
+      //margin-bottom: 4px;
     }
     span{
       margin-left: 3px;
@@ -17,8 +18,10 @@
     }
   }
   .toolbar{
-    margin-top: 9px;
+    //margin-top: 9px;
     float: right;
+    line-height: 2.4;
+    vertical-align: middle;
     .cus-item{
       margin-left: 20px;
       &:last-child{
@@ -26,18 +29,25 @@
       }
       img{
         margin-right: 10px;
-        margin-bottom: 2px;
+        height: 90%;
+        //margin-bottom: 2px;
       }
     }
   }
 }
 
 .cus-main-navbar{
+  height: 6.94%;
+  ul{
+    height: 100%;
+    float: left;
+    width: 100%;
+  }
   li{
     float: left;
-    width: 25%;
-    height: 76px;
-    line-height: 76px;
+    width: 33.33%;
+    height: 100%;
+    line-height: 3.5;
     background-color: #001b3b;
     border-bottom: 5px solid #001b3b;
     font-size: 1.42em;
@@ -72,4 +82,7 @@
       background: url("../images/index/bbgl.png") no-repeat right;
     }
   }
+}
+.mainContainer{
+  height: 88%;
 }

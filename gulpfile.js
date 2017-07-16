@@ -59,7 +59,7 @@ gulp.task('concatminifycss', function () {
 //压缩js，压缩后的文件放入dest/js
 gulp.task('minifyjs', function () {
     return gulp.src(path.js)
-        .pipe(plugins.uglify())//压缩
+        // .pipe(plugins.uglify())//压缩
         .pipe(gulp.dest(path.jsDir));//输出
 });
 

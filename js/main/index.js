@@ -12,6 +12,7 @@ require.config({
         'main': 'main',
         'leaflet': 'plugins/leaflet/leaflet',
         'leafletCluster': 'plugins/laafletMarkercluster/leaflet.markercluster',
+        'echarts': 'plugins/echarts/echarts.min',
     },
     shim:{
         'bootstrap':['jquery','css!vendor/bootstrap/css/bootstrap.css'],
@@ -22,13 +23,15 @@ require.config({
 })
 // 使用 Mock
 require(["jquery",
+    "echarts",
     "bootstrap",
     "bootstrap-table",
     "leaflet",
-    "leafletCluster"],function($){
+    "leafletCluster"],function($,echarts){
     require(["main",
         "css!/css/index.css"],function(){
         $(function(){
+            window.Echarts = echarts;
             $('#topNav li').on('click',function () {
                 $('#topNav li').removeClass('active');
                 $(this).addClass('active');

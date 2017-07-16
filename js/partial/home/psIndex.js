@@ -7,10 +7,10 @@ var psIndex = {
     },
     Render:function () {
         var _this = this;
-        _this.resize();
-        $(window).resize(function() {
-            _this.resize();
-        });
+        // _this.resize();
+        // $(window).resize(function() {
+        //     _this.resize();
+        // });
 
         var items = $('.aside-main');
         if(items.length){
