@@ -16,6 +16,9 @@ var energyStatics = {
         var yData2=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
         var yData3=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
         var option = {
+            tooltip:{
+                trigger:'axis'
+            },
             color:['#33CC66','#3366CC','#00CCCC'],
             legend: {
                 top: '4%',
