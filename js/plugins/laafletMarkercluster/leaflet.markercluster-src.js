@@ -632,7 +632,7 @@ L.MarkerClusterGroup = L.FeatureGroup.extend({
 		this._unbindEvents();
 
 		//In case we are in a cluster animation
-		this._map._mapPane.className = this._map._mapPane.className.replace(' leaflet-cluster-anim', '');
+		this._map._mapPane.className = this._map._mapPane.className.replace(' Leaflet-cluster-anim', '');
 
 		if (this._spiderfierOnRemove) { //TODO FIXME: Not sure how to have spiderfier add something on here nicely
 			this._spiderfierOnRemove();
@@ -1203,7 +1203,7 @@ L.MarkerClusterGroup.include({
 	_withAnimation: {
 		//Animated versions here
 		_animationStart: function () {
-			this._map._mapPane.className += ' leaflet-cluster-anim';
+			this._map._mapPane.className += ' Leaflet-cluster-anim';
 			this._inZoomAnimation++;
 		},
 
@@ -1355,7 +1355,7 @@ L.MarkerClusterGroup.include({
 
 	_animationEnd: function () {
 		if (this._map) {
-			this._map._mapPane.className = this._map._mapPane.className.replace(' leaflet-cluster-anim', '');
+			this._map._mapPane.className = this._map._mapPane.className.replace(' Leaflet-cluster-anim', '');
 		}
 		this._inZoomAnimation--;
 		this.fire('animationend');
@@ -2284,7 +2284,7 @@ L.MarkerCluster.include({
 			legOptions.opacity = 0;
 
 			// Add the class for CSS transitions.
-			legOptions.className = (legOptions.className || '') + ' leaflet-cluster-spider-leg';
+			legOptions.className = (legOptions.className || '') + ' Leaflet-cluster-spider-leg';
 		} else {
 			// Make sure we have a defined opacity.
 			legOptions.opacity = finalLegOpacity;
@@ -2498,7 +2498,7 @@ L.MarkerClusterGroup.include({
 		this._map.off('zoomend', this._noanimationUnspiderfy, this);
 
 		//Ensure that markers are back where they should be
-		// Use no animation to avoid a sticky leaflet-cluster-anim class on mapPane
+		// Use no animation to avoid a sticky Leaflet-cluster-anim class on mapPane
 		this._noanimationUnspiderfy();
 	},
 
@@ -2514,7 +2514,7 @@ L.MarkerClusterGroup.include({
 
 	_unspiderfyZoomAnim: function (zoomDetails) {
 		//Wait until the first zoomanim after the user has finished touch-zooming before running the animation
-		if (L.DomUtil.hasClass(this._map._mapPane, 'leaflet-touching')) {
+		if (L.DomUtil.hasClass(this._map._mapPane, 'Leaflet-touching')) {
 			return;
 		}
 

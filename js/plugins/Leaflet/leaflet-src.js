@@ -3239,7 +3239,7 @@ var Map = Evented.extend({
 
 		// animate pan unless animate: false specified
 		if (options.animate !== false) {
-			addClass(this._mapPane, 'leaflet-pan-anim');
+			addClass(this._mapPane, 'Leaflet-pan-anim');
 
 			var newPos = this._getMapPanePos().subtract(offset).round();
 			this._panAnim.run(this._mapPane, newPos, options.duration || 0.25, options.easeLinearity);
@@ -3650,7 +3650,7 @@ var Map = Evented.extend({
 	// then returns it. The pane is created as a child of `container`, or
 	// as a child of the main map pane if not set.
 	createPane: function (name, container) {
-		var className = 'leaflet-pane' + (name ? ' leaflet-' + name.replace('Pane', '') + '-pane' : ''),
+		var className = 'Leaflet-pane' + (name ? ' Leaflet-' + name.replace('Pane', '') + '-pane' : ''),
 		    pane = create$1('div', className, container || this._mapPane);
 
 		if (name) {
@@ -3948,12 +3948,12 @@ var Map = Evented.extend({
 
 		this._fadeAnimated = this.options.fadeAnimation && any3d;
 
-		addClass(container, 'leaflet-container' +
-			(touch ? ' leaflet-touch' : '') +
-			(retina ? ' leaflet-retina' : '') +
-			(ielt9 ? ' leaflet-oldie' : '') +
-			(safari ? ' leaflet-safari' : '') +
-			(this._fadeAnimated ? ' leaflet-fade-anim' : ''));
+		addClass(container, 'Leaflet-container' +
+			(touch ? ' Leaflet-touch' : '') +
+			(retina ? ' Leaflet-retina' : '') +
+			(ielt9 ? ' Leaflet-oldie' : '') +
+			(safari ? ' Leaflet-safari' : '') +
+			(this._fadeAnimated ? ' Leaflet-fade-anim' : ''));
 
 		var position = getStyle(container, 'position');
 
@@ -4007,8 +4007,8 @@ var Map = Evented.extend({
 		this.createPane('popupPane');
 
 		if (!this.options.markerZoomAnimation) {
-			addClass(panes.markerPane, 'leaflet-zoom-hide');
-			addClass(panes.shadowPane, 'leaflet-zoom-hide');
+			addClass(panes.markerPane, 'Leaflet-zoom-hide');
+			addClass(panes.shadowPane, 'Leaflet-zoom-hide');
 		}
 	},
 
@@ -4409,7 +4409,7 @@ var Map = Evented.extend({
 	},
 
 	_onPanTransitionEnd: function () {
-		removeClass(this._mapPane, 'leaflet-pan-anim');
+		removeClass(this._mapPane, 'Leaflet-pan-anim');
 		this.fire('moveend');
 	},
 
@@ -4427,7 +4427,7 @@ var Map = Evented.extend({
 
 	_createAnimProxy: function () {
 
-		var proxy = this._proxy = create$1('div', 'leaflet-proxy leaflet-zoom-animated');
+		var proxy = this._proxy = create$1('div', 'Leaflet-proxy Leaflet-zoom-animated');
 		this._panes.mapPane.appendChild(proxy);
 
 		this.on('zoomanim', function (e) {
@@ -4500,7 +4500,7 @@ var Map = Evented.extend({
 			this._animateToCenter = center;
 			this._animateToZoom = zoom;
 
-			addClass(this._mapPane, 'leaflet-zoom-anim');
+			addClass(this._mapPane, 'Leaflet-zoom-anim');
 		}
 
 		// @event zoomanim: ZoomAnimEvent
@@ -4518,7 +4518,7 @@ var Map = Evented.extend({
 	_onZoomTransitionEnd: function () {
 		if (!this._animatingZoom) { return; }
 
-		removeClass(this._mapPane, 'leaflet-zoom-anim');
+		removeClass(this._mapPane, 'Leaflet-zoom-anim');
 
 		this._animatingZoom = false;
 
@@ -4612,7 +4612,7 @@ var Control = Class.extend({
 		    pos = this.getPosition(),
 		    corner = map._controlCorners[pos];
 
-		addClass(container, 'leaflet-control');
+		addClass(container, 'Leaflet-control');
 
 		if (pos.indexOf('bottom') !== -1) {
 			corner.insertBefore(container, corner.firstChild);
@@ -4685,7 +4685,7 @@ Map.include({
 
 	_initControlPos: function () {
 		var corners = this._controlCorners = {},
-		    l = 'leaflet-',
+		    l = 'Leaflet-',
 		    container = this._controlContainer =
 		            create$1('div', l + 'control-container', this._container);
 
@@ -4857,14 +4857,14 @@ var Layers = Control.extend({
 	// @method expand(): this
 	// Expand the control container if collapsed.
 	expand: function () {
-		addClass(this._container, 'leaflet-control-layers-expanded');
+		addClass(this._container, 'Leaflet-control-layers-expanded');
 		this._form.style.height = null;
 		var acceptableHeight = this._map.getSize().y - (this._container.offsetTop + 50);
 		if (acceptableHeight < this._form.clientHeight) {
-			addClass(this._form, 'leaflet-control-layers-scrollbar');
+			addClass(this._form, 'Leaflet-control-layers-scrollbar');
 			this._form.style.height = acceptableHeight + 'px';
 		} else {
-			removeClass(this._form, 'leaflet-control-layers-scrollbar');
+			removeClass(this._form, 'Leaflet-control-layers-scrollbar');
 		}
 		this._checkDisabledLayers();
 		return this;
@@ -4873,12 +4873,12 @@ var Layers = Control.extend({
 	// @method collapse(): this
 	// Collapse the control container if expanded.
 	collapse: function () {
-		removeClass(this._container, 'leaflet-control-layers-expanded');
+		removeClass(this._container, 'Leaflet-control-layers-expanded');
 		return this;
 	},
 
 	_initLayout: function () {
-		var className = 'leaflet-control-layers',
+		var className = 'Leaflet-control-layers',
 		    container = this._container = create$1('div', className),
 		    collapsed = this.options.collapsed;
 
@@ -5020,7 +5020,7 @@ var Layers = Control.extend({
 	// IE7 bugs out if you create a radio dynamically, so you have to do it this hacky way (see http://bit.ly/PqYLBe)
 	_createRadioElement: function (name, checked) {
 
-		var radioHtml = '<input type="radio" class="leaflet-control-layers-selector" name="' +
+		var radioHtml = '<input type="radio" class="Leaflet-control-layers-selector" name="' +
 				name + '"' + (checked ? ' checked="checked"' : '') + '/>';
 
 		var radioFragment = document.createElement('div');
@@ -5037,10 +5037,10 @@ var Layers = Control.extend({
 		if (obj.overlay) {
 			input = document.createElement('input');
 			input.type = 'checkbox';
-			input.className = 'leaflet-control-layers-selector';
+			input.className = 'Leaflet-control-layers-selector';
 			input.defaultChecked = checked;
 		} else {
-			input = this._createRadioElement('leaflet-base-layers', checked);
+			input = this._createRadioElement('Leaflet-base-layers', checked);
 		}
 
 		this._layerControlInputs.push(input);
@@ -5173,8 +5173,8 @@ var Zoom = Control.extend({
 	},
 
 	onAdd: function (map) {
-		var zoomName = 'leaflet-control-zoom',
-		    container = create$1('div', zoomName + ' leaflet-bar'),
+		var zoomName = 'Leaflet-control-zoom',
+		    container = create$1('div', zoomName + ' Leaflet-bar'),
 		    options = this.options;
 
 		this._zoomInButton  = this._createButton(options.zoomInText, options.zoomInTitle,
@@ -5238,7 +5238,7 @@ var Zoom = Control.extend({
 
 	_updateDisabled: function () {
 		var map = this._map,
-		    className = 'leaflet-disabled';
+		    className = 'Leaflet-disabled';
 
 		removeClass(this._zoomInButton, className);
 		removeClass(this._zoomOutButton, className);
@@ -5311,7 +5311,7 @@ var Scale = Control.extend({
 	},
 
 	onAdd: function (map) {
-		var className = 'leaflet-control-scale',
+		var className = 'Leaflet-control-scale',
 		    container = create$1('div', className),
 		    options = this.options;
 
@@ -5430,7 +5430,7 @@ var Attribution = Control.extend({
 
 	onAdd: function (map) {
 		map.attributionControl = this;
-		this._container = create$1('div', 'leaflet-control-attribution');
+		this._container = create$1('div', 'Leaflet-control-attribution');
 		disableClickPropagation(this._container);
 
 		// TODO ugly, refactor
@@ -5676,7 +5676,7 @@ var Draggable = Evented.extend({
 
 		this._moved = false;
 
-		if (hasClass(this._element, 'leaflet-zoom-anim')) { return; }
+		if (hasClass(this._element, 'Leaflet-zoom-anim')) { return; }
 
 		if (_dragging || e.shiftKey || ((e.which !== 1) && (e.button !== 1) && !e.touches)) { return; }
 		_dragging = this;  // Prevent dragging multiple objects at once.
@@ -5732,7 +5732,7 @@ var Draggable = Evented.extend({
 			this._moved = true;
 			this._startPos = getPosition(this._element).subtract(offset);
 
-			addClass(document.body, 'leaflet-dragging');
+			addClass(document.body, 'Leaflet-dragging');
 
 			this._lastTarget = e.target || e.srcElement;
 			// IE and Edge do not give the <use> element, so fetch it
@@ -5740,7 +5740,7 @@ var Draggable = Evented.extend({
 			if ((window.SVGElementInstance) && (this._lastTarget instanceof SVGElementInstance)) {
 				this._lastTarget = this._lastTarget.correspondingUseElement;
 			}
-			addClass(this._lastTarget, 'leaflet-drag-target');
+			addClass(this._lastTarget, 'Leaflet-drag-target');
 		}
 
 		this._newPos = this._startPos.add(offset);
@@ -5776,10 +5776,10 @@ var Draggable = Evented.extend({
 	},
 
 	finishDrag: function () {
-		removeClass(document.body, 'leaflet-dragging');
+		removeClass(document.body, 'Leaflet-dragging');
 
 		if (this._lastTarget) {
-			removeClass(this._lastTarget, 'leaflet-drag-target');
+			removeClass(this._lastTarget, 'Leaflet-drag-target');
 			this._lastTarget = null;
 		}
 
@@ -6924,7 +6924,7 @@ var Icon = Class.extend({
 		    anchor = toPoint(name === 'shadow' && options.shadowAnchor || options.iconAnchor ||
 		            size && size.divideBy(2, true));
 
-		img.className = 'leaflet-marker-' + name + ' ' + (options.className || '');
+		img.className = 'Leaflet-marker-' + name + ' ' + (options.className || '');
 
 		if (anchor) {
 			img.style.marginLeft = (-anchor.x) + 'px';
@@ -6997,7 +6997,7 @@ var IconDefault = Icon.extend({
 	},
 
 	_detectIconPath: function () {
-		var el = create$1('div',  'leaflet-default-icon-path', document.body);
+		var el = create$1('div',  'Leaflet-default-icon-path', document.body);
 		var path = getStyle(el, 'background-image') ||
 		           getStyle(el, 'backgroundImage');	// IE8
 
@@ -7049,7 +7049,7 @@ var MarkerDrag = Handler.extend({
 			dragend: this._onDragEnd
 		}, this).enable();
 
-		addClass(icon, 'leaflet-marker-draggable');
+		addClass(icon, 'Leaflet-marker-draggable');
 	},
 
 	removeHooks: function () {
@@ -7060,7 +7060,7 @@ var MarkerDrag = Handler.extend({
 		}, this).disable();
 
 		if (this._marker._icon) {
-			removeClass(this._marker._icon, 'leaflet-marker-draggable');
+			removeClass(this._marker._icon, 'Leaflet-marker-draggable');
 		}
 	},
 
@@ -7289,7 +7289,7 @@ var Marker = Layer.extend({
 
 	_initIcon: function () {
 		var options = this.options,
-		    classToAdd = 'leaflet-zoom-' + (this._zoomAnimated ? 'animated' : 'hide');
+		    classToAdd = 'Leaflet-zoom-' + (this._zoomAnimated ? 'animated' : 'hide');
 
 		var icon = options.icon.createIcon(this._icon),
 		    addIcon = false;
@@ -7400,7 +7400,7 @@ var Marker = Layer.extend({
 
 		if (!this.options.interactive) { return; }
 
-		addClass(this._icon, 'leaflet-interactive');
+		addClass(this._icon, 'Leaflet-interactive');
 
 		this.addInteractiveTarget(this._icon);
 
@@ -8783,7 +8783,7 @@ var ImageOverlay = Layer.extend({
 		}
 
 		if (this.options.interactive) {
-			addClass(this._image, 'leaflet-interactive');
+			addClass(this._image, 'Leaflet-interactive');
 			this.addInteractiveTarget(this._image);
 		}
 
@@ -8892,7 +8892,7 @@ var ImageOverlay = Layer.extend({
 
 	_initImage: function () {
 		var img = this._image = create$1('img',
-				'leaflet-image-layer ' + (this._zoomAnimated ? 'leaflet-zoom-animated' : '') +
+				'Leaflet-image-layer ' + (this._zoomAnimated ? 'Leaflet-zoom-animated' : '') +
 				 (this.options.className || ''));
 
 		img.onselectstart = falseFn;
@@ -9000,7 +9000,7 @@ var VideoOverlay = ImageOverlay.extend({
 
 	_initImage: function () {
 		var vid = this._image = create$1('video',
-			'leaflet-image-layer ' + (this._zoomAnimated ? 'leaflet-zoom-animated' : ''));
+			'Leaflet-image-layer ' + (this._zoomAnimated ? 'Leaflet-zoom-animated' : ''));
 
 		vid.onselectstart = falseFn;
 		vid.onmousemove = falseFn;
@@ -9392,10 +9392,10 @@ var Popup = DivOverlay.extend({
 	},
 
 	_initLayout: function () {
-		var prefix = 'leaflet-popup',
+		var prefix = 'Leaflet-popup',
 		    container = this._container = create$1('div',
 			prefix + ' ' + (this.options.className || '') +
-			' leaflet-zoom-animated');
+			' Leaflet-zoom-animated');
 
 		var wrapper = this._wrapper = create$1('div', prefix + '-content-wrapper', container);
 		this._contentNode = create$1('div', prefix + '-content', wrapper);
@@ -9434,7 +9434,7 @@ var Popup = DivOverlay.extend({
 
 		var height = container.offsetHeight,
 		    maxHeight = this.options.maxHeight,
-		    scrolledClass = 'leaflet-popup-scrolled';
+		    scrolledClass = 'Leaflet-popup-scrolled';
 
 		if (maxHeight && height > maxHeight) {
 			style.height = maxHeight + 'px';
@@ -9862,8 +9862,8 @@ var Tooltip = DivOverlay.extend({
 	},
 
 	_initLayout: function () {
-		var prefix = 'leaflet-tooltip',
-		    className = prefix + ' ' + (this.options.className || '') + ' leaflet-zoom-' + (this._zoomAnimated ? 'animated' : 'hide');
+		var prefix = 'Leaflet-tooltip',
+		    className = prefix + ' ' + (this.options.className || '') + ' Leaflet-zoom-' + (this._zoomAnimated ? 'animated' : 'hide');
 
 		this._contentNode = this._container = create$1('div', className);
 	},
@@ -9897,11 +9897,11 @@ var Tooltip = DivOverlay.extend({
 			pos = pos.subtract(toPoint(tooltipWidth + anchor.x - offset.x, tooltipHeight / 2 - anchor.y - offset.y, true));
 		}
 
-		removeClass(container, 'leaflet-tooltip-right');
-		removeClass(container, 'leaflet-tooltip-left');
-		removeClass(container, 'leaflet-tooltip-top');
-		removeClass(container, 'leaflet-tooltip-bottom');
-		addClass(container, 'leaflet-tooltip-' + direction);
+		removeClass(container, 'Leaflet-tooltip-right');
+		removeClass(container, 'Leaflet-tooltip-left');
+		removeClass(container, 'Leaflet-tooltip-top');
+		removeClass(container, 'Leaflet-tooltip-bottom');
+		addClass(container, 'Leaflet-tooltip-' + direction);
 		setPosition(container, pos);
 	},
 
@@ -10083,7 +10083,7 @@ Layer.include({
 			// Tooltip container may not be defined if not permanent and never
 			// opened.
 			if (this._tooltip.options.interactive && this._tooltip._container) {
-				addClass(this._tooltip._container, 'leaflet-clickable');
+				addClass(this._tooltip._container, 'Leaflet-clickable');
 				this.addInteractiveTarget(this._tooltip._container);
 			}
 		}
@@ -10097,7 +10097,7 @@ Layer.include({
 		if (this._tooltip) {
 			this._tooltip._close();
 			if (this._tooltip.options.interactive && this._tooltip._container) {
-				removeClass(this._tooltip._container, 'leaflet-clickable');
+				removeClass(this._tooltip._container, 'Leaflet-clickable');
 				this.removeInteractiveTarget(this._tooltip._container);
 			}
 		}
@@ -10174,7 +10174,7 @@ Layer.include({
  * L.marker([50.505, 30.57], {icon: myIcon}).addTo(map);
  * ```
  *
- * By default, it has a 'leaflet-div-icon' CSS class and is styled as a little white square with a shadow.
+ * By default, it has a 'Leaflet-div-icon' CSS class and is styled as a little white square with a shadow.
  */
 
 var DivIcon = Icon.extend({
@@ -10194,7 +10194,7 @@ var DivIcon = Icon.extend({
 		// Optional relative position of the background, in pixels
 		bgPos: null,
 
-		className: 'leaflet-div-icon'
+		className: 'Leaflet-div-icon'
 	},
 
 	createIcon: function (oldIcon) {
@@ -10243,7 +10243,7 @@ Icon.Default = IconDefault;
  * var CanvasLayer = L.GridLayer.extend({
  *     createTile: function(coords){
  *         // create a <canvas> element for drawing
- *         var tile = L.DomUtil.create('canvas', 'leaflet-tile');
+ *         var tile = L.DomUtil.create('canvas', 'Leaflet-tile');
  *
  *         // setup tile width and height according to the options
  *         var size = this.getTileSize();
@@ -10270,7 +10270,7 @@ Icon.Default = IconDefault;
  *         var error;
  *
  *         // create a <canvas> element for drawing
- *         var tile = L.DomUtil.create('canvas', 'leaflet-tile');
+ *         var tile = L.DomUtil.create('canvas', 'Leaflet-tile');
  *
  *         // setup tile width and height according to the options
  *         var size = this.getTileSize();
@@ -10563,7 +10563,7 @@ var GridLayer = Layer.extend({
 	_initContainer: function () {
 		if (this._container) { return; }
 
-		this._container = create$1('div', 'leaflet-layer ' + (this.options.className || ''));
+		this._container = create$1('div', 'Leaflet-layer ' + (this.options.className || ''));
 		this._updateZIndex();
 
 		if (this.options.opacity < 1) {
@@ -10598,7 +10598,7 @@ var GridLayer = Layer.extend({
 		if (!level) {
 			level = this._levels[zoom] = {};
 
-			level.el = create$1('div', 'leaflet-tile-container leaflet-zoom-animated', this._container);
+			level.el = create$1('div', 'Leaflet-tile-container Leaflet-zoom-animated', this._container);
 			level.el.style.zIndex = maxZoom;
 
 			level.origin = map.project(map.unproject(map.getPixelOrigin()), zoom).round();
@@ -10994,7 +10994,7 @@ var GridLayer = Layer.extend({
 	},
 
 	_initTile: function (tile) {
-		addClass(tile, 'leaflet-tile');
+		addClass(tile, 'Leaflet-tile');
 
 		var tileSize = this.getTileSize();
 		tile.style.width = tileSize.x + 'px';
@@ -11077,7 +11077,7 @@ var GridLayer = Layer.extend({
 		}
 
 		if (!err) {
-			addClass(tile.el, 'leaflet-tile-loaded');
+			addClass(tile.el, 'Leaflet-tile-loaded');
 
 			// @event tileload: TileEvent
 			// Fired when a tile loads.
@@ -11549,7 +11549,7 @@ var Renderer = Layer.extend({
 			this._initContainer(); // defined by renderer implementations
 
 			if (this._zoomAnimated) {
-				addClass(this._container, 'leaflet-zoom-animated');
+				addClass(this._container, 'Leaflet-zoom-animated');
 			}
 		}
 
@@ -11997,7 +11997,7 @@ var Canvas = Renderer.extend({
 		var layer = this._hoveredLayer;
 		if (layer) {
 			// if we're leaving the layer, fire mouseout
-			removeClass(this._container, 'leaflet-interactive');
+			removeClass(this._container, 'Leaflet-interactive');
 			this._fireEvent([layer], e, 'mouseout');
 			this._hoveredLayer = null;
 		}
@@ -12017,7 +12017,7 @@ var Canvas = Renderer.extend({
 			this._handleMouseOut(e);
 
 			if (candidateHoveredLayer) {
-				addClass(this._container, 'leaflet-interactive'); // change cursor
+				addClass(this._container, 'Leaflet-interactive'); // change cursor
 				this._fireEvent([candidateHoveredLayer], e, 'mouseover');
 				this._hoveredLayer = candidateHoveredLayer;
 			}
@@ -12127,7 +12127,7 @@ var vmlCreate = (function () {
 var vmlMixin = {
 
 	_initContainer: function () {
-		this._container = create$1('div', 'leaflet-vml-container');
+		this._container = create$1('div', 'Leaflet-vml-container');
 	},
 
 	_update: function () {
@@ -12139,7 +12139,7 @@ var vmlMixin = {
 	_initPath: function (layer) {
 		var container = layer._container = vmlCreate('shape');
 
-		addClass(container, 'leaflet-vml-shape ' + (this.options.className || ''));
+		addClass(container, 'Leaflet-vml-shape ' + (this.options.className || ''));
 
 		container.coordsize = '1 1';
 
@@ -12341,7 +12341,7 @@ var SVG = Renderer.extend({
 		}
 
 		if (layer.options.interactive) {
-			addClass(path, 'leaflet-interactive');
+			addClass(path, 'Leaflet-interactive');
 		}
 
 		this._updateStyle(layer);
@@ -12626,8 +12626,8 @@ var BoxZoom = Handler.extend({
 		if (!this._moved) {
 			this._moved = true;
 
-			this._box = create$1('div', 'leaflet-zoom-box', this._container);
-			addClass(this._container, 'leaflet-crosshair');
+			this._box = create$1('div', 'Leaflet-zoom-box', this._container);
+			addClass(this._container, 'Leaflet-crosshair');
 
 			this._map.fire('boxzoomstart');
 		}
@@ -12646,7 +12646,7 @@ var BoxZoom = Handler.extend({
 	_finish: function () {
 		if (this._moved) {
 			remove(this._box);
-			removeClass(this._container, 'leaflet-crosshair');
+			removeClass(this._container, 'Leaflet-crosshair');
 		}
 
 		enableTextSelection();
@@ -12812,15 +12812,15 @@ var Drag = Handler.extend({
 				map.whenReady(this._onZoomEnd, this);
 			}
 		}
-		addClass(this._map._container, 'leaflet-grab leaflet-touch-drag');
+		addClass(this._map._container, 'Leaflet-grab Leaflet-touch-drag');
 		this._draggable.enable();
 		this._positions = [];
 		this._times = [];
 	},
 
 	removeHooks: function () {
-		removeClass(this._map._container, 'leaflet-grab');
-		removeClass(this._map._container, 'leaflet-touch-drag');
+		removeClass(this._map._container, 'Leaflet-grab');
+		removeClass(this._map._container, 'Leaflet-touch-drag');
 		this._draggable.disable();
 	},
 
@@ -13279,7 +13279,7 @@ var Tap = Handler.extend({
 
 		// if touching a link, highlight it
 		if (el.tagName && el.tagName.toLowerCase() === 'a') {
-			addClass(el, 'leaflet-active');
+			addClass(el, 'Leaflet-active');
 		}
 
 		// simulate long hold but setting a timeout
@@ -13313,7 +13313,7 @@ var Tap = Handler.extend({
 			    el = first.target;
 
 			if (el && el.tagName && el.tagName.toLowerCase() === 'a') {
-				removeClass(el, 'leaflet-active');
+				removeClass(el, 'Leaflet-active');
 			}
 
 			this._simulateEvent('mouseup', first);
@@ -13381,12 +13381,12 @@ Map.mergeOptions({
 
 var TouchZoom = Handler.extend({
 	addHooks: function () {
-		addClass(this._map._container, 'leaflet-touch-zoom');
+		addClass(this._map._container, 'Leaflet-touch-zoom');
 		on(this._map._container, 'touchstart', this._onTouchStart, this);
 	},
 
 	removeHooks: function () {
-		removeClass(this._map._container, 'leaflet-touch-zoom');
+		removeClass(this._map._container, 'Leaflet-touch-zoom');
 		off(this._map._container, 'touchstart', this._onTouchStart, this);
 	},
 
@@ -13580,4 +13580,4 @@ exports.Map = Map;
 exports.map = createMap;
 
 })));
-//# sourceMappingURL=leaflet-src.js.map
+//# sourceMappingURL=Leaflet-src.js.map

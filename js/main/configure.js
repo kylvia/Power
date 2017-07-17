@@ -14,6 +14,7 @@ var Configure={
     "partial/home/chargePower":{loadJs:['./partial/home/chargePower'],styles:['css!../css/partial/home/chargePower.css']},
     "partial/home/energeFlow":{loadJs:['./partial/home/energeFlow'],styles:['css!../css/partial/home/energeFlow.css']},
     "partial/home/bottom":{loadJs:['./partial/home/bottom'],styles:['css!../css/partial/home/bottom.css']},
+    "partial/home/pcs":{loadJs:['./partial/home/pcs'],styles:['css!../css/partial/home/pcs.css']},
     "partial/statisticsAnalysis/saIndex":{loadJs:['./partial/statisticsAnalysis/saIndex'],styles:''},
     "partial/reportManagement/rmIndex":{loadJs:['./partial/reportManagement/rmIndex'],styles:''},
     "partial/alramManagement/amIndex":{loadJs:['./partial/alramManagement/amIndex'],styles:''}
