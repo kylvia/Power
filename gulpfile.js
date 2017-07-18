@@ -9,11 +9,8 @@ var gulp = require('gulp'),
         htmlDir: 'dest',
         css: 'css/*.css',
         cssDir: 'dest/css',
-        jscss: 'js/**/*.css',
-        jscssDir: 'dest/js/',
-        jsimage: 'js/**/*.+(jpg|png|gif|svg)',
         less: 'less/**/*.less',
-        js: 'js/**/*.js',
+        js: ['js/**/*.js', '!js/**/*.min.js', 'js/**/*.min.js', 'js/**/*.json', 'js/**/**'],
         jsDir: 'dest/js',
         images: 'images/**/*.+(jpg|png|gif|svg)',
         imagesDir: 'dest/images',
@@ -39,12 +36,6 @@ gulp.task('minifycss', function () {
         .pipe(plugins.cssmin()) //压缩
         .pipe(gulp.dest(path.cssDir));//输出
 });
-//压缩插件中的css,压缩后的文件放入dest/js
-gulp.task('minifyjscss', function () {
-    return gulp.src(path.jscss)
-        .pipe(plugins.cssmin()) //压缩
-        .pipe(gulp.dest(path.jsDir));//输出
-});
 
 //合并并压缩css，合并压缩后的文件放入dest/css
 gulp.task('concatminifycss', function () {
@@ -58,19 +49,23 @@ gulp.task('concatminifycss', function () {
 
 //压缩js，压缩后的文件放入dest/js
 gulp.task('minifyjs', function () {
-    return gulp.src(path.js)
+    return gulp.src(path.js.slice(0, 1))
         // .pipe(plugins.uglify())//压缩
         .pipe(gulp.dest(path.jsDir));//输出
 });
 
 //合并并压缩js，合并压缩后的文件放入dest/js
 gulp.task('concatminifyjs', function () {
-    return gulp.src(path.js)
+    return gulp.src(path.js.slice(0, 1))
         .pipe(plugins.concat('main.js'))    //合并所有js到main.js
         .pipe(gulp.dest(path.jsDir))    //输出main.js到文件夹
         .pipe(plugins.rename({suffix: '.min'}))   //rename压缩后的文件名
         .pipe(plugins.uglify())//压缩
         .pipe(gulp.dest(path.jsDir));//输出
+});
+gulp.task('unscripts', function () {
+    return gulp.src(path.js.slice(2))
+        .pipe(gulp.dest(path.jsDir));
 });
 //合并并压缩html，合并压缩后的文件放入dest/
 gulp.task('html', function () {
@@ -100,17 +95,6 @@ gulp.task('image', function () {
         }))
         .pipe(gulp.dest(path.imagesDir));//输出
 });
-//压缩图片，压缩后的文件放入dest/images
-gulp.task('jsimage', function () {
-    gulp.src(path.jsimage)
-        .pipe(plugins.imagemin({
-            optimizationLevel: 5, //类型：Number  默认：3  取值范围：0-7（优化等级）
-            progressive: true, //类型：Boolean 默认：false 无损压缩jpg图片
-            interlaced: true, //类型：Boolean 默认：false 隔行扫描gif进行渲染
-            multipass: true //类型：Boolean 默认：false 多次优化svg直到完全优化
-        }))
-        .pipe(gulp.dest(path.jsDir));//输出
-});
 
 //执行压缩前，先删除dest文件夹里的内容
 gulp.task('clean', function (cb) {
@@ -127,15 +111,13 @@ gulp.task("less", function () {
 //监视文件的变化
 gulp.task("watch", function () {
     gulp.watch(path.less, ['less']);
-    gulp.watch(path.jscss, ['minifyjscss']);
     gulp.watch(path.css, ['minifycss']);
     gulp.watch(path.html, ['html']);
-    gulp.watch(path.js, ['minifyjs']);
     gulp.watch(path.images, ['image']);
-    gulp.watch(path.jsimage, ['jsimage']);
+    gulp.watch(path.js[4], ['unscripts', 'minifyjs']);
 });
 gulp.task("build", ["clean"], function (cb) {
-    plugins.runSequence(['minifycss', 'minifyjscss', 'image', 'jsimage', 'less', 'vendor', 'minifyjs', 'html', "watch"], cb);
+    plugins.runSequence(['minifycss', 'image', 'less', 'vendor', 'minifyjs', 'html', "watch"], cb);
 });
 //同步刷新
 gulp.task("serve", ["build"], function () {

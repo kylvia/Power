@@ -10,14 +10,13 @@ var energyStatics = {
         console.log(Echarts);
         var esKpiChart = Echarts.init(document.getElementById('esCcurPower'));
 
-        var xData = ['00','01','02','03'];
-        var legendData = ['充放电功率','SOC值','SOH值'];
-        var yData1=['4','6','5','9'];
-        var yData = [{name:'00',value:'4'},
-            {name:'01',value:'6'},
-            {name:'02',value:'3'},
-            {name:'03',value:'8'}];
-        var cutColor = ['#33CC66','#3366CC','#00CCCC','#D06052'];
+        var xData = ['用电','下网','上网','充电','放电'];
+        var yData = [{name:'用电',value:'4'},
+            {name:'下网',value:'6'},
+            {name:'上网',value:'3'},
+            {name:'充电',value:'8'},
+            {name:'放电',value:'7'}];
+        var cutColor = ['#009A66','#006599','#009899','#0066CB','#343399'];
         var option = {
             tooltip:{
                 trigger:'axis'
@@ -61,7 +60,7 @@ var energyStatics = {
                 bottom:'10%'
             },
             yAxis: [{
-                name:'xx（kW）',
+                name:'千kWh',
                 type: 'value',
                 splitLine:{
                     show:false
@@ -87,9 +86,8 @@ var energyStatics = {
             }],
             series: [
                 {
-                    name:legendData[0],
                     type:'bar',
-                    barWidth: '30%',
+                    barWidth: '40%',
                     barBorderRadius: 4,
                     itemStyle: {
                         normal: {
