@@ -3,17 +3,18 @@
   height: 100%;
   padding: 2%;
   color: #33ccff;
-  font-size: 1.14em;
+  font-size: 1.142857em;
   .ef-txt{
     color: #00ff33;
   }
   .ef-statusDis{
 
-    height: 5%;
+    height: 3%;
     text-align: right;
     font-size: 0.875em;
     span{
       margin-left: 28px;
+      color: #66FF66;
       &:before{
         content: '';
         display: inline-block;
@@ -21,15 +22,22 @@
         height: 12px;
         border-radius: 50%;
         background-color: #66FF66;
-        margin-right: 4px;
+        margin-right: 7px;
+        vertical-align: middle;
       }
 
     }
-    span.ef-close:before{
-      background-color: #FF3333;
+    span.ef-close{
+      color: #FF3333;
+      &:before{
+        background-color: #FF3333;
+      }
     }
-    span.ef-broken:before{
-      background-color: #FFCC33;
+    span.ef-broken{
+      color: #FFCC33;
+      &:before{
+        background-color: #FFCC33;
+      }
     }
   }
 }
@@ -40,7 +48,7 @@
     width: 70%;
     height: 100%;
     .cus-efrow{
-      height: 15%;
+      height: 16%;
       position: relative;
       margin-top: 1%;
       &:first-child{
@@ -117,7 +125,7 @@
     font-size: 0.875em;
     height: 100%;
     .ef-load-tit{
-      font-size: 1.14em;
+      font-size: 1.142857em;
     }
     .ef-hrline{
       position: relative;
@@ -125,6 +133,11 @@
       width: 19%;
       height: 100%;
       vertical-align: middle;
+    }
+    .ef-hrline-val{
+      position: absolute;
+      top: 39%;
+      left: 48%;
     }
     .ef-hrlineba{
       width: 293%;
@@ -141,7 +154,7 @@
       height: 90%;
       width: 70%;
       float: right;
-      margin-top: 5%;
+      margin-top: 18%;
     }
     .cus-gsBox{
       //height: 25%;
@@ -150,11 +163,11 @@
 
     span.tf-tit{
       display: block;
-      font-size: 1.14em;
+      font-size: 1.142857em;
       margin-top: 4%;
     }
     .cus-vox{
-      height: 20%;
+      height: 16%;
       margin-top: 2%;
       margin-bottom: 2%;
       >div{
@@ -174,7 +187,7 @@
     }
     .cus-tfBox{
       width: 114%;
-      height: 15.5%;
+      height: 12.5%;
     }
     .ef-txt{
 
@@ -189,11 +202,15 @@
       height: 36%;
     }
   }
+  .cus-lh18{
+    line-height: 1.8;
+  }
 }
 .toPcsPage{
   cursor: pointer;
 }
 
+/*
 @media screen and (max-width: 1700px) {
   .cus-ef-flow .ef-l .cus-efline{
     width: 15.5%;
@@ -203,4 +220,4 @@
   .cus-ef-flow .ef-l .cus-efline{
     width: 13.5%;
   }
-}
+}*/
