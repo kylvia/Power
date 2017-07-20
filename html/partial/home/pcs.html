@@ -60,7 +60,7 @@
                 <div class="pcs-setting">
                     <div class="pcs-right">控制权限：<span>EMS正在控制</span></div>
                     <div class="pcs-running">运行模式：<span>电池维护模式</span></div>
-                    <div class="pcs-remotecontrol"><a>遥控及设定</a></div>
+                    <div class="pcs-remotecontrol"><a class="cus-img-btn" onclick="pcs.pcsRcSetting()">遥控及设定</a></div>
                 </div>
             </div>
         </div>
@@ -394,5 +394,59 @@
                 </div>
             </div>
         </div>
+    </div>
+</div>
+<div class="cus-win" id="pcsRsWin">
+    <h2 class="cus-win-tit">遥控及设定<span class="cus-win-close"></span></h2>
+    <div class="cus-win-content" id="cus-win-content">
+        <div class="cus-win-highLight">
+            <div class="cwh-dcc cwh-setting">
+                <label>直流能量调控器控制权限<select name="" id="">
+                    <option value="">EMS控制</option>
+                    <option value="">xxx</option>
+                    <option value="">xxx</option>
+                    <option value="">xxx</option>
+                </select></label>
+                <a href="" class="cus-img-btn">执行</a>
+            </div>
+            <div class="cwh-dcc cwh-setting">
+                <label>运行模式设置<select name="" id="">
+                    <option value="">电池维护模式</option>
+                    <option value="">xxx</option>
+                    <option value="">xxx</option>
+                    <option value="">xxx</option>
+                </select></label>
+                <a href="" class="cus-img-btn">执行</a>
+            </div>
+        </div>
+        <div class="cus-win-condition">
+            <div class="cus-win-mark"></div>
+            <div class="cwc-content">
+                <div class="cwc-tit">注：仅P/Q模式下生效；有功设定：正为充电，负为放电；感性为正，容性为负；</div>
+                <div class="cwc-sec">
+                    <div class="cwc-col-one">
+                        当前有功<span class="cwc-val">1597.2</span><span class="cwc-unit">kVar</span>
+                    </div>
+                    <div class="cwc-col-one">
+                        <label for="">设定值：<input></label></label>kW
+                    </div>
+                    <a href="" class="cus-img-btn">执行</a>
+                </div>
+                <div class="cwc-sec">
+                    <div class="cwc-col-one">
+                        当前无功<span class="cwc-val">279.4</span><span class="cwc-unit">kVar</span>
+                    </div>
+                    <div class="cwc-col-one">
+                        <label for="">设定值：<input></label></label>kW
+                    </div>
+                    <a href="" class="cus-img-btn">执行</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div cus-win-btnbar>
+        <a href="" class="cus-img-btn cus-btn-start">开机</a>
+        <a href="" class="cus-img-btn cus-btn-stop">关机</a>
+        <a href="" class="cus-img-btn cus-btn-imstop">急停</a>
     </div>
 </div>

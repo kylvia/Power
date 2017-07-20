@@ -10,7 +10,7 @@ var gulp = require('gulp'),
         css: 'css/*.css',
         cssDir: 'dest/css',
         less: 'less/**/*.less',
-        js: ['js/**/*.js', '!js/**/*.min.js', 'js/**/*.min.js', 'js/**/*.json', 'js/**/**'],
+        js: ['js/**/*.js', '!js/**/*.min.js', 'js/**/*.min.js', 'js/**/*.json', 'js/**/*'],
         jsDir: 'dest/js',
         images: 'images/**/*.+(jpg|png|gif|svg)',
         imagesDir: 'dest/images',
@@ -33,7 +33,7 @@ gulp.task('vendor', function () {
 //压缩css,压缩后的文件放入dest/css
 gulp.task('minifycss', function () {
     return gulp.src(path.css)
-        .pipe(plugins.cssmin()) //压缩
+        // .pipe(plugins.cssmin()) //压缩
         .pipe(gulp.dest(path.cssDir));//输出
 });
 
@@ -117,7 +117,7 @@ gulp.task("watch", function () {
     gulp.watch(path.js[4], ['unscripts', 'minifyjs']);
 });
 gulp.task("build", ["clean"], function (cb) {
-    plugins.runSequence(['minifycss', 'image', 'less', 'vendor', 'minifyjs', 'html', "watch"], cb);
+    plugins.runSequence(['minifycss', 'image', 'less', 'vendor', 'minifyjs', 'unscripts', 'html', "watch"], cb);
 });
 //同步刷新
 gulp.task("serve", ["build"], function () {

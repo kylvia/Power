@@ -2,6 +2,7 @@
  * Created by deng on 2017/7/13.
  */
 define(['plugins/App','main/configure'],function(App,Configure){
+    window.App=App;
     $.fn.extend ({
         loadPage: function (url, params, callback) {
             var $this = $(this);
@@ -13,7 +14,6 @@ define(['plugins/App','main/configure'],function(App,Configure){
 
             var preLoad = url.replace('.html','');
             var action = Configure[preLoad];
-            console.log(action);
             var loadMainPage = function () {
                 require(action.styles || [], function () {
                     $this.empty();

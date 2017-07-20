@@ -32,6 +32,62 @@ body{
 .cus-top-nav-massage,.cus-main-navbar,.mainContainer{
   width:100%;
 }
+.cus-mask{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+.cus-img-btn{
+  background: transparent;
+  border: 1px solid #075E94;
+  display: inline-block;
+  padding: 2px 4px;
+  border-radius: 3px;
+  color: #a5e2f9;
+  background-color: #011E42;
+  &:before{
+    content: '';
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background: url(/images/rcBtn.png) center no-repeat;
+    margin-right: 2px;
+    vertical-align: middle;
+    margin-top: -2px;
+  }
+  &:hover{
+    background-color: #002C61;
+    color: #a5e2f9;
+  }
+}
+//弹窗
+.modal-content{
+  background-color: #001733;
+  //background: url("/images/PCSback.png") no-repeat center;
+  background-size: 100% 100%;
+  text-align: left;
+}
+.modal-header {
+  height: 35px;
+  line-height: 35px;
+  padding: 8px;
+  background-color: #01244D;
+  text-align: left;
+  border-bottom: 1px solid #133D70;
+}
+.modal-footer {
+  text-align: center;
+  border-top: none;
+  .modal-btn{
+    margin-left: 70px;
+    height: 30px;
+    width: 70px;
+    border: 1px solid #006699;
+    &:first-child{
+      margin-left: 0;
+    }
+  }
+}
 /*
 @media screen and (max-width: 1500px){
   body{

@@ -8,6 +8,7 @@ var plantMap = {
             var map = L.map('plantMap', {
                 center: [30.579999,104.068081],
                 zoomControl:false,
+                attributionControl:false,
                 zoom: 8
             });
             L.tileLayer.provider('Google.Satellite.Map').addTo(map);
