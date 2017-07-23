@@ -25,9 +25,7 @@ gulp.task('vendor', function () {
         gulp.src('node_modules/jquery/dist/*.*')
             .pipe(gulp.dest('dest/js/vendor/jquery')),
         gulp.src('node_modules/bootstrap/dist/**/*')
-            .pipe(gulp.dest('dest/js/vendor/bootstrap')),
-        gulp.src('node_modules/bootstrap-table/src/*.*')
-            .pipe(gulp.dest('dest/js/vendor/bootstrap-table'))
+            .pipe(gulp.dest('dest/js/vendor/bootstrap'))
     );
 });
 //压缩css,压缩后的文件放入dest/css
@@ -121,84 +119,93 @@ gulp.task("build", ["clean"], function (cb) {
 });
 //同步刷新
 gulp.task("serve", ["build"], function () {
+    var isMock = true;
+    var proxyMiddleware = require('http-proxy-middleware');
     var path = require('path');
     var url = require('url');
     var fs = require('fs');
     var uuid = require('uuid');
     var Mock = require('mockjs');
-    middleware=function (req, res, next) {
-        var urlObj = url.parse(req.url, true),
-            method = req.method,
-            paramObj = urlObj.query,
-            mockUrl,
-            newSearch = '';
+    if(isMock){
+        middleware=function (req, res, next) {
+            var urlObj = url.parse(req.url, true),
+                method = req.method,
+                paramObj = urlObj.query,
+                mockUrl,
+                newSearch = '';
 
-        if (urlObj.pathname.match(/\..+$/) || urlObj.pathname.match(/\/$/)) {
-            next();
-            return;
-        }
-        console.log('[requist] ', method, urlObj.pathname, paramObj);
-        var rts = /([?&])_=[^&]*/;
-        if(rts.test( req.url)){
-            delete paramObj._;
-
-            if(JSON.stringify(paramObj) !== "{}"){
-                newSearch = '?';
-                newSearch += JSON.stringify(paramObj).replace(/[\"\{\}]/g,"").replace(/\:/g,"=").replace(/\,/g,"&");
-            }
-        }
-
-        var pathTree = urlObj.pathname.split('/');
-        console.log('[pathTree]',pathTree);
-        var mockDataFile = path.join(__dirname + path.sep + 'dataJs', pathTree[1]) + ".js";
-        fs.access(mockDataFile, fs.F_OK, function (err) {
-            var isImage = req.headers.accept.indexOf('image') != -1;
-            console.log('[err]',err);
-            if (err) {
-                var c = {
-                    "success": false,
-                    "data": null,
-                    "failCode": 404,
-                    "params": null,
-                    "message": "无响应数据",
-                    "notFound": mockDataFile
-                };
-                //console.log('[response] ', c);
-                res.setHeader('Content-Type', (isImage ? 'image/*' : 'application/json'));
-                res.end(JSON.stringify(c));
+            if (urlObj.pathname.match(/\..+$/) || urlObj.pathname.match(/\/$/)) {
                 next();
                 return;
             }
+            console.log('[requist] ', method, urlObj.pathname, paramObj);
+            var rts = /([?&])_=[^&]*/;
+            if(rts.test( req.url)){
+                delete paramObj._;
 
-            try {
-                var data = require(mockDataFile) || {};
-                var result,mockUrl = pathTree[2]+newSearch;
-                console.log('[mockUrl]',mockUrl);
-                if(data[mockUrl] && typeof data[mockUrl] === "object"){
-                    result = Mock.mock(data[mockUrl]);
-                }else if(data[mockUrl]){
-                    var params={body: JSON.stringify(paramObj)};
-                    result = Mock.mock(data[mockUrl](params));
+                if(JSON.stringify(paramObj) !== "{}"){
+                    newSearch = '?';
+                    newSearch += JSON.stringify(paramObj).replace(/[\"\{\}]/g,"").replace(/\:/g,"=").replace(/\,/g,"&");
                 }
-                isImage && (result = Mock.Random.image(data[pathTree[2]]));
-                console.log('[result]',result);
-                res.setHeader('Access-Control-Allow-Origin', '*');
-                res.setHeader('Content-Type', (isImage ? 'image/!*' : 'application/json'));
-                res.setHeader('tokenId', uuid.v1());
-                var s = result || {
+            }
+
+            var pathTree = urlObj.pathname.split('/');
+            console.log('[pathTree]',pathTree);
+            var mockDataFile = path.join(__dirname + path.sep + 'dataJs', pathTree[1]) + ".js";
+            fs.access(mockDataFile, fs.F_OK, function (err) {
+                var isImage = req.headers.accept.indexOf('image') != -1;
+                console.log('[err]',err);
+                if (err) {
+                    var c = {
                         "success": false,
                         "data": null,
-                        "failCode": 0,
+                        "failCode": 404,
                         "params": null,
-                        "message": null
+                        "message": "无响应数据",
+                        "notFound": mockDataFile
                     };
-                //console.log('[response] ', JSON.stringify(s));
-                res.end(JSON.stringify(s) || s);
-            } catch (e) {
-                console.error(e);
-            }
-        });
-        //next();
+                    //console.log('[response] ', c);
+                    res.setHeader('Content-Type', (isImage ? 'image/*' : 'application/json'));
+                    res.end(JSON.stringify(c));
+                    next();
+                    return;
+                }
+
+                try {
+                    var data = require(mockDataFile) || {};
+                    var result,mockUrl = pathTree[2]+newSearch;
+                    console.log('[mockUrl]',mockUrl);
+                    if(data[mockUrl] && typeof data[mockUrl] === "object"){
+                        result = Mock.mock(data[mockUrl]);
+                    }else if(data[mockUrl]){
+                        var params={body: JSON.stringify(paramObj)};
+                        result = Mock.mock(data[mockUrl](params));
+                    }
+                    isImage && (result = Mock.Random.image(data[pathTree[2]]));
+                    console.log('[result]',result);
+                    res.setHeader('Access-Control-Allow-Origin', '*');
+                    res.setHeader('Content-Type', (isImage ? 'image/!*' : 'application/json'));
+                    res.setHeader('tokenId', uuid.v1());
+                    var s = result || {
+                            "success": false,
+                            "data": null,
+                            "failCode": 0,
+                            "params": null,
+                            "message": null
+                        };
+                    //console.log('[response] ', JSON.stringify(s));
+                    res.end(JSON.stringify(s) || s);
+                } catch (e) {
+                    console.error(e);
+                }
+            });
+            //next();
+        }
+    }else{
+        var host = 'http://192.168.43.15:8080';
+        middleware = [
+            proxyMiddleware(['/interface/getPlantInfo'], {target: host, changeOrigin: true})
+        ];
     }
     plugins.browserSync({
         //files: '/build/**', //监听整个项目

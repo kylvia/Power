@@ -4,8 +4,7 @@ define(function(){
 var energeFlow = {
     Render:function () {
 
-        $('.toPcsPage').on('click',function () {
-            console.log('roPage');
+        $('.cus-toPage').on('click',function () {
             $('#mainContainer').loadPage($(this).attr('attr-href'));
         })
     },

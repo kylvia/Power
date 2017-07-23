@@ -25,7 +25,6 @@ var psIndex = {
             var loadPageContainer = cItems.find('.cus-item');
             loadPageContainer.each(function (index,item) {
                 var toPage = $(item).attr('attr-href');
-                console.log('[toPage]',toPage);
                 !!toPage && $(item).loadPage(toPage);
             })
         }

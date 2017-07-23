@@ -27,7 +27,7 @@
     height: 31%;
     height: 280px;
     margin-top: 0.8%;
-    background: url("/images/PCSback.png") 0 0 no-repeat;
+    background: url("/images/plantstatus/PCSback.png") 0 0 no-repeat;
     background-size: 100% 100%;
     &:nth-child(2n+2){
       margin-left: 50px;
@@ -97,6 +97,7 @@
         label{
           float: left;
           font-weight: 500;
+          margin-right: 5px;
         }
         &:nth-child(3n+1){
           width: 27%;
@@ -132,23 +133,23 @@
       }
       .pcs-running{
         text-align: center;
-        width: 40%;
+        width: 39%;
       }
       .pcs-remotecontrol{
         text-align: right;
-        width: 22.08%;
+        width: 23.08%;
         a{
           background: transparent;
           border: 1px solid #075E94;
           display: inline-block;
-          padding: 2px 4px;
+          padding: 4px 5px;
           border-radius: 3px;
           &:before{
             content: '';
             display: inline-block;
             width: 16px;
             height: 16px;
-            background: url(/images/rcBtn.png) center no-repeat;
+            background: url(/images/btnIcon/rcBtn.png) center no-repeat;
             margin-right: 2px;
             vertical-align: middle;
             margin-top: -2px;
@@ -179,6 +180,76 @@
     }
     .psis-stop-off,.psis-start-off,.psis-break-off,.psis-connect-off{
       .icon-circleBac(#ff3333);
+    }
+  }
+}
+.cus-win-pcscontent{
+  margin: 15px 35px 0 35px;
+  .cwh-runmodel{
+    margin-top: 30px;
+  }
+  .cwh-setting{
+    label{
+      width: 170px;
+    }
+    select{
+      width: 178px;
+      height: 28px;
+      line-height: 28px;
+      border: 1px solid #006699;
+      border-radius: 2px;
+      background: #011F43;
+    }
+  }
+  .ceh-excut{
+    float: right;
+  }
+  .cus-win-condition{
+    position: relative;
+    margin-top: 26px;
+    width: 550px;
+    height: 144px;
+    .cus-win-mark{
+      position: absolute;
+      z-index: 9;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,23,51,0.85);
+      border-radius: 3px;
+    }
+    .cwc-content{
+      position: absolute;
+      z-index: 8;
+      width: 100%;
+      height: 100%;
+      padding: 0 22px;
+      border: 1px solid #075e94;
+      border-radius: 3px;
+      .cwc-tit{
+        margin-top: 16px;
+        font-size: 0.85714em;
+      }
+      .cwc-sec,.cwc-one{
+        margin-top: 16px;
+      }
+      .cwc-col{
+        display: inline-block;
+        .cwc-val{
+          color: #00ff33;
+          font-size: 1.14285em;
+          margin: 0 5px;
+        }
+        input{
+          border: 1px solid #a5e2f9;
+          width: 100px;
+        }
+        label{
+          margin-right: 5px;
+        }
+      }
+      .cwc-col-two{
+        margin-left: 10px;
+      }
     }
   }
 }

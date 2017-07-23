@@ -3,7 +3,7 @@
         <h2 class="pcs-tit">PCS 01</h2>
         <div class="pcs-section clearfix">
             <div class="psc-section-item psi-one">
-                <img src="/images/PSC-da.png" alt="">
+                <img src="/images/plantstatus/PSC-da.png" alt="">
                 <div class="psi-status">
                     <div class="psi-status-item">
                         <p><b class="psis-icon psis-stop-off"></b></p>
@@ -69,7 +69,7 @@
         <h2 class="pcs-tit">PCS 02</h2>
         <div class="pcs-section clearfix">
             <div class="psc-section-item psi-one">
-                <img src="/images/PSC-da.png" alt="">
+                <img src="/images/plantstatus/PSC-da.png" alt="">
                 <div class="psi-status">
                     <div class="psi-status-item">
                         <p><b class="psis-icon psis-stop-on" id="pcs1Stop"></b></p>
@@ -135,7 +135,7 @@
         <h2 class="pcs-tit">PCS 03</h2>
         <div class="pcs-section clearfix">
             <div class="psc-section-item psi-one">
-                <img src="/images/PSC-da.png" alt="">
+                <img src="/images/plantstatus/PSC-da.png" alt="">
                 <div class="psi-status">
                     <div class="psi-status-item">
                         <p><b class="psis-icon psis-stop" id="pcs1Stop"></b></p>
@@ -201,7 +201,7 @@
         <h2 class="pcs-tit">PCS 04</h2>
         <div class="pcs-section clearfix">
             <div class="psc-section-item psi-one">
-                <img src="/images/PSC-da.png" alt="">
+                <img src="/images/plantstatus/PSC-da.png" alt="">
                 <div class="psi-status">
                     <div class="psi-status-item">
                         <p><b class="psis-icon psis-stop" id="pcs1Stop"></b></p>
@@ -267,7 +267,7 @@
         <h2 class="pcs-tit">PCS 05</h2>
         <div class="pcs-section clearfix">
             <div class="psc-section-item psi-one">
-                <img src="/images/PSC-da.png" alt="">
+                <img src="/images/plantstatus/PSC-da.png" alt="">
                 <div class="psi-status">
                     <div class="psi-status-item">
                         <p><b class="psis-icon psis-stop" id="pcs1Stop"></b></p>
@@ -333,7 +333,7 @@
         <h2 class="pcs-tit">PCS 06</h2>
         <div class="pcs-section clearfix">
             <div class="psc-section-item psi-one">
-                <img src="/images/PSC-da.png" alt="">
+                <img src="/images/plantstatus/PSC-da.png" alt="">
                 <div class="psi-status">
                     <div class="psi-status-item">
                         <p><b class="psis-icon psis-stop" id="pcs1Stop"></b></p>
@@ -396,57 +396,45 @@
         </div>
     </div>
 </div>
-<div class="cus-win" id="pcsRsWin">
-    <h2 class="cus-win-tit">遥控及设定<span class="cus-win-close"></span></h2>
-    <div class="cus-win-content" id="cus-win-content">
-        <div class="cus-win-highLight">
-            <div class="cwh-dcc cwh-setting">
-                <label>直流能量调控器控制权限<select name="" id="">
-                    <option value="">EMS控制</option>
-                    <option value="">xxx</option>
-                    <option value="">xxx</option>
-                    <option value="">xxx</option>
-                </select></label>
-                <a href="" class="cus-img-btn">执行</a>
-            </div>
-            <div class="cwh-dcc cwh-setting">
-                <label>运行模式设置<select name="" id="">
-                    <option value="">电池维护模式</option>
-                    <option value="">xxx</option>
-                    <option value="">xxx</option>
-                    <option value="">xxx</option>
-                </select></label>
-                <a href="" class="cus-img-btn">执行</a>
-            </div>
+<div class="cus-win-pcscontent" id="cus-win-content">
+    <div class="cus-win-highLight">
+        <div class="cwh-dcc cwh-setting">
+            <label>直流能量调控器控制权限</label>
+            <select name="" id="pcs-dCEnergy">
+                <option value=""></option>
+            </select>
+            <a class="cus-img-btn ceh-excut">执行</a>
         </div>
-        <div class="cus-win-condition">
-            <div class="cus-win-mark"></div>
-            <div class="cwc-content">
-                <div class="cwc-tit">注：仅P/Q模式下生效；有功设定：正为充电，负为放电；感性为正，容性为负；</div>
-                <div class="cwc-sec">
-                    <div class="cwc-col-one">
-                        当前有功<span class="cwc-val">1597.2</span><span class="cwc-unit">kVar</span>
-                    </div>
-                    <div class="cwc-col-one">
-                        <label for="">设定值：<input></label></label>kW
-                    </div>
-                    <a href="" class="cus-img-btn">执行</a>
-                </div>
-                <div class="cwc-sec">
-                    <div class="cwc-col-one">
-                        当前无功<span class="cwc-val">279.4</span><span class="cwc-unit">kVar</span>
-                    </div>
-                    <div class="cwc-col-one">
-                        <label for="">设定值：<input></label></label>kW
-                    </div>
-                    <a href="" class="cus-img-btn">执行</a>
-                </div>
-            </div>
+        <div class="cwh-runmodel cwh-setting">
+            <label>运行模式设置</label>
+            <select name="" id="pcs-runningModel">
+                <option value=""></option>
+            </select>
+            <a onclick="pcs.rnExcute()" class="cus-img-btn ceh-excut">执行</a>
         </div>
     </div>
-    <div cus-win-btnbar>
-        <a href="" class="cus-img-btn cus-btn-start">开机</a>
-        <a href="" class="cus-img-btn cus-btn-stop">关机</a>
-        <a href="" class="cus-img-btn cus-btn-imstop">急停</a>
+    <div class="cus-win-condition">
+        <div class="cus-win-mark"></div>
+        <div class="cwc-content">
+            <div class="cwc-tit">注：仅P/Q模式下生效；有功设定：正为充电，负为放电；感性为正，容性为负；</div>
+            <div class="cwc-one">
+                <div class="cwc-col cwc-col-one cwc-col-ap cwc-col-arp">
+                    当前有功<span class="cwc-val">1597.2</span><span class="cwc-unit">kVar</span>
+                </div>
+                <div class="cwc-col cwc-col-two">
+                    <label for="">设定值：<input class="pcs-input-clear" id="pcs-apVal" type="text"></label></label>kW
+                </div>
+                <a class="cus-img-btn ceh-excut">执行</a>
+            </div>
+            <div class="cwc-sec">
+                <div class="cwc-col cwc-col-one cwc-col-rp cwc-col-arp">
+                    当前无功<span class="cwc-val">279.4</span><span class="cwc-unit">kVar</span>
+                </div>
+                <div class="cwc-col cwc-col-two">
+                    <label for="">设定值：<input class="pcs-input-clear" id="pcs-rpVal" type="text"></label></label>kW
+                </div>
+                <a class="cus-img-btn ceh-excut">执行</a>
+            </div>
+        </div>
     </div>
 </div>

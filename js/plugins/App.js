@@ -1214,6 +1214,11 @@ define(['jquery'], function ($) {
                     _self.resize($('.modal-dialog', modal));
                     //窗口层级
                     $(modal).css('z-index', App.dialogZIndex++);
+                    //幕布层级
+                    if(opts.backdrop){
+                        $('.modal-backdrop').css('z-index', (App.dialogZIndex-2));
+                    }
+
                     //设置为模态窗口
                     opts.modal && modal.addClass('modal-overlay');
                     modal
@@ -1249,6 +1254,9 @@ define(['jquery'], function ($) {
                         .attr('role', 'dialog').attr('aria-labelledby', o.id + '_modalLabel').attr('aria-hidden', true);
                     var content = $('<div/>').addClass('modal-content');
                     var header = $('<div/>').addClass('modal-header');
+                    var boxL = $('<div/>').addClass('modal-borderl');
+                    var boxC = $('<div/>').addClass('modal-borderc');
+                    var boxR = $('<div/>').addClass('modal-borderr');
                     var body = $('<div/>').addClass('modal-body').css({
                         'height': o.height,
                         'max-height': o.maxHeight || (window.screen.height - 120)
@@ -1260,7 +1268,8 @@ define(['jquery'], function ($) {
                         });
                     var title = $('<p/>').addClass('modal-title').html(o.title);
                     title.css("cursor", "default");
-                    header.append(closeBtn).append(title);
+                    boxC.append(closeBtn).append(title);
+                    header.append(boxL).append(boxC).append(boxR);
                     if (o.isdrag) { // 拖曳
                         var _mousex, _mousey, headx, heady;
                         title.css("cursor", "move");
@@ -1306,6 +1315,10 @@ define(['jquery'], function ($) {
                     body.append($con);
 
                     var footer = $('<div/>').addClass('modal-footer');
+                    var boxbL = $('<div/>').addClass('modal-borderbl');
+                    var boxbC = $('<div/>').addClass('modal-borderbc');
+                    var boxbR = $('<div/>').addClass('modal-borderbr');
+                    footer.append(boxbL).append(boxbC).append(boxbR);
                     //btn配置
                     if (o.buttons && o.buttons.length > 0) {
                         $.each(o.buttons, function (i, t) {
@@ -1316,7 +1329,7 @@ define(['jquery'], function ($) {
                                 t.click(e, context, this);
                             });
 
-                            footer.append(btn);
+                            boxbC.append(btn);
                         });
                     }
 
