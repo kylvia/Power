@@ -172,6 +172,7 @@ gulp.task("serve", ["build"], function () {
                 }
 
                 try {
+                    delete require.cache[require.resolve(mockDataFile)];
                     var data = require(mockDataFile) || {};
                     var result,mockUrl = pathTree[2]+newSearch;
                     console.log('[mockUrl]',mockUrl);
@@ -182,7 +183,6 @@ gulp.task("serve", ["build"], function () {
                         result = Mock.mock(data[mockUrl](params));
                     }
                     isImage && (result = Mock.Random.image(data[pathTree[2]]));
-                    console.log('[result]',result);
                     res.setHeader('Access-Control-Allow-Origin', '*');
                     res.setHeader('Content-Type', (isImage ? 'image/!*' : 'application/json'));
                     res.setHeader('tokenId', uuid.v1());

@@ -13,6 +13,7 @@ require.config({
         'main': 'main',
         'echarts': 'plugins/echarts/echarts.min',
         'leaflet':'plugins/Leaflet/leaflet',
+        'WdatePicker':'plugins/My97DatePicker/WdatePicker',
         'MapUtil':'plugins/Leaflet/MapUtil'
     },
     shim:{
@@ -27,6 +28,7 @@ require.config({
 require(["jquery",
     "echarts",
     "mustache",
+    "WdatePicker",
     "bootstrap",
     "leaflet",
     "bootstrap-table",

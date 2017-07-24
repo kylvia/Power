@@ -1,27 +1,25 @@
-<div class="row am-main" id="alarmManagement">
-        <form class="form-inline" role="form" style="float: left; width: 100%" method="post" id="queryForm">
-            <div class="form-group">
-                <label>告警等级:</label>
-                <div class="checkboxContainer ai-cred"><input class="inputCheck" id="aiLevelH" type="checkbox"><label for="aiLevelH"></label>高</div>
-                <div class="checkboxContainer ai-cyellow"><input class="inputCheck" id="aiLevelM" type="checkbox"><label for="aiLevelM"></label>中</div>
-                <div class="checkboxContainer ai-purple"><input class="inputCheck"  id="aiLevelLo" type="checkbox"><label for="aiLevelLo"></label>低</div>
-            </div>
-            <div class="form-group">
-                <label>告警类型:</label>
-                <div class="checkboxContainer"><input class="inputCheck" id="aiAl" type="checkbox"><label for="aiAl"></label>告警</div>
-                <div class="checkboxContainer"><input class="inputCheck" id="aiEv" type="checkbox"><label for="aiEv"></label>事件</div>
-            </div>
-            <div class="form-group">
-                <a id="queryBtn" class="cus-img-btn cus-ib-query">查询</a>
-            </div>
-            <div class="form-group btn-right">
-                <a id="clearBtn" class="cus-img-btn cus-ib-clear">清除</a>
-                <a id="conformBtn" class="cus-img-btn cus-ib-confirm">确认</a>
-            </div>
-        </form>
+<div class="bms-main" id="">
+    <form class="form-inline" role="form" style="float: left; width: 100%" method="post" id="queryForm">
+        <div class="form-group">
+            <label>BMS选择：</label>
+            <select name="" id="bms-model">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>统计时间：</label>
+            <input type="text" class="Wdate" id="bmsd4311" onclick="WdatePicker({maxDate:'#F{$dp.$D(\'bmsd4312\')}',readOnly:true})"/> &nbsp;--&nbsp;<input type="text" class="Wdate" id="bmsd4312" onclick="WdatePicker({minDate:'#F{$dp.$D(\'bmsd4311\')}',readOnly:true})"/>
+        </div>
+        <div class="form-group">
+            <a id="queryBtn" class="cus-img-btn cus-ib-query">查询</a>
+        </div>
+        <div class="form-group btn-right">
+            <a id="conformBtn" class="cus-img-btn cus-ib-export">导出</a>
+        </div>
+    </form>
 
-    <div class="am-table">
-        <table id="am-table">
+    <div class="bms-table">
+        <table id="bms-table">
         </table>
     </div>
 </div>
