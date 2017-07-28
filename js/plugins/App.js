@@ -258,6 +258,25 @@ define(['jquery'], function ($) {
          */
         getTimezone: function () {
             return -1 * (new Date()).getTimezoneOffset() / 60;
+        },
+        /**
+         * 获取操作系统时区
+         * @returns {number}
+         */
+        getYMD: function (param,dateparam) {
+            var param = param==undefined?0:param;
+            var seperator1 = "-";
+            var date = new Date(dateparam || (new Date()));
+            date.setDate(date.getDate()+param);
+            var year = date.getFullYear();
+            var month = parseInt(date.getMonth() + 1);
+            month = month<10?'0'+month:month;
+            var strDate = parseInt(date.getDate());
+            strDate = strDate<10?'0'+strDate:strDate;
+            var strdate = year + seperator1 + month + seperator1 + strDate;
+            console.log(strdate)
+            //var week=['周日','周一','周二','周三','周四','周五','周六']
+            return strdate;
         }
     });
     Object.extend(Date.prototype, {
@@ -1215,9 +1234,9 @@ define(['jquery'], function ($) {
                     //窗口层级
                     $(modal).css('z-index', App.dialogZIndex++);
                     //幕布层级
-                    if(opts.backdrop){
-                        $('.modal-backdrop').css('z-index', (App.dialogZIndex-2));
-                    }
+                    // if(opts.backdrop){
+                    //     $('.modal-backdrop').css('z-index', (App.dialogZIndex-2));
+                    // }
 
                     //设置为模态窗口
                     opts.modal && modal.addClass('modal-overlay');
@@ -1322,9 +1341,10 @@ define(['jquery'], function ($) {
                     //btn配置
                     if (o.buttons && o.buttons.length > 0) {
                         $.each(o.buttons, function (i, t) {
+                            console.log(t);
                             var btn = $('<button/>').addClass('btn modal-btn').addClass(this.type || '')
                                 .attr("id", this.id).text(this.text || 'Submit').attr('aria-hidden', true);
-                            t.clickToClose && btn.attr('data-dismiss', 'modal');
+                            t.clickToClose && btn.attr('data-dismiss', 'modal') ;
                             t.click && btn.click(function (e) {
                                 t.click(e, context, this);
                             });
@@ -1348,6 +1368,7 @@ define(['jquery'], function ($) {
                 },
                 close: function () {
                     $(".modal").modal("hide");
+
                 },
                 resize: function (modal) {
                     var mw = $(window).width() - $(modal).width();
@@ -1372,24 +1393,24 @@ define(['jquery'], function ($) {
          * @param p {Object} 参数设置
          * @param c {Function} 点击“OK”按钮或者关闭弹出框回调方法
          *     <pre>
-         *     例如： App.alert({id: id, title: "title", message: "Content", ……}, function () { …… });
+         *     例如： App.alert({id: id, title: "title", msg: "Content", ……}, function () { …… });
          *     </pre>
          * @returns {*}
          */
         alert: function (p, c) {
             if (!p) return;
 
-            var content = App.getClassOf(p) == 'String' ? p : p.message;
+            var content = App.getClassOf(p) == 'String' ? p : p.msg;
             var setting = {
-                title: Msg.info,
+                title: '提示',
                 width: 320,
                 height: 'auto',
                 content: content || '',
                 buttons: p.buttons || [
                     {
                         id: 'okId',
-                        type: 'submit',
-                        text: Msg.sure || 'OK',
+                        type: 'cus-img-btn cus-ib-start',
+                        text: '确定' || 'OK',
                         clickToClose: true
                     }
                 ],
@@ -1412,12 +1433,12 @@ define(['jquery'], function ($) {
          * @param c {Function} 点击OK回调方法
          * @param r {Function} 点击Cancel回调方法
          *      例如:
-         *      App.confirm({type: "confirm", title: "TITLE", message: "Message"}, funtion(){...(okEvent)}, funtion(){...(closeEvent)});
+         *      App.confirm({type: "confirm", title: "TITLE", msg: "Message"}, funtion(){...(okEvent)}, funtion(){...(closeEvent)});
          */
         confirm: function (p, c, r) {
             if (!p) return;
 
-            var content = App.getClassOf(p) == 'String' ? p : p.message;
+            var content = App.getClassOf(p) == 'String' ? p : p.msg;
             var setting = {
                 title: Msg.info,
                 width: 320,

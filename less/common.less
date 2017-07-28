@@ -17,7 +17,9 @@ input[type="text"]{
   line-height: 28px;
   padding: 0 5px;
 }
-
+.cus-chart{
+  text-align: left;
+}
 a{outline-style:none;text-decoration:none;color: inherit;}
 a:hover{text-decoration:none;cursor:pointer;color: inherit}
 .container{
@@ -168,6 +170,9 @@ body{
     opacity: 1;
   }
 }
+.modal-open .modal{
+   background-color: rgba(0,0,0,.5);
+}
 //按钮
 .imgBtn(@imgName){
   &:before{
@@ -242,7 +247,6 @@ body{
   }
 }
 .bootstrap-table{
-  border-bottom:1px solid #075e94;
   .fixed-table-header{
     background-color: #011e42;
   }
@@ -265,6 +269,8 @@ body{
   }
   .fixed-table-container{
     border-color: #075e94;
+    border: none;
+    border-top: 1px solid #075e94;
   }
   .table > thead > tr > th{
     border-color: #075e94;
@@ -353,6 +359,14 @@ body{
     background-color: #a5e2f9;
     color: #0a1933;
   }
+}
+.fixed-table-body{
+  border-right: 1px solid #075e94;
+  border-left: 1px solid #075e94;
+}
+.bootstrap-table .fixed-table-header{
+  border: 1px solid #075e94;
+  border-bottom: none;
 }
 //日历
 input.Wdate{

@@ -10,7 +10,7 @@ var amIdex = {
             sidePagination: "server",           //分页方式：client客户端分页，server服务端分页（*）
             url:'/test/amTable',
             striped:true,
-            height: $(window).height() - 200,
+            // height: $(window).height() - 200,
             width:$(window).width(),
             pagination:true,
             minimumCountColumns:2,

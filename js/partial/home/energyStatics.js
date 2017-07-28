@@ -3,19 +3,60 @@ define(function(){
 });
 var energyStatics = {
     Render:function () {
-
-        this.esKpi();
+        var _this = this;
+        this.getgetChargeTimesData();
+        this.getDailyPowerStatisticsData();
+        setTimeout(function(){
+            _this.getgetChargeTimesData();
+            _this.getDailyPowerStatisticsData();
+        },5000);
     },
-    esKpi:function () {
-        console.log(Echarts);
+    //充放电次数
+    getgetChargeTimesData:function () {
+        var _this = this;
+        $.ajax({
+            url:'/interface/getChargeTimes',
+            method:'post',
+            type:'json',
+            data:JSON.stringify({token:Cookies.getCook('token')}),
+            success:function (result) {
+                if(result.success){
+                    $('#dailyChargeTimes').text(result.data.dailyChargeTimes);
+                    $('#totalChargeTimes').text(result.data.totalChargeTimes);
+                }else {
+                    App.alert(result.msg);
+                }
+            },
+            error:function (e) {
+                console.log(e)
+            }
+        })
+    },
+    //echarts数据
+    getDailyPowerStatisticsData:function () {
+        var _this = this;
+        $.ajax({
+            url:'/interface/getDailyPowerStatistics',
+            method:'post',
+            type:'json',
+            data:JSON.stringify({token:Cookies.getCook('token')}),
+            success:function (result) {
+                if(result.success){
+                    _this.esKpi(result.data);
+                }else {
+                    App.alert(result.msg);
+                }
+            },
+            error:function (e) {
+                console.log(e)
+            }
+        })
+    },
+    esKpi:function (datas) {
         var esKpiChart = Echarts.init(document.getElementById('esCcurPower'));
 
-        var xData = ['用电','下网','上网','充电','放电'];
-        var yData = [{name:'用电',value:'4'},
-            {name:'下网',value:'6'},
-            {name:'上网',value:'3'},
-            {name:'充电',value:'8'},
-            {name:'放电',value:'7'}];
+        var xData = datas.xData;
+        var yData = datas.yData;
         var cutColor = ['#009A66','#006599','#009899','#0066CB','#343399'];
         var option = {
             tooltip:{
@@ -41,6 +82,7 @@ var energyStatics = {
                     show:false
                 },
                 axisLabel:{
+                    interval: 0,
                     textStyle:{
                         color:'#a5e2f9'
                     }
@@ -60,7 +102,7 @@ var energyStatics = {
                 bottom:'10%'
             },
             yAxis: [{
-                name:'千kWh',
+                name:datas.unit,
                 type: 'value',
                 splitLine:{
                     show:false

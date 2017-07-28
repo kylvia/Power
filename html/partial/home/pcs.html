@@ -58,9 +58,10 @@
                     <div></div>
                 </div>
                 <div class="pcs-setting">
+                    <input type="hidden" class="deviceUnId" value="111">
                     <div class="pcs-right">控制权限：<span>EMS正在控制</span></div>
                     <div class="pcs-running">运行模式：<span>电池维护模式</span></div>
-                    <div class="pcs-remotecontrol"><a class="cus-img-btn" onclick="pcs.pcsRcSetting()">遥控及设定</a></div>
+                    <div class="pcs-remotecontrol"><a class="cus-img-btn" onclick="pcs.pcsRcSetting(this)">遥控及设定</a></div>
                 </div>
             </div>
         </div>
@@ -123,10 +124,12 @@
                     <div><label>直流功率：</label><span class="pcsd-val" id="pcsd1-dcp">0.00</span> <span class="pcsd-unit" id="">kW</span></div>
                     <div></div>
                 </div>
+
                 <div class="pcs-setting">
+                    <input type="hidden" class="deviceUnId" value="222">
                     <div class="pcs-right">控制权限：<span>EMS正在控制</span></div>
                     <div class="pcs-running">运行模式：<span>电池维护模式</span></div>
-                    <div class="pcs-remotecontrol"><a>遥控及设定</a></div>
+                    <div class="pcs-remotecontrol"><a class="cus-img-btn" onclick="pcs.pcsRcSetting(this)">遥控及设定</a></div>
                 </div>
             </div>
         </div>
@@ -397,17 +400,18 @@
     </div>
 </div>
 <div class="cus-win-pcscontent" id="cus-win-content">
+    <input type="hidden" id="deviceUnId">
     <div class="cus-win-highLight">
         <div class="cwh-dcc cwh-setting">
             <label>直流能量调控器控制权限</label>
             <select name="" id="pcs-dCEnergy">
                 <option value=""></option>
             </select>
-            <a class="cus-img-btn ceh-excut">执行</a>
+            <a class="cus-img-btn ceh-excut" onclick="pcs.dceExcute()">执行</a>
         </div>
         <div class="cwh-runmodel cwh-setting">
             <label>运行模式设置</label>
-            <select name="" id="pcs-runningModel">
+            <select name="" id="pcs-runningModel" onchange="pcs.setAvpExcute(this.value)">
                 <option value=""></option>
             </select>
             <a onclick="pcs.rnExcute()" class="cus-img-btn ceh-excut">执行</a>
@@ -419,21 +423,21 @@
             <div class="cwc-tit">注：仅P/Q模式下生效；有功设定：正为充电，负为放电；感性为正，容性为负；</div>
             <div class="cwc-one">
                 <div class="cwc-col cwc-col-one cwc-col-ap cwc-col-arp">
-                    当前有功<span class="cwc-val">1597.2</span><span class="cwc-unit">kVar</span>
+                    当前有功<span id="curAp" class="cwc-val">0</span><span class="cwc-unit curAvpUnit">kVar</span>
                 </div>
                 <div class="cwc-col cwc-col-two">
                     <label for="">设定值：<input class="pcs-input-clear" id="pcs-apVal" type="text"></label></label>kW
                 </div>
-                <a class="cus-img-btn ceh-excut">执行</a>
+                <a class="cus-img-btn ceh-excut" onclick="pcs.apExcute()">执行</a>
             </div>
             <div class="cwc-sec">
                 <div class="cwc-col cwc-col-one cwc-col-rp cwc-col-arp">
-                    当前无功<span class="cwc-val">279.4</span><span class="cwc-unit">kVar</span>
+                    当前无功<span id="curRp" class="cwc-val">0</span><span class="cwc-unit curAvpUnit">kVar</span>
                 </div>
                 <div class="cwc-col cwc-col-two">
                     <label for="">设定值：<input class="pcs-input-clear" id="pcs-rpVal" type="text"></label></label>kW
                 </div>
-                <a class="cus-img-btn ceh-excut">执行</a>
+                <a class="cus-img-btn ceh-excut" onclick="pcs.rpExcute()">执行</a>
             </div>
         </div>
     </div>

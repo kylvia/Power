@@ -69,10 +69,23 @@
       }
     }
     .cus-eflasline{
+      position: relative;
       width: 3px;
       height: 110%;
       right: 1px;
       background: #00CCCC;
+
+      .cus-ef-arrow{
+        position: absolute;
+        top: -6px;
+        left: 45%;
+        display: inline-block;
+        width: 15px;
+        height: 15px;
+      }
+      .arrow-t{
+        background: url("/images/index/flowT.png") no-repeat center;
+      }
     }
     .cus-efTolasline{
       height: 100px;
@@ -93,13 +106,29 @@
       margin-top: 3%;
     }
     .cus-efline{
+      position: relative;
       background: #00CCCC;
       width: 17.5%;
       height: 3px;
       margin-left: 1%;
       margin-right: 1%;
+
       &.cus-efTline{
         margin-right: 0;
+      }
+      .cus-ef-arrow{
+        position: absolute;
+        top: -6px;
+        left: 45%;
+        display: inline-block;
+        width: 15px;
+        height: 15px;
+      }
+      .arrow-l{
+        background: url("/images/index/flowL.png") no-repeat center;
+      }
+      .arrow-r{
+        background: url("/images/index/flowR.png") no-repeat center;
       }
     }
     .pscStatus{
@@ -107,7 +136,15 @@
       width: 12px;
       height: 12px;
       border-radius: 50%;
+    }
+    .pscStatus-kj{
       background-color: #66FF66;
+    }
+    .pscStatus-gj{
+      background-color: #FF3333;
+    }
+    .pscStatus-gz{
+      background-color: #FFCC33;
     }
     .efline-pTobPower{
       position: relative;
@@ -136,7 +173,7 @@
     }
     .ef-hrline-val{
       position: absolute;
-      top: 39%;
+      top: 38%;
       left: 48%;
     }
     .ef-hrlineba{
@@ -149,6 +186,20 @@
       /* margin-top: 500%; */
       top: 50%;
       left: -24%;
+      .cus-ef-arrow{
+        position: absolute;
+        top: -6px;
+        left: 45%;
+        display: inline-block;
+        width: 15px;
+        height: 15px;
+      }
+      .arrow-l{
+        background: url("/images/index/flowL.png") no-repeat center;
+      }
+      .arrow-r{
+        background: url("/images/index/flowR.png") no-repeat center;
+      }
     }
     .ef-grid{
       height: 90%;
@@ -193,10 +244,22 @@
 
     }
     .cusr-line{
+      position: relative;
       width: 3px;
       height: 8%;
       margin-left: 30%;
       background: #00CCCC;
+      .cus-ef-arrow{
+        position: absolute;
+        top: 43%;
+        left: -6px;
+        display: inline-block;
+        width: 15px;
+        height: 15px;
+      }
+      .arrow-b{
+        background: url("/images/index/flowB.png") no-repeat center;
+      }
     }
     .cusr-line2{
       height: 36%;

@@ -4,9 +4,34 @@ define(function(){
 var plantMap = {
     Render:function () {
 
+        this.getLocation();
+
+    },
+
+    getLocation:function () {
+        var _this = this;
+        $.ajax({
+            url:'/interface/getPlantPosition',
+            method:'post',
+            type:'json',
+            data:JSON.stringify({token:Cookies.getCook('token')}),
+            success:function (result) {
+                if(result.success){
+                    _this.setMap(result.data.loaction.reverse())
+                }else {
+                    App.alert(result.msg);
+                }
+            },
+            error:function (e) {
+                console.log(e)
+            }
+        })
+    },
+    setMap:function (center) {
+        var _this = this;
         require(['MapUtil'],function (MapUtil) {
             var map = L.map('plantMap', {
-                center: [30.579999,104.068081],
+                center: center || [],
                 zoomControl:false,
                 attributionControl:false,
                 zoom: 8
@@ -19,17 +44,5 @@ var plantMap = {
             markers.addLayer(L.marker(getRandomLatLng(map)));
             map.addLayer(markers);
         })
-
-
-        /* L.marker([30.579999,104.068081]).addTo(map)
-         .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
-         .openPopup();*/
-
-        /*var marker = L.markerClusterGroup({
-         iconCreateFunction: function(cluster) {
-         return L.divIcon({ html: '<b>' + cluster.getChildCount() + '</b>' });
-         }
-         });*/
-
     }
 }

@@ -9,8 +9,10 @@ require.config({
         'bootstrap': 'vendor/bootstrap/js/bootstrap',
         'bootstrap-table': 'plugins/bootstrap-table/bootstrap-table',
         'bootstrap-table-zh': 'plugins/bootstrap-table/bootstrap-table-zh-CN',
+        'mCustomScrollbar': 'plugins/mCustomScrollbar/jquery.mCustomScrollbar.concat.min',
         'App': 'plugins/App',
         'main': 'main',
+        'Cookies': 'plugins/Cookies',
         'echarts': 'plugins/echarts/echarts.min',
         'leaflet':'plugins/Leaflet/leaflet',
         'WdatePicker':'plugins/My97DatePicker/WdatePicker',
@@ -21,7 +23,8 @@ require.config({
         'bootstrap-table':['bootstrap','css!plugins/bootstrap-table/bootstrap-table.css'],
         'bootstrap-table-zh':['bootstrap-table'],
         'leaflet':['css!plugins/Leaflet/leaflet.css'],
-        'MapUtil':['leaflet'],
+        'mCustomScrollbar':['jquery','css!plugins/mCustomScrollbar/jquery.mCustomScrollbar.min.css'],
+        'MapUtil':['leaflet']
     }
 })
 // 使用 Mock
@@ -29,6 +32,7 @@ require(["jquery",
     "echarts",
     "mustache",
     "WdatePicker",
+    "Cookies",
     "bootstrap",
     "leaflet",
     "bootstrap-table",
@@ -36,6 +40,7 @@ require(["jquery",
     require(["main",
         "css!/css/index.css"],function(){
         $(function(){
+            Cookies.set('token','11111111')
             window.Echarts = echarts;
             window.Mustache = mustache;
             $('#topNav li').on('click',function () {

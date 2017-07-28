@@ -33,7 +33,7 @@ var plantRunning = {
             sidePagination: "server",           //分页方式：client客户端分页，server服务端分页（*）
             url:'/test/rmTable',
             striped:true,
-            height: $(window).height() - 400,
+            // height: $(window).height() - 400,
             width:$(window).width(),
             pagination:true,
             minimumCountColumns:2,
@@ -41,6 +41,10 @@ var plantRunning = {
             pageSize: 10,                       //每页的记录行数（*）
             pageList: [10, 25, 50, 100],        //可供选择的每页的行数（*）
             uniqueId: "id",                     //每一行的唯一标识，一般为主键列
+            onLoadSuccess: function (data) {
+                $('#rm-table').bootstrapTable('mergeCells', {index: 0, field: 'date', rowspan: 5});
+                $('#rm-table').bootstrapTable('mergeCells', {index: 5, field: 'date', rowspan: 5});
+            },
             columns: [
                 {
                     field: 'id',
@@ -48,7 +52,6 @@ var plantRunning = {
                 }, {
                     field: 'date',
                     title : '时间',
-                    // rowspan:5,
                     align : 'center',
                     valign : 'middle'
                 },

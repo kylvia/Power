@@ -24,7 +24,7 @@ var sysRunning = {
             sidePagination: "server",           //分页方式：client客户端分页，server服务端分页（*）
             url:'/test/ahTable',
             striped:true,
-            height: $(window).height() - 400,
+            // height: $(window).height() - 400,
             width:$(window).width(),
             pagination:true,
             minimumCountColumns:2,
