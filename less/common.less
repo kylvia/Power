@@ -17,6 +17,7 @@ input[type="text"]{
   line-height: 28px;
   padding: 0 5px;
 }
+input:focus,textarea:focus { outline: 0;border: none }
 .cus-chart{
   text-align: left;
 }
@@ -46,7 +47,7 @@ body{
   width: 100%;
   height: 100%;
 }
-.cus-img-btn{
+.cus-img-btn,.cus-noimg-btn{
   background: transparent;
   border: 1px solid #075E94;
   display: inline-block;
@@ -70,6 +71,11 @@ body{
   }
   &:first-child{
     margin-left: 0;
+  }
+}
+.cus-noimg-btn{
+  &:before{
+    display: none;
   }
 }
 .modal .cus-img-btn{

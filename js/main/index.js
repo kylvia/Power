@@ -24,7 +24,8 @@ require.config({
         'bootstrap-table-zh':['bootstrap-table'],
         'leaflet':['css!plugins/Leaflet/leaflet.css'],
         'mCustomScrollbar':['jquery','css!plugins/mCustomScrollbar/jquery.mCustomScrollbar.min.css'],
-        'MapUtil':['leaflet']
+        'MapUtil':['leaflet'],
+        'right':['Cookies']
     }
 })
 // 使用 Mock
@@ -37,19 +38,14 @@ require(["jquery",
     "leaflet",
     "bootstrap-table",
     "bootstrap-table-zh"],function($,echarts,mustache){
-    require(["main",
+    require([
+        "main",
         "css!/css/index.css"],function(){
+        window.Echarts=echarts;
+        window.Mustache = mustache;
+
         $(function(){
-            Cookies.set('token','11111111')
-            window.Echarts = echarts;
-            window.Mustache = mustache;
-            $('#topNav li').on('click',function () {
-                $('#topNav li').removeClass('active');
-                $(this).addClass('active');
-                var toPage = $(this).find('a').attr('attr-href');
-                $('#mainContainer').loadPage(toPage);
-            });
-            $('#topNav li').eq(0).click();
+            main.loadSys();
         })
     });
 });

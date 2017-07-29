@@ -54,7 +54,7 @@ var energeFlow = {
                         var classNameAr = $('.cus-ef-arrow'+i).attr('class').split(' ');
                         //断路器断连
                         if(!Number(item.breaker_status)){
-                            debugger;
+
                             //电池icon
                             var batteryIcon = ['batteryZero','batteryOne','batteryTwo','batteryThr','batteryFour'];
                             var batterySrc = '/images/plantstatus/'+batteryIcon[Number(item.batteryCell)]+'.png';

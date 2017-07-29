@@ -1,9 +1,16 @@
 /**
  * Created by deng on 2017/7/13.
  */
-define(['plugins/App','main/configure'],function(App,Configure){
+'use strict';
+define(['plugins/App','main/configure','plugins/right'],function(App,Configure,Menu){
     window.App=App;
-    $.fn.extend ({
+    window.Menu = Menu;
+
+    // if (typeof window.main != 'undefined' && !window.main) {
+    //     window.main = {};
+    // }
+    window.main = {};
+    if (jQuery)(function ($){$.fn.extend ({
         loadPage: function (url, params, callback) {
             var $this = $(this);
             if (App.getClassOf(params) == 'Function') {
@@ -40,5 +47,16 @@ define(['plugins/App','main/configure'],function(App,Configure){
             };
             loadMainPage();
         }
-    })
-})
+    });}(jQuery));
+
+    main.loadSys = function () {
+        console.time('系统界面加载');
+        if(!Menu.isLogin()){
+            $('#sysBody').loadPage('partial/login.html');
+        }else {
+            window.Echarts = echarts;
+            window.Mustache = mustache;
+            $('#sysBody').loadPage('partial/index.html');
+        }
+    }
+});
