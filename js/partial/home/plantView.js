@@ -9,8 +9,8 @@ var plantView = {
     getApi:function () {
         $.ajax({
             url:'/interface/getPlantInfo',
-            method:'post',
-            type:'json',
+            type:'post',
+            dataType:'JSON',
             data:JSON.stringify({token:Cookies.getCook('token')}),
             success:function (result) {
                 if(result.success){

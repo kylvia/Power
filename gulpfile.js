@@ -5,6 +5,7 @@ var gulp = require('gulp'),
 
     merge = require('merge-stream'),
     path = {
+        staticFile: 'staticFile/*',
         html: 'html/**/*.html',
         htmlDir: 'dest',
         css: 'css/*.css',
@@ -16,8 +17,10 @@ var gulp = require('gulp'),
         imagesDir: 'dest/images',
         MockData: './dataJs/*'
     },
-    middleware = [];
+    middleware = [],
+    isMock = true;
 
+var fs = require('fs');
 
 // 第三方插件管理
 gulp.task('vendor', function () {
@@ -33,6 +36,12 @@ gulp.task('minifycss', function () {
     return gulp.src(path.css)
         // .pipe(plugins.cssmin()) //压缩
         .pipe(gulp.dest(path.cssDir));//输出
+});
+//静态资源，文件放入dest/
+gulp.task('staticFile', function () {
+    return gulp.src(path.staticFile)
+        // .pipe(plugins.cssmin()) //压缩
+        .pipe(gulp.dest(path.htmlDir));//输出
 });
 
 //合并并压缩css，合并压缩后的文件放入dest/css
@@ -115,17 +124,59 @@ gulp.task("watch", function () {
     gulp.watch(path.js[4], ['unscripts', 'minifyjs']);
 });
 gulp.task("build", ["clean"], function (cb) {
-    plugins.runSequence(['minifycss', 'image', 'less', 'vendor', 'minifyjs', 'unscripts', 'html', "watch"], cb);
+    if(isMock){
+        plugins.runSequence(['staticFile','minifycss','MockData', 'image', 'less', 'vendor', 'minifyjs', 'unscripts', 'html', "watch"], cb);
+
+    }else{
+        plugins.runSequence(['staticFile','minifycss', 'image', 'less', 'vendor', 'minifyjs', 'unscripts', 'html', "watch"], cb);
+
+    }
+});
+// MockData
+gulp.task('MockData', function (){
+    var baseUrl = 'dataJs';
+    var appendData='';
+    var mockJsFile = './js/main/MockData.js';
+    var files;
+    fs.writeFileSync(mockJsFile,'define( [ \'../plugins/mock-min\'], function (Mock) {\n' +
+        'var errorData = {"success": false,"data": null,"failCode": 404,"params": null,"message": "没有找到此文件"};\n','utf8'); //同步写入
+    if (fs.existsSync(baseUrl)) { //获取目录下的文件
+        files = fs.readdirSync(baseUrl);
+
+        for(var i = 0,fileLen = files.length;i < fileLen; i++){
+            var _thisFile = files[i];
+            var objName = _thisFile.replace('.js','');
+            var requireFile = "./"+baseUrl+"/"+objName;
+            var _thisObj = require(requireFile);
+            for(var item in _thisObj){
+                var _thisTemplate = _thisObj[item];
+                if(typeof _thisObj[item] === "object"){
+                    _thisTemplate = JSON.stringify(_thisTemplate);
+                }
+                appendData = 'Mock.mock("/'+objName+'/'+item+'",'+_thisTemplate+');\n';
+                fs.appendFileSync(mockJsFile,appendData,'utf8');
+            }
+        }
+        var weather = 'Mock.mock("http://api.map.baidu.com/telematics/v3/weather?callback=jQuery213032161341261632215_1501509035094&location=104.079373%2C30.629169&output=json&ak=t5uryEXGfrHPNNGbgam7eEl2",{"error":0,"status":"success","date":"2017-07-31","results":[{"currentCity":"成都市","pm25":"55","index":[{"title":"穿衣","zs":"炎热","tipt":"穿衣指数","des":"天气炎热，建议着短衫、短裙、短裤、薄型T恤衫等清凉夏季服装。"},{"title":"洗车","zs":"不宜","tipt":"洗车指数","des":"不宜洗车，未来24小时内有雨，如果在此期间洗车，雨水和路上的泥水可能会再次弄脏您的爱车。"},{"title":"感冒","zs":"少发","tipt":"感冒指数","des":"各项气象条件适宜，发生感冒机率较低。但请避免长期处于空调房间中，以防感冒。"},{"title":"运动","zs":"较不宜","tipt":"运动指数","des":"有降水，推荐您在室内进行低强度运动；若坚持户外运动，须注意选择避雨防滑地点，并携带雨具。"},{"title":"紫外线强度","zs":"弱","tipt":"紫外线强度指数","des":"紫外线强度较弱，建议出门前涂擦SPF在12-15之间、PA+的防晒护肤品。"}],"weather_data":[{"date":"周一 07月31日 (实时：31℃)","dayPictureUrl":"http://api.map.baidu.com/images/weather/day/xiaoyu.png","nightPictureUrl":"http://api.map.baidu.com/images/weather/night/xiaoyu.png","weather":"小雨","wind":"无持续风向微风","temperature":"31 ~ 24℃"},{"date":"周二","dayPictureUrl":"http://api.map.baidu.com/images/weather/day/zhenyu.png","nightPictureUrl":"http://api.map.baidu.com/images/weather/night/xiaoyu.png","weather":"阵雨转小雨","wind":"无持续风向微风","temperature":"33 ~ 25℃"},{"date":"周三","dayPictureUrl":"http://api.map.baidu.com/images/weather/day/duoyun.png","nightPictureUrl":"http://api.map.baidu.com/images/weather/night/xiaoyu.png","weather":"多云转小雨","wind":"无持续风向微风","temperature":"33 ~ 26℃"},{"date":"周四","dayPictureUrl":"http://api.map.baidu.com/images/weather/day/duoyun.png","nightPictureUrl":"http://api.map.baidu.com/images/weather/night/xiaoyu.png","weather":"多云转小雨","wind":"无持续风向微风","temperature":"34 ~ 23℃"}]}]});'
+        fs.appendFileSync(mockJsFile,weather+'\n   ' ,'utf8');
+        var reg = /^\//;
+        fs.appendFileSync(mockJsFile,'\n  $.ajaxPrefilter(function (options, originalOptions, jqXHR) { if((options.type).toUpperCase() == \'GET\'){options.cache = true;} (!('+reg+'.test(options.url))) && (options.url = "/" + options.url)});\n }); ' ,'utf8');
+
+        console.log('copy Done');
+        //createStreamFile();
+    } else {
+        console.log(baseUrl + "  Not Found!");
+    }
+
 });
 //同步刷新
 gulp.task("serve", ["build"], function () {
-    var isMock = true;
-    var proxyMiddleware = require('http-proxy-middleware');
+
     var path = require('path');
     var url = require('url');
-    var fs = require('fs');
-    var uuid = require('uuid');
+// var uuid = require('uuid');
     var Mock = require('mockjs');
+    var proxyMiddleware = require('http-proxy-middleware');
     if(isMock){
         middleware=function (req, res, next) {
             var urlObj = url.parse(req.url, true),
@@ -185,7 +236,7 @@ gulp.task("serve", ["build"], function () {
                     isImage && (result = Mock.Random.image(data[pathTree[2]]));
                     res.setHeader('Access-Control-Allow-Origin', '*');
                     res.setHeader('Content-Type', (isImage ? 'image/!*' : 'application/json'));
-                    res.setHeader('tokenId', uuid.v1());
+                    // res.setHeader('tokenId', uuid.v1());
                     var s = result || {
                             "success": false,
                             "data": null,
@@ -202,9 +253,21 @@ gulp.task("serve", ["build"], function () {
             //next();
         }
     }else{
-        var host = 'http://192.168.43.15:8080';
+        var host = 'http://192.168.1.112:8080';
         middleware = [
-            proxyMiddleware(['/interface/getPlantInfo'], {target: host, changeOrigin: true})
+            proxyMiddleware(['/interface/getPlantInfo'], {target: host, changeOrigin: true}),
+            proxyMiddleware(['/interface/getChargeTimes'], {target: host, changeOrigin: true}),
+            proxyMiddleware(['/interface/getDailyPowerStatistics'], {target: host, changeOrigin: true}),
+            proxyMiddleware(['/interface/getPlantPosition'], {target: host, changeOrigin: true}),
+            proxyMiddleware(['/interface/getBatteryStatistics'], {target: host, changeOrigin: true}),
+            proxyMiddleware(['/interface/getPlantRevenue'], {target: host, changeOrigin: true}),
+            proxyMiddleware(['/interface/getChargedCurve'], {target: host, changeOrigin: true}),
+            proxyMiddleware(['/interface/getCurrentPower'], {target: host, changeOrigin: true}),
+            proxyMiddleware(['/interface/setControlAuthority'], {target: host, changeOrigin: true}),
+            proxyMiddleware(['/interface/startOrTurnOff'], {target: host, changeOrigin: true}),
+            proxyMiddleware(['/interface/setActivePower'], {target: host, changeOrigin: true}),
+            proxyMiddleware(['/interface/setReactivePower'], {target: host, changeOrigin: true}),
+            proxyMiddleware(['/interface/getSingleDevicePower'], {target: host, changeOrigin: true})
         ];
     }
     plugins.browserSync({

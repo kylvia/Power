@@ -12,7 +12,6 @@ var pcs = {
 
     },
     pcsRcSetting:function (dom) {
-        console.log('dom:',$(dom));
         var deviceId = $(dom).parents('.pcs-setting').find('.deviceUnId').val();
         var _this = this;
         !_this.cusWinContent?_this.cusWinContent = $('#cus-win-content').detach():_this.cusWinContent;
@@ -31,7 +30,6 @@ var pcs = {
         $('#deviceUnId').val(deviceId);
 
         $('#pcs-runningModel option').on('click',function () {
-            console.log('changed');
             pcs.rnExcute()
         });
 
@@ -103,7 +101,6 @@ var pcs = {
     //设置有功
     apExcute:function () {
         var reg = /\d/;
-        console.log(reg.test($('#pcs-apVal').val()));
         if(!reg.test($('#pcs-apVal').val())){
             App.alert({msg:"请输入数字"});
             $('#pcs-apVal').val('');
@@ -144,19 +141,16 @@ var pcs = {
     shutdownExcute:function () {
         this.pcsAjax();
     },
-    immExcute:function () {
-        console.log($('#pcs-rpVal').val());
-    },
 
     pcsAjax:function (url,param,callback) {
         $.ajax({
             url:url,
-            method:"post",
+            type:'post',
+            dataType:'JSON',
             data:param,
-            type:'JSON',
             success:function (result) {
                 if(result.success){
-                    debugger;
+
                     if(callback){
                         // callback.call();
                         callback(result.data);

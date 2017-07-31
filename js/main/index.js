@@ -45,7 +45,16 @@ require(["jquery",
         window.Mustache = mustache;
 
         $(function(){
-            main.loadSys();
+            var isMock = false;
+            if(isMock){
+                require(['./main/MockData'],function () {
+                    main.loadSys();
+                })
+
+            }else {
+                main.loadSys();
+            }
+
         })
     });
 });

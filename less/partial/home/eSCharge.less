@@ -1,9 +1,11 @@
-.icon-circle(@w:16px,@h:16px){
+.icon-circle(@w:14px,@h:14px){
   display: inline-block;
   width: @w;
   height: @h;
   border: 1px solid #a5e2f9;
   border-radius: 50%;
+  margin-left: 10px;
+  vertical-align: middle;
 }
 .icon-circleBac(@c:#00ff00){
   border-color:@c;
@@ -38,7 +40,7 @@
     width: 100%;
     height: 87.5%;
     >div{
-      margin-top: 1.76%;
+      margin-top: 2%;
       float: left;
     }
     .psi-one{
@@ -59,6 +61,44 @@
       margin-top: 6%;
     }
   }
+  .bms-img{
+    display: inline-block;
+    width: 49%;
+    text-align: center;
+  }
+  .bms-img-status{
+    position: relative;
+    width: 82px;
+    height: 160px;
+    display: inline-block;
+    margin-top: 10px;
+    background: url("/images/plantstatus/bmsStatus.png") no-repeat center;
+  }
+  .mnf-img-val{
+    position: absolute;
+    width: 58px;
+    height: 25px;
+    left: 12px;
+    bottom: 14px;
+    background-color: #00cccc;
+    display: inline-block;
+  }
+  .bms-charges2{
+    bottom: 47px;
+  }
+  .bms-charges3{
+    bottom: 80px;
+
+  }
+  .bms-charges4{
+    bottom: 113px;
+  }
+  .bms-img-txt{
+    margin-top: 9px;
+    span{
+      margin-left: 9px;
+    }
+  }
   .psi-two{
     .bms-details{
       border-radius: 3px;
@@ -77,12 +117,14 @@
     }
   }
   .psi-status{
-    width: 100%;
+    display: inline-block;
+    width: 31%;
     text-align: center;
-    margin-top: 5%;
+    vertical-align: top;
+    margin-top: 3%;
   }
   .psi-status-item{
-    display: inline-block;
+    text-align: right;
     .psis-icon{
       .icon-circle
     }
@@ -94,12 +136,15 @@
     }
     .psis-signal-off{
       display: inline-block;
-      width: 22px;
-      height: 22px;
-      background: url("/images/plantstatus/signal-on.gif") no-repeat center;
+      width: 16px;
+      vertical-align: middle;
+      height: 16px;
+      margin-left: 10px;
+      background: url("/images/index/signal-green.png") no-repeat center;
     }
     .psis-signal-on{
-      background: url("/images/plantstatus/signal-off.png") no-repeat center;
+      .psis-signal-off;
+      background: url("/images/index/signal-grey.png") no-repeat center;
     }
     p:nth-child(2){
       margin-top:5px;
@@ -110,5 +155,6 @@
   }
   .psi-status-item + .psi-status-item{
     margin-left: 16px;
+    margin-top: 7px;
   }
 }

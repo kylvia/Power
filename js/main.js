@@ -51,12 +51,15 @@ define(['plugins/App','main/configure','plugins/right'],function(App,Configure,M
 
     main.loadSys = function () {
         console.time('系统界面加载');
-        if(!Menu.isLogin()){
+        Menu.checkLogin(function () {
+            $('#sysBody').loadPage('partial/main.html');
+        })
+       /* if(!Menu.isLogin()){
             $('#sysBody').loadPage('partial/login.html');
         }else {
             window.Echarts = echarts;
             window.Mustache = mustache;
-            $('#sysBody').loadPage('partial/index.html');
-        }
+            $('#sysBody').loadPage('partial/main.html');
+        }*/
     }
 });

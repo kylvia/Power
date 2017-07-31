@@ -11,8 +11,8 @@ var energyStatics = {
         var _this = this;
         $.ajax({
             url:'/interface/getChargedCurve',
-            method:'post',
-            type:'json',
+            type:'post',
+            dataType:'JSON',
             data:JSON.stringify({token:Cookies.getCook('token')}),
             success:function (result) {
                 if(result.success){
@@ -27,7 +27,10 @@ var energyStatics = {
         })
     },
     esKpi:function (datas) {
-        var esKpiChart = Echarts.init(document.getElementById('cPower'));
+
+        var getId = document.getElementById('cPower');
+        if(!getId)return;
+        var esKpiChart = Echarts.init(getId);
 
         var xData = datas.time;
         var option = {

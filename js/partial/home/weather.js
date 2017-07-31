@@ -41,7 +41,6 @@ var weather = {
             },
             success:function (result) {
                 if(result.status === 'success'){
-                    console.log(result);
                     //基础数据
                     var weatherData = result.results[0].weather_data;
                     var day0Data = weatherData[0];
@@ -60,7 +59,6 @@ var weather = {
                         $('we_dateWeek'+i).text(dayData[0]);
                         //天气图片
                         if($('#we_'+item+i).get(0).nodeName === 'IMG'){
-                            console.log(value.split('/'));
                             var imgUrl = value.split('/');
                             $('#we_'+item+i).attr('src',"/images/3d_60/"+imgUrl[imgUrl.length-1])
                         }

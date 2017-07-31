@@ -16,8 +16,8 @@ var energyStatics = {
         var _this = this;
         $.ajax({
             url:'/interface/getChargeTimes',
-            method:'post',
-            type:'json',
+            type:'post',
+            dataType:'JSON',
             data:JSON.stringify({token:Cookies.getCook('token')}),
             success:function (result) {
                 if(result.success){
@@ -37,8 +37,8 @@ var energyStatics = {
         var _this = this;
         $.ajax({
             url:'/interface/getDailyPowerStatistics',
-            method:'post',
-            type:'json',
+            type:'post',
+            dataType:'JSON',
             data:JSON.stringify({token:Cookies.getCook('token')}),
             success:function (result) {
                 if(result.success){
@@ -53,7 +53,9 @@ var energyStatics = {
         })
     },
     esKpi:function (datas) {
-        var esKpiChart = Echarts.init(document.getElementById('esCcurPower'));
+        var getId = document.getElementById('esCcurPower');
+        if(!getId)return;
+        var esKpiChart = Echarts.init(getId);
 
         var xData = datas.xData;
         var yData = datas.yData;

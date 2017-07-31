@@ -15,8 +15,8 @@ var energeFlow = {
         var _this = this;
         $.ajax({
             url:'/interface/getCurrentPower',
-            method:'post',
-            type:'json',
+            type:'post',
+            dataType:'JSON',
             data:JSON.stringify({token:Cookies.getCook('token')}),
             success:function (result) {
                 if(result.success){

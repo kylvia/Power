@@ -11,7 +11,7 @@ var login = {
                 userType:'1'
             }
             Menu.login('12344',user);
-            $('#sysBody').loadPage('partial/index.html');
+            $('#sysBody').loadPage('partial/main.html');
         });
     }
 }

@@ -16,7 +16,7 @@
             },
             main: {
                 type: "GET",
-                url: "/partials/main/index.html"
+                url: "/partials/main/main.html"
             }
         };
 
@@ -36,7 +36,7 @@
              * 判断是否登录系统
              */
             isLogin: function () {
-                return Cookies.getCook('tokenId');
+                return Cookies.getCook('token');
             },
 
             /**
@@ -84,11 +84,7 @@
                 if (this.isLogin()) {
                     typeof fn == 'function' && fn();
                 } else {
-                    $('#main_view').loadPage({
-                        url: '/login.html',
-                        preload: ['partials/main/sm/login'],
-                        styles: ['css!/css/partials/login.css']
-                    });
+                    $('#sysBody').loadPage('partial/login.html');
                 }
             },
 

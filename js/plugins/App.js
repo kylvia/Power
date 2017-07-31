@@ -274,7 +274,6 @@ define(['jquery'], function ($) {
             var strDate = parseInt(date.getDate());
             strDate = strDate<10?'0'+strDate:strDate;
             var strdate = year + seperator1 + month + seperator1 + strDate;
-            console.log(strdate)
             //var week=['周日','周一','周二','周三','周四','周五','周六']
             return strdate;
         }
@@ -1341,7 +1340,6 @@ define(['jquery'], function ($) {
                     //btn配置
                     if (o.buttons && o.buttons.length > 0) {
                         $.each(o.buttons, function (i, t) {
-                            console.log(t);
                             var btn = $('<button/>').addClass('btn modal-btn').addClass(this.type || '')
                                 .attr("id", this.id).text(this.text || 'Submit').attr('aria-hidden', true);
                             t.clickToClose && btn.attr('data-dismiss', 'modal') ;
