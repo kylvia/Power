@@ -4,15 +4,15 @@ define(function(){
 var weather = {
     Render:function () {
         //获取经纬度
+        this.getLocation();
         setTimeout(this.getLocation(),1800000);
-
     },
     getLocation:function () {
         var _this = this;
         $.ajax({
             url:'/interface/getPlantPosition',
-            method:'post',
-            type:'json',
+            type:'post',
+            dataType:'json',
             data:JSON.stringify({token:Cookies.getCook('token')}),
             success:function (result) {
                 if(result.success){
@@ -30,7 +30,6 @@ var weather = {
     getWeather:function (location) {
         $.ajax({
             url:'http://api.map.baidu.com/telematics/v3/weather',
-            method:'get',
             dataType:"jsonp",
             // jsonp:'function_name_index',
             // jsonpCallback:'function_name',

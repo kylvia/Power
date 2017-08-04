@@ -203,6 +203,7 @@ gulp.task("serve", ["build"], function () {
             var pathTree = urlObj.pathname.split('/');
             console.log('[pathTree]',pathTree);
             var mockDataFile = path.join(__dirname + path.sep + 'dataJs', pathTree[1]) + ".js";
+            console.log('[mockDataFile]',mockDataFile);
             fs.access(mockDataFile, fs.F_OK, function (err) {
                 var isImage = req.headers.accept.indexOf('image') != -1;
                 console.log('[err]',err);

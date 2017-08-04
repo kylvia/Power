@@ -8,7 +8,9 @@ var pcs = {
     },
     resize:function () {
         $('.cwc-col-arp').width('auto');
-        $('.cwc-col-arp').width($('.cwc-col-ap').width() > $('.cwc-col-rp').width() ? $('.cwc-col-ap').width() + 10: $('.cwc-col-rp').width() + 10)
+        if($('.cwc-col-ap').width() !== 0){
+            $('.cwc-col-arp').width($('.cwc-col-ap').width() > $('.cwc-col-rp').width() ? $('.cwc-col-ap').width() + 10: $('.cwc-col-rp').width() + 10)
+        }
 
     },
     pcsRcSetting:function (dom) {
@@ -27,6 +29,7 @@ var pcs = {
                 {text:'关机',id:'shutdownExcute',type:'cus-img-btn cus-ib-shutdown clickOpr'},
                 {text:'急停',id:'immExcute',type:'cus-img-btn cus-ib-imstop clickOpr'}]
         });
+        $('.cus-win-mark').height('100%');
         $('#cus-win-content').show();
         $('#deviceUnId').val(deviceId);
 
@@ -54,6 +57,7 @@ var pcs = {
             var runningModel = Mustache.render('{{#enum}} <option value={{value}}>{{name}}</option> {{/enum}}',rmTmp);
             $('#pcs-runningModel').html(runningModel);
         })
+
     },
     //运行模式设置
     rnExcute:function () {
@@ -76,7 +80,7 @@ var pcs = {
             $('#curAp').text(data.activepower);
             $('#curRp').text(data.reactivepower);
             $('.curAvpUnit').text(data.unit);
-            debugger
+
             _this.resize();
         }
         //P/Q模式

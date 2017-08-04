@@ -5,7 +5,7 @@ var homeIndex = {
     Render:function () {
 
         $('#exitSys').on('click',function () {
-            Cookies.clear('token');
+            // Cookies.clear('token');
             $('#sysBody').loadPage('partial/login.html');
         })
         
