@@ -27,6 +27,7 @@ var pcs = {
                 {text:'关机',id:'shutdownExcute',type:'cus-img-btn cus-ib-shutdown clickOpr'},
                 {text:'急停',id:'immExcute',type:'cus-img-btn cus-ib-imstop clickOpr'}]
         });
+        $('#cus-win-content').show();
         $('#deviceUnId').val(deviceId);
 
         $('#pcs-runningModel option').on('click',function () {
