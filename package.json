@@ -60,5 +60,13 @@
   },
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "Power Project",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kylvia/Power.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kylvia/Power/issues"
+  },
+  "homepage": "https://github.com/kylvia/Power#readme"
 }

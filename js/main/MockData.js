@@ -12,6 +12,7 @@ Mock.mock("/interface/setControlAuthority",{"success":true,"data":{"flag":"true"
 Mock.mock("/interface/startOrTurnOff",{"success":true,"data":{"flag":"true","msg":"设置成功/什么错误"},"error":"","msg":""});
 Mock.mock("/interface/setActivePower",{"success":true,"data":{"flag":"true","msg":"设置成功/什么错误"},"error":"","msg":""});
 Mock.mock("/interface/setReactivePower",{"success":true,"data":{"flag":"true","msg":"设置成功/什么错误"},"error":"","msg":""});
+Mock.mock("/interface/validateRight",{"success":true,"data":{"flag":"true","msg":"设置成功/什么错误"},"error":"","msg":""});
 Mock.mock("/interface/getSingleDevicePower",{"success":true,"data":{"device_id":"设备唯一标识","activepower":"1597.2","reactivepower":"279.4","unit":"单位"},"error":"","msg":""});
 Mock.mock("/test/amTable",{"total":800,"rows|10":[{"id|+1":1,"alarmName":"@word(3, 5)","devName":"@word(3, 5)","devType":"@word(3, 5)","alarmLevel|1":["高","中","低"],"type":"@word(3, 5)","status":"@word(3, 5)","occurTime":"@datetime()","alarmStatus":"@word(3, 5)"}]});
 Mock.mock("/test/bmsTable",{"total":800,"rows|10":[{"id|+1":1,"name":"@word(3, 5)","date":"@datetime()","dczxtdc":"330","dczxtmxv":"220","dczxtmxa":"15","soc":"45.5%","dtzdv":"330","dtzxv":"110","dtpjv":"220","soh":"25.3%","doc":"45.3","dod":"35.8","cfdcs":"40.8","cfdxl":"52.1"}]});

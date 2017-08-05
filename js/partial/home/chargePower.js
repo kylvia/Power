@@ -45,19 +45,6 @@ var energyStatics = {
                 },
                 data:''
             },
-            dataZoom: [{
-                dataZoomIndex: 1,
-                type: 'inside',
-                startValue: 10,
-                endValue: 80
-            }, {
-                show: true,
-                dataZoomIndex: 1,
-                type: 'slider',
-                y: '90%',
-                startValue: 10,
-                endValue: 80
-            }],
             xAxis: {
                 name:'h',
                 type: 'category',
@@ -81,7 +68,7 @@ var energyStatics = {
             },
             grid: {
                 top:'25%',
-                bottom:'10%'
+                bottom:'22%'
             },
             yAxis: [{
                 name:datas.unit,
@@ -103,11 +90,32 @@ var energyStatics = {
                     color:'#a5e2f9'
                 }
             }],
-            dataZoom: [{
-                type: 'inside',
-                start: 10,
-                end: 90
-            }],
+            dataZoom: [
+                {
+                    type: 'slider',
+                    show: true,
+                    xAxisIndex: [0],
+                    start: 1,
+                    end: 80,
+                    borderColor:'rgba(17,58,106, 1)',
+                    backgroundColor:'rgba(5,30,64, .9)',
+                    fillerColor:'rgba(5,30,64, 0.5)',
+                    // dataBackground:'rgba(1,39,84, 0.35)',
+                    handleStyle:{
+                        color:'rgba(0,101,153, 0.35)',
+                        borderColor:'rgba(0,101,153, 0.35)',
+                    },
+                    textStyle:{
+                        color:'rgba(165, 226, 249)'
+                    }
+                },
+                {
+                    type: 'inside',
+                    xAxisIndex: [0],
+                    start: 1,
+                    end: 35
+                }
+            ],
             series: []
         };
 

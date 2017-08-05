@@ -1486,14 +1486,14 @@ define(['jquery'], function ($) {
         prompt: function (id, p, c, r) {
             var proInput = $('<input type="text" id=' + id + ' name="' + id + '" style="width: 90%;">');
             var setting = {
-                title: Msg.info,
+                title: '提示',
                 content: (p && p.content) || proInput,
                 width: 320,
                 height: 'auto',
                 buttons: (p && p.btns) || [
                     {
                         id: 'okId',
-                        text: Msg.sure || 'OK',
+                        text: '确认' || 'OK',
                         click: function (e, d) {
                             var val = $('#' + id).val();
                             if (c) {
@@ -1504,7 +1504,7 @@ define(['jquery'], function ($) {
                     {
                         id: 'cancelId',
                         type: 'cancel',
-                        text: Msg.cancel || 'Cancel',
+                        text: '取消' || 'Cancel',
                         clickToClose: true
                     }
                 ],

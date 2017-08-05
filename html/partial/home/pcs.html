@@ -27,7 +27,7 @@
                 <div class="pcs-center-status">
                     <p class="pcsc-row"><span class="pcsc-column-tit">防雷器状态</span><b id="pcs1-las" class="pcsc-column-icon pcs-las-on"></b></p>
                     <p class="pcsc-row"><span class="pcsc-column-tit">钥匙开关</span><b id="pcs1-keySwitch" class="pcsc-column-icon pcs-keySwitch-on"></b></p>
-                    <p class="pcsc-row"><span class="pcsc-column-tit">急停开关</span><b  id="pcs1-ess"class="pcsc-column-icon pcs-ess-on"></b></p>
+                    <p class="pcsc-row"><span class="pcsc-column-tit">急停开关</span><b  id="pcs1-ess" class="pcsc-column-icon pcs-ess-on"></b></p>
                     <p class="pcsc-row"><span class="pcsc-column-tit">接触器状态</span><b id="pcs1-cs" class="pcsc-column-icon"></b></p>
                     <p class="pcsc-row"><span class="pcsc-column-tit">交流断路器</span><b id="pcs1-acbr" class="pcsc-column-icon pcs-acbr-off"></b></p>
                     <p class="pcsc-row"><span class="pcsc-column-tit">充电状态</span><b id="pcs1-charge" class="pcsc-column-icon"></b></p>
@@ -61,7 +61,7 @@
                     <input type="hidden" class="deviceUnId" value="111">
                     <div class="pcs-right">控制权限：<span>EMS正在控制</span></div>
                     <div class="pcs-running">运行模式：<span>电池维护模式</span></div>
-                    <div class="pcs-remotecontrol"><a class="cus-img-btn" onclick="pcs.pcsRcSetting(this)">遥控及设定</a></div>
+                    <div class="pcs-remotecontrol"><a class="cus-img-btn" onclick="pcs.getRight(this)">遥控及设定</a></div>
                 </div>
             </div>
         </div>
@@ -129,7 +129,7 @@
                     <input type="hidden" class="deviceUnId" value="222">
                     <div class="pcs-right">控制权限：<span>EMS正在控制</span></div>
                     <div class="pcs-running">运行模式：<span>电池维护模式</span></div>
-                    <div class="pcs-remotecontrol"><a class="cus-img-btn" onclick="pcs.pcsRcSetting(this)">遥控及设定</a></div>
+                    <div class="pcs-remotecontrol"><a class="cus-img-btn" onclick="pcs.getRight(this)">遥控及设定</a></div>
                 </div>
             </div>
         </div>
@@ -195,7 +195,7 @@
                 <div class="pcs-setting">
                     <div class="pcs-right">控制权限：<span>EMS正在控制</span></div>
                     <div class="pcs-running">运行模式：<span>电池维护模式</span></div>
-                    <div class="pcs-remotecontrol"><a>遥控及设定</a></div>
+                    <div class="pcs-remotecontrol"><a class="cus-img-btn" onclick="pcs.getRight(this)">遥控及设定</a></div>
                 </div>
             </div>
         </div>
@@ -261,7 +261,7 @@
                 <div class="pcs-setting">
                     <div class="pcs-right">控制权限：<span>EMS正在控制</span></div>
                     <div class="pcs-running">运行模式：<span>电池维护模式</span></div>
-                    <div class="pcs-remotecontrol"><a>遥控及设定</a></div>
+                    <div class="pcs-remotecontrol"><a class="cus-img-btn" onclick="pcs.getRight(this)">遥控及设定</a></div>
                 </div>
             </div>
         </div>
@@ -327,7 +327,7 @@
                 <div class="pcs-setting">
                     <div class="pcs-right">控制权限：<span>EMS正在控制</span></div>
                     <div class="pcs-running">运行模式：<span>电池维护模式</span></div>
-                    <div class="pcs-remotecontrol"><a>遥控及设定</a></div>
+                    <div class="pcs-remotecontrol"><a class="cus-img-btn" onclick="pcs.getRight(this)">遥控及设定</a></div>
                 </div>
             </div>
         </div>
@@ -393,14 +393,29 @@
                 <div class="pcs-setting">
                     <div class="pcs-right">控制权限：<span>EMS正在控制</span></div>
                     <div class="pcs-running">运行模式：<span>电池维护模式</span></div>
-                    <div class="pcs-remotecontrol"><a>遥控及设定</a></div>
+                    <div class="pcs-remotecontrol"><a class="cus-img-btn" onclick="pcs.getRight(this)">遥控及设定</a></div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<!--控制权限配置-->
+<div id="rightControl">
+    <form id="validateUserForm">
+        <input type="hidden" name="deviceUnId" class="getDeviceUnId">
+        <div class="rc-user">
+            <label for="rightUser">账户：</label>
+            <input type="text" id="rightUser" name="rightUser">
+        </div>
+        <div class="rc-user">
+            <label for="rightPwd">密码：</label>
+            <input type="text" id="rightPwd" name="rightPwd">
+        </div>
+    </form>
+</div>
+<!--控制权限配置 end-->
 <div class="cus-win-pcscontent" id="cus-win-content" style="display: none">
-    <input type="hidden" id="deviceUnId">
+    <input type="hidden" class="getDeviceUnId">
     <div class="cus-win-highLight">
         <div class="cwh-dcc cwh-setting">
             <label>直流能量调控器控制权限</label>

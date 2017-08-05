@@ -211,6 +211,12 @@ module.exports = {
         error:'',
         msg:''
     },
+    validateRight:{
+        success:true,
+        data:{"flag":"true","msg":"设置成功/什么错误"},
+        error:'',
+        msg:''
+    },
     getSingleDevicePower:{
         success:true,
         data:{
