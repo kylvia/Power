@@ -7,7 +7,7 @@ var bottom = {
         $(window).resize(function() {
             $('.cus-bottom li > div').css('margin-top',($('.content-2.cus-item').height()-54)/2 + 'px')
         });
-        setTimeout(this.getData(),1800000);
+        setInterval(this.getData(),5000);
     },
     getData:function () {
         var _this = this;

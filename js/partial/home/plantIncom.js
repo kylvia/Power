@@ -4,6 +4,8 @@ define(function(){
 var plantIncom = {
     Render:function () {
         this.getData();
+        var _this = this;
+        setInterval(_this.getData,5000);
     },
     getData:function () {
         var _this = this;
@@ -20,13 +22,13 @@ var plantIncom = {
 
                     //当日收益
                     var drArr = getPR.daily_revenue.toString().split('');
-                    var fdrArr = _this.formatterNumber(7,drArr);
+                    var fdrArr = formatterNumber(7,drArr);
                     $('#daily_revenue span').each(function (index,item){
                         $(item).text(fdrArr.shift());
                     })
                     //累计收益
                     var trArr = getPR.total_revenue.toString().split('');
-                    var ftrArr = _this.formatterNumber(7,trArr);
+                    var ftrArr = formatterNumber(7,trArr);
                     $('#total_revenue span').each(function (index,item){
                         $(item).text(ftrArr.shift());
                     })
@@ -39,12 +41,13 @@ var plantIncom = {
                 console.log(e)
             }
         })
-    },
-    formatterNumber:function(len,arr){
-        if(arr.length<len){
-            arr.unshift('0');
-            this.formatterNumber(len,arr);
+
+        function formatterNumber(len,arr){
+            if(arr.length<len){
+                arr.unshift('0');
+                formatterNumber(len,arr);
+            }
+            return arr;
         }
-        return arr;
     }
 }

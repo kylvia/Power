@@ -5,7 +5,10 @@ var pcs = {
     cusWinContent:'',
     cusWinRightContent:'',
     Render:function () {
+        var _this = this;
         this.resize();
+        _this.getListTable();
+        setInterval(_this.getListTable,5000);
     },
     resize:function () {
         $('.cwc-col-arp').width('auto');
@@ -13,6 +16,115 @@ var pcs = {
             $('.cwc-col-arp').width($('.cwc-col-ap').width() > $('.cwc-col-rp').width() ? $('.cwc-col-ap').width() + 10: $('.cwc-col-rp').width() + 10)
         }
 
+    },
+    //PCS列表页
+    getListTable:function(){
+        function setStatueFunc(obj) {
+            if(obj.name === obj.setName){
+                $('#pcs0'+obj.index+' '+obj.className).removeClass('on');
+                if(Number(obj.value)){
+                    $('#pcs0'+obj.index+' '+obj.className).addClass('on');
+                }
+            }
+        }
+        $.ajax({
+            url:'/interface/getCurrentPCS',
+            type:'post',
+            dataType:'JSON',
+            success:function (result) {
+                if(result.success){
+
+                    var listData = result.data;
+                    $.each(listData,function (index,item) {
+                        index +=1;
+                        $.each(item,function (name,value) {
+                            var $dom = $('#pcs'+index+'_'+name);
+                            if($dom){
+                                $dom.text(value);
+                            }
+                            //停机/开机/故障
+                            if(name === 'sysstate1_0'){
+                                var statusArr = ['.psis-stop','.psis-start','.psis-break'];
+                                $('#pcs0'+index+' .psis-ssb').removeClass('on');
+                                if(index ===1)
+                                console.log(statusArr[Number(value)]);
+                                $('#pcs0'+index+' '+statusArr[Number(value)]).addClass('on');
+                            }
+                            //充放电状态
+                            if(name === 'sysstate1_6'){
+                                var statusArr = ['.pcs-charge','.pcs-discharge'];
+                                $('#pcs0'+index+' .pcs-concharge').removeClass('on');
+                                $('#pcs0'+index+' '+statusArr[Number(value)]).addClass('on');
+                            }
+                            //通讯
+                            setStatueFunc({
+                                name:name,
+                                value:value,
+                                index:index,
+                                className:'.psis-connect',
+                                setName:'connected'
+                            })
+                            //防雷器状态
+                            setStatueFunc({
+                                name:name,
+                                value:value,
+                                index:index,
+                                className:'.pcs-las',
+                                setName:'sysstate1_11'
+                            })
+                            //钥匙开关
+                            setStatueFunc({
+                                name:name,
+                                value:value,
+                                index:index,
+                                className:'.pcs-keySwitch',
+                                setName:'sysstate1_10'
+                            })
+                            //急停开关
+                            setStatueFunc({
+                                name:name,
+                                value:value,
+                                index:index,
+                                className:'.pcs-ess',
+                                setName:'sysstate1_9'
+                            })
+                            //接触器状态
+                            setStatueFunc({
+                                name:name,
+                                value:value,
+                                index:index,
+                                className:'.pcs-cs',
+                                setName:'sysstate1_8'
+                            })
+                            //交流断路器
+                            setStatueFunc({
+                                name:name,
+                                value:value,
+                                index:index,
+                                className:'.pcs-acbr',
+                                setName:'sysstate1_7'
+                            })
+                            //通讯
+                            if(name === 'connected'){
+                                $('#pcs0'+index+' .psis-connect').removeClass('on');
+                                if(Number(value)){
+                                    $('#pcs0'+index+' .psis-connect').addClass('on');
+                                }
+                            }
+                            //设备id
+                            if(name === 'device_id'){
+                                $('#pcs0'+index+' .deviceUnId').val(value);
+                            }
+                        });
+                    });
+                }else {
+                    App.alert(result.message);
+                }
+            },
+            error:function (e) {
+                console.log(e)
+            }
+        });
     },
     pcsRcSetting:function (dom) {
         var deviceId = $(dom).parents('.pcs-setting').find('.deviceUnId').val();
@@ -63,6 +175,9 @@ var pcs = {
             buttons: [{text:'确认',id:'rightAccess',type:'cus-img-btn cus-ib-start'},
                 {text:'取消',type:'cus-img-btn cus-ib-shutdown',clickToClose :true}]
         });
+
+        $('#rightUser').val('');
+        $('#rightPwd').val('');
         $('#rightAccess').on('click',function () {
             _this.rightValidFunc(deviceId,getRightWin)
         })

@@ -6,7 +6,7 @@ var energyStatics = {
         var _this = this;
         this.getgetChargeTimesData();
         this.getDailyPowerStatisticsData();
-        setTimeout(function(){
+        setInterval(function(){
             _this.getgetChargeTimesData();
             _this.getDailyPowerStatisticsData();
         },5000);

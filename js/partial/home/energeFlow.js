@@ -8,7 +8,7 @@ var energeFlow = {
             $('#mainContainer').loadPage($(this).attr('attr-href'));
         })
 
-        setTimeout(this.getData(),5000)
+        setInterval(this.getData(),5000)
     },
 
     getData:function () {

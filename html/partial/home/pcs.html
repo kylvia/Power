@@ -1,398 +1,401 @@
 <div class="cus-pcs-container">
-    <div class="cus-pcs-box">
-        <h2 class="pcs-tit">PCS 01</h2>
+    <div class="cus-pcs-box" id="pcs01">
+        <h2 class="pcs-tit" id="pcs1_device_name">PCS 01</h2>
         <div class="pcs-section clearfix">
             <div class="psc-section-item psi-one">
                 <img src="/images/plantstatus/PSC-da.png" alt="">
                 <div class="psi-status">
                     <div class="psi-status-item">
-                        <p><b class="psis-icon psis-stop-off"></b></p>
+                        <p><b class="psis-icon psis-ssb psis-stop"></b></p>
                         <p>停机</p>
                     </div>
                     <div class="psi-status-item">
-                        <p><b class="psis-icon"></b></p>
+                        <p><b class="psis-icon psis-ssb psis-start" ></b></p>
                         <p>开机</p>
                     </div>
                     <div class="psi-status-item">
-                        <p><b class="psis-icon"></b></p>
+                        <p><b class="psis-icon psis-ssb psis-break"></b></p>
                         <p >故障</p>
                     </div>
                     <div class="psi-status-item">
-                        <p><b class="psis-icon psis-connect-on"></b></p>
+                        <p><b class="psis-icon psis-connect on" ></b></p>
                         <p>通讯</p>
                     </div>
                 </div>
             </div>
             <div class="psc-section-item psi-two">
                 <div class="pcs-center-status">
-                    <p class="pcsc-row"><span class="pcsc-column-tit">防雷器状态</span><b id="pcs1-las" class="pcsc-column-icon pcs-las-on"></b></p>
-                    <p class="pcsc-row"><span class="pcsc-column-tit">钥匙开关</span><b id="pcs1-keySwitch" class="pcsc-column-icon pcs-keySwitch-on"></b></p>
-                    <p class="pcsc-row"><span class="pcsc-column-tit">急停开关</span><b  id="pcs1-ess" class="pcsc-column-icon pcs-ess-on"></b></p>
-                    <p class="pcsc-row"><span class="pcsc-column-tit">接触器状态</span><b id="pcs1-cs" class="pcsc-column-icon"></b></p>
-                    <p class="pcsc-row"><span class="pcsc-column-tit">交流断路器</span><b id="pcs1-acbr" class="pcsc-column-icon pcs-acbr-off"></b></p>
-                    <p class="pcsc-row"><span class="pcsc-column-tit">充电状态</span><b id="pcs1-charge" class="pcsc-column-icon"></b></p>
-                    <p class="pcsc-row"><span class="pcsc-column-tit">放电状态</span><b id="pcs1-discharge" class="pcsc-column-icon"></b></p>
+                    <p class="pcsc-row"><span class="pcsc-column-tit">防雷器状态</span><b class="pcsc-column-icon pcs-las"></b></p>
+                    <p class="pcsc-row"><span class="pcsc-column-tit">钥匙开关</span><b class="pcsc-column-icon pcs-keySwitch"></b></p>
+                    <p class="pcsc-row"><span class="pcsc-column-tit">急停开关</span><b  class="pcsc-column-icon pcs-ess"></b></p>
+                    <p class="pcsc-row"><span class="pcsc-column-tit">接触器状态</span><b class="pcsc-column-icon pcs-cs"></b></p>
+                    <p class="pcsc-row"><span class="pcsc-column-tit">交流断路器</span><b class="pcsc-column-icon pcs-acbr"></b></p>
+                    <p class="pcsc-row"><span class="pcsc-column-tit">充电状态</span><b class="pcsc-column-icon pcs-charge pcs-concharge"></b></p>
+                    <p class="pcsc-row"><span class="pcsc-column-tit">放电状态</span><b class="pcsc-column-icon pcs-discharge pcs-concharge"></b></p>
                 </div>
             </div>
             <div class="psc-section-item psi-thr">
                 <div class="pcs-details">
-                    <div><label>A相电压：</label><span class="pcsd-val" id="pcsd1-val-apv">0.00</span> <span class="pcsd-unit" id="pcsd1-val-apvunit">V</span></div>
-                    <div><label>电网频率：</label><span class="pcsd-val" id="pcsd1-val-gf">0.00</span> <span class="pcsd-unit" id="pcsd1-val-gfunit">HZ</span></div>
-                    <div><label>A相IGBT温度：</label><span class="pcsd-val" id="pcsd1-val-aigbt">0.00</span> <span class="pcsd-unit" id="pcsd1-val-aigbtunit">℃</span></div>
-                    <div><label>B相电压：</label><span class="pcsd-val" id="pcsd1-val-bpv">0.00</span> <span class="pcsd-unit" id="pcsd1-val-bpvunit">V</span></div>
-                    <div><label>有功功率：</label><span class="pcsd-val" id="pcsd1-val-ap">0.00</span> <span class="pcsd-unit" id="csd1-val-apunit">kW</span></div>
-                    <div><label>B相IGBT温度：</label><span class="pcsd-val" id="pcsd1-bgbt">0.00</span> <span class="pcsd-unit" id="pcsd1-bgbtunit">℃</span></div>
+                    <div><label>A相电压：</label><span class="pcsd-val" id="pcs1_uina_rms">0.00</span></div>
+                    <div><label>电网频率：</label><span class="pcsd-val" id="pcs1_frequency">0.00</span></div>
+                    <div><label>A相IGBT温度：</label><span class="pcsd-val" id="pcs1_igbt_tempa0_ever">0.00</span></div>
+                    <div><label>B相电压：</label><span class="pcsd-val" id="pcs1_uinb_rms">0.00</span></div>
+                    <div><label>有功功率：</label><span class="pcsd-val" id="pcs1_activepower">0.00</span></div>
+                    <div><label>B相IGBT温度：</label><span class="pcsd-val" id="pcs1_igbt_tempb0_ever">0.00</span></div>
 
-                    <div><label>C相电压：</label><span class="pcsd-val" id="pcsd1-cpv">0.00</span> <span class="pcsd-unit" id="pcsd1-cpvunit">V</span></div>
-                    <div><label>无功功率：</label><span class="pcsd-val" id="pcsd1-rp">0.00</span> <span class="pcsd-unit" id="">kW</span></div>
-                    <div><label>C相IGBT温度：</label><span class="pcsd-val" id="pcsd1-cgbt">0.00</span> <span class="pcsd-unit" id="">℃</span></div>
+                    <div><label>C相电压：</label><span class="pcsd-val" id="pcs1_uinc_rms">0.00</span></div>
+                    <div><label>无功功率：</label><span class="pcsd-val" id="pcs1_reactivepower">0.00</span></div>
+                    <div><label>C相IGBT温度：</label><span class="pcsd-val" id="pcs1_igbt_tempc0_ever">0.00</span></div>
 
-                    <div><label>A相电流：</label><span class="pcsd-val" id="pcsd1-aav">0.00</span> <span class="pcsd-unit" id="">A</span></div>
-                    <div><label>直流电压：</label><span class="pcsd-val" id="pcsd1-dcv">0.00</span> <span class="pcsd-unit" id="">V</span></div>
+                    <div><label>A相电流：</label><span class="pcsd-val" id="pcs1_ibtra_ever">0.00</span></div>
+                    <div><label>直流电压：</label><span class="pcsd-val" id="pcs1_ubtra_ever">0.00</span></div>
                     <div></div>
-                    <div><label>B相电流：</label><span class="pcsd-val" id="pcsd1-bav">0.00</span> <span class="pcsd-unit" id="">A</span></div>
-                    <div><label>直流电流：</label><span class="pcsd-val" id="pcsd1-dca">0.00</span> <span class="pcsd-unit" id="">A</span></div>
+                    <div><label>B相电流：</label><span class="pcsd-val" id="pcs1_iinb_rms">0.00</span></div>
+                    <div><label>直流电流：</label><span class="pcsd-val" id="pcs1_iina_rms">0.00</span></div>
                     <div></div>
-                    <div><label>C相电流：</label><span class="pcsd-val" id="pcsd1-cav">0.00</span> <span class="pcsd-unit" id="">A</span></div>
-                    <div><label>直流功率：</label><span class="pcsd-val" id="pcsd1-dcp">0.00</span> <span class="pcsd-unit" id="">kW</span></div>
+                    <div><label>C相电流：</label><span class="pcsd-val" id="pcs1_iinc_rms">0.00</span></div>
+                    <div><label>直流功率：</label><span class="pcsd-val" id="pcs1_pbtra">0.00</span></div>
                     <div></div>
                 </div>
                 <div class="pcs-setting">
                     <input type="hidden" class="deviceUnId" value="111">
-                    <div class="pcs-right">控制权限：<span>EMS正在控制</span></div>
-                    <div class="pcs-running">运行模式：<span>电池维护模式</span></div>
+                    <div class="pcs-right">控制权限：<span id="pcs1_sysstate1_4">EMS正在控制</span></div>
+                    <div class="pcs-running">运行模式：<span id="pcs1_sysstate1_13">电池维护模式</span></div>
                     <div class="pcs-remotecontrol"><a class="cus-img-btn" onclick="pcs.getRight(this)">遥控及设定</a></div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="cus-pcs-box">
-        <h2 class="pcs-tit">PCS 02</h2>
+    <div class="cus-pcs-box" id="pcs02">
+        <h2 class="pcs-tit" id="pcs2_device_name">PCS 01</h2>
         <div class="pcs-section clearfix">
             <div class="psc-section-item psi-one">
                 <img src="/images/plantstatus/PSC-da.png" alt="">
                 <div class="psi-status">
                     <div class="psi-status-item">
-                        <p><b class="psis-icon psis-stop-on" id="pcs1Stop"></b></p>
+                        <p><b class="psis-icon psis-ssb psis-stop"></b></p>
                         <p>停机</p>
                     </div>
                     <div class="psi-status-item">
-                        <p><b class="psis-icon psis-start" id="pcs1Start"></b></p>
+                        <p><b class="psis-icon psis-ssb psis-start" ></b></p>
                         <p>开机</p>
                     </div>
                     <div class="psi-status-item">
-                        <p><b class="psis-icon psis-break" id="pcs1Break"></b></p>
+                        <p><b class="psis-icon psis-ssb psis-break"></b></p>
                         <p >故障</p>
                     </div>
                     <div class="psi-status-item">
-                        <p><b class="psis-icon psis-connect" id="pcs1Connect"></b></p>
+                        <p><b class="psis-icon psis-connect on" ></b></p>
                         <p>通讯</p>
                     </div>
                 </div>
             </div>
             <div class="psc-section-item psi-two">
                 <div class="pcs-center-status">
-                    <p class="pcsc-row"><span class="pcsc-column-tit">防雷器状态</span><b id="pcs1-las" class="pcsc-column-icon pcs-las-on"></b></p>
-                    <p class="pcsc-row"><span class="pcsc-column-tit">钥匙开关</span><b id="pcs1-keySwitch" class="pcsc-column-icon pcs-keySwitch-on"></b></p>
-                    <p class="pcsc-row"><span class="pcsc-column-tit">急停开关</span><b  id="pcs1-ess"class="pcsc-column-icon pcs-ess-on"></b></p>
-                    <p class="pcsc-row"><span class="pcsc-column-tit">接触器状态</span><b id="pcs1-cs" class="pcsc-column-icon"></b></p>
-                    <p class="pcsc-row"><span class="pcsc-column-tit">交流断路器</span><b id="pcs1-acbr" class="pcsc-column-icon pcs-acbr-off"></b></p>
-                    <p class="pcsc-row"><span class="pcsc-column-tit">充电状态</span><b id="pcs1-charge" class="pcsc-column-icon"></b></p>
-                    <p class="pcsc-row"><span class="pcsc-column-tit">放电状态</span><b id="pcs1-discharge" class="pcsc-column-icon"></b></p>
+                    <p class="pcsc-row"><span class="pcsc-column-tit">防雷器状态</span><b class="pcsc-column-icon pcs-las"></b></p>
+                    <p class="pcsc-row"><span class="pcsc-column-tit">钥匙开关</span><b class="pcsc-column-icon pcs-keySwitch"></b></p>
+                    <p class="pcsc-row"><span class="pcsc-column-tit">急停开关</span><b  class="pcsc-column-icon pcs-ess"></b></p>
+                    <p class="pcsc-row"><span class="pcsc-column-tit">接触器状态</span><b class="pcsc-column-icon pcs-cs"></b></p>
+                    <p class="pcsc-row"><span class="pcsc-column-tit">交流断路器</span><b class="pcsc-column-icon pcs-acbr"></b></p>
+                    <p class="pcsc-row"><span class="pcsc-column-tit">充电状态</span><b class="pcsc-column-icon pcs-charge pcs-concharge"></b></p>
+                    <p class="pcsc-row"><span class="pcsc-column-tit">放电状态</span><b class="pcsc-column-icon pcs-discharge pcs-concharge"></b></p>
                 </div>
             </div>
             <div class="psc-section-item psi-thr">
                 <div class="pcs-details">
-                    <div><label>A相电压：</label><span class="pcsd-val" id="pcsd1-val-apv">0.00</span> <span class="pcsd-unit" id="pcsd1-val-apvunit">V</span></div>
-                    <div><label>电网频率：</label><span class="pcsd-val" id="pcsd1-val-gf">0.00</span> <span class="pcsd-unit" id="pcsd1-val-gfunit">HZ</span></div>
-                    <div><label>A相IGBT温度：</label><span class="pcsd-val" id="pcsd1-val-aigbt">0.00</span> <span class="pcsd-unit" id="pcsd1-val-aigbtunit">℃</span></div>
-                    <div><label>B相电压：</label><span class="pcsd-val" id="pcsd1-val-bpv">0.00</span> <span class="pcsd-unit" id="pcsd1-val-bpvunit">V</span></div>
-                    <div><label>有功功率：</label><span class="pcsd-val" id="pcsd1-val-ap">0.00</span> <span class="pcsd-unit" id="csd1-val-apunit">kW</span></div>
-                    <div><label>B相IGBT温度：</label><span class="pcsd-val" id="pcsd1-bgbt">0.00</span> <span class="pcsd-unit" id="pcsd1-bgbtunit">℃</span></div>
+                    <div><label>A相电压：</label><span class="pcsd-val" id="pcs2_uina_rms">0.00</span></div>
+                    <div><label>电网频率：</label><span class="pcsd-val" id="pcs2_frequency">0.00</span></div>
+                    <div><label>A相IGBT温度：</label><span class="pcsd-val" id="pcs2_igbt_tempa0_ever">0.00</span></div>
+                    <div><label>B相电压：</label><span class="pcsd-val" id="pcs2_uinb_rms">0.00</span></div>
+                    <div><label>有功功率：</label><span class="pcsd-val" id="pcs2_activepower">0.00</span></div>
+                    <div><label>B相IGBT温度：</label><span class="pcsd-val" id="pcs2_igbt_tempb0_ever">0.00</span></div>
 
-                    <div><label>C相电压：</label><span class="pcsd-val" id="pcsd1-cpv">0.00</span> <span class="pcsd-unit" id="pcsd1-cpvunit">V</span></div>
-                    <div><label>无功功率：</label><span class="pcsd-val" id="pcsd1-rp">0.00</span> <span class="pcsd-unit" id="">kW</span></div>
-                    <div><label>C相IGBT温度：</label><span class="pcsd-val" id="pcsd1-cgbt">0.00</span> <span class="pcsd-unit" id="">℃</span></div>
+                    <div><label>C相电压：</label><span class="pcsd-val" id="pcs2_uinc_rms">0.00</span></div>
+                    <div><label>无功功率：</label><span class="pcsd-val" id="pcs2_reactivepower">0.00</span></div>
+                    <div><label>C相IGBT温度：</label><span class="pcsd-val" id="pcs2_igbt_tempc0_ever">0.00</span></div>
 
-                    <div><label>A相电流：</label><span class="pcsd-val" id="pcsd1-aav">0.00</span> <span class="pcsd-unit" id="">A</span></div>
-                    <div><label>直流电压：</label><span class="pcsd-val" id="pcsd1-dcv">0.00</span> <span class="pcsd-unit" id="">V</span></div>
+                    <div><label>A相电流：</label><span class="pcsd-val" id="pcs2_ibtra_ever">0.00</span></div>
+                    <div><label>直流电压：</label><span class="pcsd-val" id="pcs2_ubtra_ever">0.00</span></div>
                     <div></div>
-                    <div><label>B相电流：</label><span class="pcsd-val" id="pcsd1-bav">0.00</span> <span class="pcsd-unit" id="">A</span></div>
-                    <div><label>直流电流：</label><span class="pcsd-val" id="pcsd1-dca">0.00</span> <span class="pcsd-unit" id="">A</span></div>
+                    <div><label>B相电流：</label><span class="pcsd-val" id="pcs2_iinb_rms">0.00</span></div>
+                    <div><label>直流电流：</label><span class="pcsd-val" id="pcs2_iina_rms">0.00</span></div>
                     <div></div>
-                    <div><label>C相电流：</label><span class="pcsd-val" id="pcsd1-cav">0.00</span> <span class="pcsd-unit" id="">A</span></div>
-                    <div><label>直流功率：</label><span class="pcsd-val" id="pcsd1-dcp">0.00</span> <span class="pcsd-unit" id="">kW</span></div>
+                    <div><label>C相电流：</label><span class="pcsd-val" id="pcs2_iinc_rms">0.00</span></div>
+                    <div><label>直流功率：</label><span class="pcsd-val" id="pcs2_pbtra">0.00</span></div>
                     <div></div>
                 </div>
-
                 <div class="pcs-setting">
-                    <input type="hidden" class="deviceUnId" value="222">
-                    <div class="pcs-right">控制权限：<span>EMS正在控制</span></div>
-                    <div class="pcs-running">运行模式：<span>电池维护模式</span></div>
+                    <input type="hidden" class="deviceUnId" value="111">
+                    <div class="pcs-right">控制权限：<span id="pcs2_sysstate1_4">EMS正在控制</span></div>
+                    <div class="pcs-running">运行模式：<span id="pcs2_sysstate1_13">电池维护模式</span></div>
                     <div class="pcs-remotecontrol"><a class="cus-img-btn" onclick="pcs.getRight(this)">遥控及设定</a></div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="cus-pcs-box">
-        <h2 class="pcs-tit">PCS 03</h2>
+    <div class="cus-pcs-box" id="pcs03">
+        <h2 class="pcs-tit" id="pcs3_device_name">PCS 01</h2>
         <div class="pcs-section clearfix">
             <div class="psc-section-item psi-one">
                 <img src="/images/plantstatus/PSC-da.png" alt="">
                 <div class="psi-status">
                     <div class="psi-status-item">
-                        <p><b class="psis-icon psis-stop" id="pcs1Stop"></b></p>
+                        <p><b class="psis-icon psis-ssb psis-stop"></b></p>
                         <p>停机</p>
                     </div>
                     <div class="psi-status-item">
-                        <p><b class="psis-icon psis-start" id="pcs1Start"></b></p>
+                        <p><b class="psis-icon psis-ssb psis-start" ></b></p>
                         <p>开机</p>
                     </div>
                     <div class="psi-status-item">
-                        <p><b class="psis-icon psis-break" id="pcs1Break"></b></p>
+                        <p><b class="psis-icon psis-ssb psis-break"></b></p>
                         <p >故障</p>
                     </div>
                     <div class="psi-status-item">
-                        <p><b class="psis-icon psis-connect" id="pcs1Connect"></b></p>
+                        <p><b class="psis-icon psis-connect on" ></b></p>
                         <p>通讯</p>
                     </div>
                 </div>
             </div>
             <div class="psc-section-item psi-two">
                 <div class="pcs-center-status">
-                    <p class="pcsc-row"><span class="pcsc-column-tit">防雷器状态</span><b id="pcs1-las" class="pcsc-column-icon pcs-las-on"></b></p>
-                    <p class="pcsc-row"><span class="pcsc-column-tit">钥匙开关</span><b id="pcs1-keySwitch" class="pcsc-column-icon pcs-keySwitch-on"></b></p>
-                    <p class="pcsc-row"><span class="pcsc-column-tit">急停开关</span><b  id="pcs1-ess"class="pcsc-column-icon pcs-ess-on"></b></p>
-                    <p class="pcsc-row"><span class="pcsc-column-tit">接触器状态</span><b id="pcs1-cs" class="pcsc-column-icon"></b></p>
-                    <p class="pcsc-row"><span class="pcsc-column-tit">交流断路器</span><b id="pcs1-acbr" class="pcsc-column-icon pcs-acbr-off"></b></p>
-                    <p class="pcsc-row"><span class="pcsc-column-tit">充电状态</span><b id="pcs1-charge" class="pcsc-column-icon"></b></p>
-                    <p class="pcsc-row"><span class="pcsc-column-tit">放电状态</span><b id="pcs1-discharge" class="pcsc-column-icon"></b></p>
+                    <p class="pcsc-row"><span class="pcsc-column-tit">防雷器状态</span><b class="pcsc-column-icon pcs-las"></b></p>
+                    <p class="pcsc-row"><span class="pcsc-column-tit">钥匙开关</span><b class="pcsc-column-icon pcs-keySwitch"></b></p>
+                    <p class="pcsc-row"><span class="pcsc-column-tit">急停开关</span><b  class="pcsc-column-icon pcs-ess"></b></p>
+                    <p class="pcsc-row"><span class="pcsc-column-tit">接触器状态</span><b class="pcsc-column-icon pcs-cs"></b></p>
+                    <p class="pcsc-row"><span class="pcsc-column-tit">交流断路器</span><b class="pcsc-column-icon pcs-acbr"></b></p>
+                    <p class="pcsc-row"><span class="pcsc-column-tit">充电状态</span><b class="pcsc-column-icon pcs-charge pcs-concharge"></b></p>
+                    <p class="pcsc-row"><span class="pcsc-column-tit">放电状态</span><b class="pcsc-column-icon pcs-discharge pcs-concharge"></b></p>
                 </div>
             </div>
             <div class="psc-section-item psi-thr">
                 <div class="pcs-details">
-                    <div><label>A相电压：</label><span class="pcsd-val" id="pcsd1-val-apv">0.00</span> <span class="pcsd-unit" id="pcsd1-val-apvunit">V</span></div>
-                    <div><label>电网频率：</label><span class="pcsd-val" id="pcsd1-val-gf">0.00</span> <span class="pcsd-unit" id="pcsd1-val-gfunit">HZ</span></div>
-                    <div><label>A相IGBT温度：</label><span class="pcsd-val" id="pcsd1-val-aigbt">0.00</span> <span class="pcsd-unit" id="pcsd1-val-aigbtunit">℃</span></div>
-                    <div><label>B相电压：</label><span class="pcsd-val" id="pcsd1-val-bpv">0.00</span> <span class="pcsd-unit" id="pcsd1-val-bpvunit">V</span></div>
-                    <div><label>有功功率：</label><span class="pcsd-val" id="pcsd1-val-ap">0.00</span> <span class="pcsd-unit" id="csd1-val-apunit">kW</span></div>
-                    <div><label>B相IGBT温度：</label><span class="pcsd-val" id="pcsd1-bgbt">0.00</span> <span class="pcsd-unit" id="pcsd1-bgbtunit">℃</span></div>
+                    <div><label>A相电压：</label><span class="pcsd-val" id="pcs3_uina_rms">0.00</span></div>
+                    <div><label>电网频率：</label><span class="pcsd-val" id="pcs3_frequency">0.00</span></div>
+                    <div><label>A相IGBT温度：</label><span class="pcsd-val" id="pcs3_igbt_tempa0_ever">0.00</span></div>
+                    <div><label>B相电压：</label><span class="pcsd-val" id="pcs3_uinb_rms">0.00</span></div>
+                    <div><label>有功功率：</label><span class="pcsd-val" id="pcs3_activepower">0.00</span></div>
+                    <div><label>B相IGBT温度：</label><span class="pcsd-val" id="pcs3_igbt_tempb0_ever">0.00</span></div>
 
-                    <div><label>C相电压：</label><span class="pcsd-val" id="pcsd1-cpv">0.00</span> <span class="pcsd-unit" id="pcsd1-cpvunit">V</span></div>
-                    <div><label>无功功率：</label><span class="pcsd-val" id="pcsd1-rp">0.00</span> <span class="pcsd-unit" id="">kW</span></div>
-                    <div><label>C相IGBT温度：</label><span class="pcsd-val" id="pcsd1-cgbt">0.00</span> <span class="pcsd-unit" id="">℃</span></div>
+                    <div><label>C相电压：</label><span class="pcsd-val" id="pcs3_uinc_rms">0.00</span></div>
+                    <div><label>无功功率：</label><span class="pcsd-val" id="pcs3_reactivepower">0.00</span></div>
+                    <div><label>C相IGBT温度：</label><span class="pcsd-val" id="pcs3_igbt_tempc0_ever">0.00</span></div>
 
-                    <div><label>A相电流：</label><span class="pcsd-val" id="pcsd1-aav">0.00</span> <span class="pcsd-unit" id="">A</span></div>
-                    <div><label>直流电压：</label><span class="pcsd-val" id="pcsd1-dcv">0.00</span> <span class="pcsd-unit" id="">V</span></div>
+                    <div><label>A相电流：</label><span class="pcsd-val" id="pcs3_ibtra_ever">0.00</span></div>
+                    <div><label>直流电压：</label><span class="pcsd-val" id="pcs3_ubtra_ever">0.00</span></div>
                     <div></div>
-                    <div><label>B相电流：</label><span class="pcsd-val" id="pcsd1-bav">0.00</span> <span class="pcsd-unit" id="">A</span></div>
-                    <div><label>直流电流：</label><span class="pcsd-val" id="pcsd1-dca">0.00</span> <span class="pcsd-unit" id="">A</span></div>
+                    <div><label>B相电流：</label><span class="pcsd-val" id="pcs3_iinb_rms">0.00</span></div>
+                    <div><label>直流电流：</label><span class="pcsd-val" id="pcs3_iina_rms">0.00</span></div>
                     <div></div>
-                    <div><label>C相电流：</label><span class="pcsd-val" id="pcsd1-cav">0.00</span> <span class="pcsd-unit" id="">A</span></div>
-                    <div><label>直流功率：</label><span class="pcsd-val" id="pcsd1-dcp">0.00</span> <span class="pcsd-unit" id="">kW</span></div>
+                    <div><label>C相电流：</label><span class="pcsd-val" id="pcs3_iinc_rms">0.00</span></div>
+                    <div><label>直流功率：</label><span class="pcsd-val" id="pcs3_pbtra">0.00</span></div>
                     <div></div>
                 </div>
                 <div class="pcs-setting">
-                    <div class="pcs-right">控制权限：<span>EMS正在控制</span></div>
-                    <div class="pcs-running">运行模式：<span>电池维护模式</span></div>
+                    <input type="hidden" class="deviceUnId" value="111">
+                    <div class="pcs-right">控制权限：<span id="pcs3_sysstate1_4">EMS正在控制</span></div>
+                    <div class="pcs-running">运行模式：<span id="pcs3_sysstate1_13">电池维护模式</span></div>
                     <div class="pcs-remotecontrol"><a class="cus-img-btn" onclick="pcs.getRight(this)">遥控及设定</a></div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="cus-pcs-box">
-        <h2 class="pcs-tit">PCS 04</h2>
+    <div class="cus-pcs-box" id="pcs04">
+        <h2 class="pcs-tit" id="pcs4_device_name">PCS 01</h2>
         <div class="pcs-section clearfix">
             <div class="psc-section-item psi-one">
                 <img src="/images/plantstatus/PSC-da.png" alt="">
                 <div class="psi-status">
                     <div class="psi-status-item">
-                        <p><b class="psis-icon psis-stop" id="pcs1Stop"></b></p>
+                        <p><b class="psis-icon psis-ssb psis-stop"></b></p>
                         <p>停机</p>
                     </div>
                     <div class="psi-status-item">
-                        <p><b class="psis-icon psis-start" id="pcs1Start"></b></p>
+                        <p><b class="psis-icon psis-ssb psis-start" ></b></p>
                         <p>开机</p>
                     </div>
                     <div class="psi-status-item">
-                        <p><b class="psis-icon psis-break" id="pcs1Break"></b></p>
+                        <p><b class="psis-icon psis-ssb psis-break"></b></p>
                         <p >故障</p>
                     </div>
                     <div class="psi-status-item">
-                        <p><b class="psis-icon psis-connect" id="pcs1Connect"></b></p>
+                        <p><b class="psis-icon psis-connect on" ></b></p>
                         <p>通讯</p>
                     </div>
                 </div>
             </div>
             <div class="psc-section-item psi-two">
                 <div class="pcs-center-status">
-                    <p class="pcsc-row"><span class="pcsc-column-tit">防雷器状态</span><b id="pcs1-las" class="pcsc-column-icon pcs-las-on"></b></p>
-                    <p class="pcsc-row"><span class="pcsc-column-tit">钥匙开关</span><b id="pcs1-keySwitch" class="pcsc-column-icon pcs-keySwitch-on"></b></p>
-                    <p class="pcsc-row"><span class="pcsc-column-tit">急停开关</span><b  id="pcs1-ess"class="pcsc-column-icon pcs-ess-on"></b></p>
-                    <p class="pcsc-row"><span class="pcsc-column-tit">接触器状态</span><b id="pcs1-cs" class="pcsc-column-icon"></b></p>
-                    <p class="pcsc-row"><span class="pcsc-column-tit">交流断路器</span><b id="pcs1-acbr" class="pcsc-column-icon pcs-acbr-off"></b></p>
-                    <p class="pcsc-row"><span class="pcsc-column-tit">充电状态</span><b id="pcs1-charge" class="pcsc-column-icon"></b></p>
-                    <p class="pcsc-row"><span class="pcsc-column-tit">放电状态</span><b id="pcs1-discharge" class="pcsc-column-icon"></b></p>
+                    <p class="pcsc-row"><span class="pcsc-column-tit">防雷器状态</span><b class="pcsc-column-icon pcs-las"></b></p>
+                    <p class="pcsc-row"><span class="pcsc-column-tit">钥匙开关</span><b class="pcsc-column-icon pcs-keySwitch"></b></p>
+                    <p class="pcsc-row"><span class="pcsc-column-tit">急停开关</span><b  class="pcsc-column-icon pcs-ess"></b></p>
+                    <p class="pcsc-row"><span class="pcsc-column-tit">接触器状态</span><b class="pcsc-column-icon pcs-cs"></b></p>
+                    <p class="pcsc-row"><span class="pcsc-column-tit">交流断路器</span><b class="pcsc-column-icon pcs-acbr"></b></p>
+                    <p class="pcsc-row"><span class="pcsc-column-tit">充电状态</span><b class="pcsc-column-icon pcs-charge pcs-concharge"></b></p>
+                    <p class="pcsc-row"><span class="pcsc-column-tit">放电状态</span><b class="pcsc-column-icon pcs-discharge pcs-concharge"></b></p>
                 </div>
             </div>
             <div class="psc-section-item psi-thr">
                 <div class="pcs-details">
-                    <div><label>A相电压：</label><span class="pcsd-val" id="pcsd1-val-apv">0.00</span> <span class="pcsd-unit" id="pcsd1-val-apvunit">V</span></div>
-                    <div><label>电网频率：</label><span class="pcsd-val" id="pcsd1-val-gf">0.00</span> <span class="pcsd-unit" id="pcsd1-val-gfunit">HZ</span></div>
-                    <div><label>A相IGBT温度：</label><span class="pcsd-val" id="pcsd1-val-aigbt">0.00</span> <span class="pcsd-unit" id="pcsd1-val-aigbtunit">℃</span></div>
-                    <div><label>B相电压：</label><span class="pcsd-val" id="pcsd1-val-bpv">0.00</span> <span class="pcsd-unit" id="pcsd1-val-bpvunit">V</span></div>
-                    <div><label>有功功率：</label><span class="pcsd-val" id="pcsd1-val-ap">0.00</span> <span class="pcsd-unit" id="csd1-val-apunit">kW</span></div>
-                    <div><label>B相IGBT温度：</label><span class="pcsd-val" id="pcsd1-bgbt">0.00</span> <span class="pcsd-unit" id="pcsd1-bgbtunit">℃</span></div>
+                    <div><label>A相电压：</label><span class="pcsd-val" id="pcs4_uina_rms">0.00</span></div>
+                    <div><label>电网频率：</label><span class="pcsd-val" id="pcs4_frequency">0.00</span></div>
+                    <div><label>A相IGBT温度：</label><span class="pcsd-val" id="pcs4_igbt_tempa0_ever">0.00</span></div>
+                    <div><label>B相电压：</label><span class="pcsd-val" id="pcs4_uinb_rms">0.00</span></div>
+                    <div><label>有功功率：</label><span class="pcsd-val" id="pcs4_activepower">0.00</span></div>
+                    <div><label>B相IGBT温度：</label><span class="pcsd-val" id="pcs4_igbt_tempb0_ever">0.00</span></div>
 
-                    <div><label>C相电压：</label><span class="pcsd-val" id="pcsd1-cpv">0.00</span> <span class="pcsd-unit" id="pcsd1-cpvunit">V</span></div>
-                    <div><label>无功功率：</label><span class="pcsd-val" id="pcsd1-rp">0.00</span> <span class="pcsd-unit" id="">kW</span></div>
-                    <div><label>C相IGBT温度：</label><span class="pcsd-val" id="pcsd1-cgbt">0.00</span> <span class="pcsd-unit" id="">℃</span></div>
+                    <div><label>C相电压：</label><span class="pcsd-val" id="pcs4_uinc_rms">0.00</span></div>
+                    <div><label>无功功率：</label><span class="pcsd-val" id="pcs4_reactivepower">0.00</span></div>
+                    <div><label>C相IGBT温度：</label><span class="pcsd-val" id="pcs4_igbt_tempc0_ever">0.00</span></div>
 
-                    <div><label>A相电流：</label><span class="pcsd-val" id="pcsd1-aav">0.00</span> <span class="pcsd-unit" id="">A</span></div>
-                    <div><label>直流电压：</label><span class="pcsd-val" id="pcsd1-dcv">0.00</span> <span class="pcsd-unit" id="">V</span></div>
+                    <div><label>A相电流：</label><span class="pcsd-val" id="pcs4_ibtra_ever">0.00</span></div>
+                    <div><label>直流电压：</label><span class="pcsd-val" id="pcs4_ubtra_ever">0.00</span></div>
                     <div></div>
-                    <div><label>B相电流：</label><span class="pcsd-val" id="pcsd1-bav">0.00</span> <span class="pcsd-unit" id="">A</span></div>
-                    <div><label>直流电流：</label><span class="pcsd-val" id="pcsd1-dca">0.00</span> <span class="pcsd-unit" id="">A</span></div>
+                    <div><label>B相电流：</label><span class="pcsd-val" id="pcs4_iinb_rms">0.00</span></div>
+                    <div><label>直流电流：</label><span class="pcsd-val" id="pcs4_iina_rms">0.00</span></div>
                     <div></div>
-                    <div><label>C相电流：</label><span class="pcsd-val" id="pcsd1-cav">0.00</span> <span class="pcsd-unit" id="">A</span></div>
-                    <div><label>直流功率：</label><span class="pcsd-val" id="pcsd1-dcp">0.00</span> <span class="pcsd-unit" id="">kW</span></div>
+                    <div><label>C相电流：</label><span class="pcsd-val" id="pcs4_iinc_rms">0.00</span></div>
+                    <div><label>直流功率：</label><span class="pcsd-val" id="pcs4_pbtra">0.00</span></div>
                     <div></div>
                 </div>
                 <div class="pcs-setting">
-                    <div class="pcs-right">控制权限：<span>EMS正在控制</span></div>
-                    <div class="pcs-running">运行模式：<span>电池维护模式</span></div>
+                    <input type="hidden" class="deviceUnId" value="111">
+                    <div class="pcs-right">控制权限：<span id="pcs4_sysstate1_4">EMS正在控制</span></div>
+                    <div class="pcs-running">运行模式：<span id="pcs4_sysstate1_13">电池维护模式</span></div>
                     <div class="pcs-remotecontrol"><a class="cus-img-btn" onclick="pcs.getRight(this)">遥控及设定</a></div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="cus-pcs-box">
-        <h2 class="pcs-tit">PCS 05</h2>
+    <div class="cus-pcs-box" id="pcs05">
+        <h2 class="pcs-tit" id="pcs5_device_name">PCS 01</h2>
         <div class="pcs-section clearfix">
             <div class="psc-section-item psi-one">
                 <img src="/images/plantstatus/PSC-da.png" alt="">
                 <div class="psi-status">
                     <div class="psi-status-item">
-                        <p><b class="psis-icon psis-stop" id="pcs1Stop"></b></p>
+                        <p><b class="psis-icon psis-ssb psis-stop"></b></p>
                         <p>停机</p>
                     </div>
                     <div class="psi-status-item">
-                        <p><b class="psis-icon psis-start" id="pcs1Start"></b></p>
+                        <p><b class="psis-icon psis-ssb psis-start" ></b></p>
                         <p>开机</p>
                     </div>
                     <div class="psi-status-item">
-                        <p><b class="psis-icon psis-break" id="pcs1Break"></b></p>
+                        <p><b class="psis-icon psis-ssb psis-break"></b></p>
                         <p >故障</p>
                     </div>
                     <div class="psi-status-item">
-                        <p><b class="psis-icon psis-connect" id="pcs1Connect"></b></p>
+                        <p><b class="psis-icon psis-connect on" ></b></p>
                         <p>通讯</p>
                     </div>
                 </div>
             </div>
             <div class="psc-section-item psi-two">
                 <div class="pcs-center-status">
-                    <p class="pcsc-row"><span class="pcsc-column-tit">防雷器状态</span><b id="pcs1-las" class="pcsc-column-icon pcs-las-on"></b></p>
-                    <p class="pcsc-row"><span class="pcsc-column-tit">钥匙开关</span><b id="pcs1-keySwitch" class="pcsc-column-icon pcs-keySwitch-on"></b></p>
-                    <p class="pcsc-row"><span class="pcsc-column-tit">急停开关</span><b  id="pcs1-ess"class="pcsc-column-icon pcs-ess-on"></b></p>
-                    <p class="pcsc-row"><span class="pcsc-column-tit">接触器状态</span><b id="pcs1-cs" class="pcsc-column-icon"></b></p>
-                    <p class="pcsc-row"><span class="pcsc-column-tit">交流断路器</span><b id="pcs1-acbr" class="pcsc-column-icon pcs-acbr-off"></b></p>
-                    <p class="pcsc-row"><span class="pcsc-column-tit">充电状态</span><b id="pcs1-charge" class="pcsc-column-icon"></b></p>
-                    <p class="pcsc-row"><span class="pcsc-column-tit">放电状态</span><b id="pcs1-discharge" class="pcsc-column-icon"></b></p>
+                    <p class="pcsc-row"><span class="pcsc-column-tit">防雷器状态</span><b class="pcsc-column-icon pcs-las"></b></p>
+                    <p class="pcsc-row"><span class="pcsc-column-tit">钥匙开关</span><b class="pcsc-column-icon pcs-keySwitch"></b></p>
+                    <p class="pcsc-row"><span class="pcsc-column-tit">急停开关</span><b  class="pcsc-column-icon pcs-ess"></b></p>
+                    <p class="pcsc-row"><span class="pcsc-column-tit">接触器状态</span><b class="pcsc-column-icon pcs-cs"></b></p>
+                    <p class="pcsc-row"><span class="pcsc-column-tit">交流断路器</span><b class="pcsc-column-icon pcs-acbr"></b></p>
+                    <p class="pcsc-row"><span class="pcsc-column-tit">充电状态</span><b class="pcsc-column-icon pcs-charge pcs-concharge"></b></p>
+                    <p class="pcsc-row"><span class="pcsc-column-tit">放电状态</span><b class="pcsc-column-icon pcs-discharge pcs-concharge"></b></p>
                 </div>
             </div>
             <div class="psc-section-item psi-thr">
                 <div class="pcs-details">
-                    <div><label>A相电压：</label><span class="pcsd-val" id="pcsd1-val-apv">0.00</span> <span class="pcsd-unit" id="pcsd1-val-apvunit">V</span></div>
-                    <div><label>电网频率：</label><span class="pcsd-val" id="pcsd1-val-gf">0.00</span> <span class="pcsd-unit" id="pcsd1-val-gfunit">HZ</span></div>
-                    <div><label>A相IGBT温度：</label><span class="pcsd-val" id="pcsd1-val-aigbt">0.00</span> <span class="pcsd-unit" id="pcsd1-val-aigbtunit">℃</span></div>
-                    <div><label>B相电压：</label><span class="pcsd-val" id="pcsd1-val-bpv">0.00</span> <span class="pcsd-unit" id="pcsd1-val-bpvunit">V</span></div>
-                    <div><label>有功功率：</label><span class="pcsd-val" id="pcsd1-val-ap">0.00</span> <span class="pcsd-unit" id="csd1-val-apunit">kW</span></div>
-                    <div><label>B相IGBT温度：</label><span class="pcsd-val" id="pcsd1-bgbt">0.00</span> <span class="pcsd-unit" id="pcsd1-bgbtunit">℃</span></div>
+                    <div><label>A相电压：</label><span class="pcsd-val" id="pcs5_uina_rms">0.00</span></div>
+                    <div><label>电网频率：</label><span class="pcsd-val" id="pcs5_frequency">0.00</span></div>
+                    <div><label>A相IGBT温度：</label><span class="pcsd-val" id="pcs5_igbt_tempa0_ever">0.00</span></div>
+                    <div><label>B相电压：</label><span class="pcsd-val" id="pcs5_uinb_rms">0.00</span></div>
+                    <div><label>有功功率：</label><span class="pcsd-val" id="pcs5_activepower">0.00</span></div>
+                    <div><label>B相IGBT温度：</label><span class="pcsd-val" id="pcs5_igbt_tempb0_ever">0.00</span></div>
 
-                    <div><label>C相电压：</label><span class="pcsd-val" id="pcsd1-cpv">0.00</span> <span class="pcsd-unit" id="pcsd1-cpvunit">V</span></div>
-                    <div><label>无功功率：</label><span class="pcsd-val" id="pcsd1-rp">0.00</span> <span class="pcsd-unit" id="">kW</span></div>
-                    <div><label>C相IGBT温度：</label><span class="pcsd-val" id="pcsd1-cgbt">0.00</span> <span class="pcsd-unit" id="">℃</span></div>
+                    <div><label>C相电压：</label><span class="pcsd-val" id="pcs5_uinc_rms">0.00</span></div>
+                    <div><label>无功功率：</label><span class="pcsd-val" id="pcs5_reactivepower">0.00</span></div>
+                    <div><label>C相IGBT温度：</label><span class="pcsd-val" id="pcs5_igbt_tempc0_ever">0.00</span></div>
 
-                    <div><label>A相电流：</label><span class="pcsd-val" id="pcsd1-aav">0.00</span> <span class="pcsd-unit" id="">A</span></div>
-                    <div><label>直流电压：</label><span class="pcsd-val" id="pcsd1-dcv">0.00</span> <span class="pcsd-unit" id="">V</span></div>
+                    <div><label>A相电流：</label><span class="pcsd-val" id="pcs5_ibtra_ever">0.00</span></div>
+                    <div><label>直流电压：</label><span class="pcsd-val" id="pcs5_ubtra_ever">0.00</span></div>
                     <div></div>
-                    <div><label>B相电流：</label><span class="pcsd-val" id="pcsd1-bav">0.00</span> <span class="pcsd-unit" id="">A</span></div>
-                    <div><label>直流电流：</label><span class="pcsd-val" id="pcsd1-dca">0.00</span> <span class="pcsd-unit" id="">A</span></div>
+                    <div><label>B相电流：</label><span class="pcsd-val" id="pcs5_iinb_rms">0.00</span></div>
+                    <div><label>直流电流：</label><span class="pcsd-val" id="pcs5_iina_rms">0.00</span></div>
                     <div></div>
-                    <div><label>C相电流：</label><span class="pcsd-val" id="pcsd1-cav">0.00</span> <span class="pcsd-unit" id="">A</span></div>
-                    <div><label>直流功率：</label><span class="pcsd-val" id="pcsd1-dcp">0.00</span> <span class="pcsd-unit" id="">kW</span></div>
+                    <div><label>C相电流：</label><span class="pcsd-val" id="pcs5_iinc_rms">0.00</span></div>
+                    <div><label>直流功率：</label><span class="pcsd-val" id="pcs5_pbtra">0.00</span></div>
                     <div></div>
                 </div>
                 <div class="pcs-setting">
-                    <div class="pcs-right">控制权限：<span>EMS正在控制</span></div>
-                    <div class="pcs-running">运行模式：<span>电池维护模式</span></div>
+                    <input type="hidden" class="deviceUnId" value="111">
+                    <div class="pcs-right">控制权限：<span id="pcs5_sysstate1_4">EMS正在控制</span></div>
+                    <div class="pcs-running">运行模式：<span id="pcs5_sysstate1_13">电池维护模式</span></div>
                     <div class="pcs-remotecontrol"><a class="cus-img-btn" onclick="pcs.getRight(this)">遥控及设定</a></div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="cus-pcs-box">
-        <h2 class="pcs-tit">PCS 06</h2>
+    <div class="cus-pcs-box" id="pcs06">
+        <h2 class="pcs-tit" id="pcs6_device_name">PCS 01</h2>
         <div class="pcs-section clearfix">
             <div class="psc-section-item psi-one">
                 <img src="/images/plantstatus/PSC-da.png" alt="">
                 <div class="psi-status">
                     <div class="psi-status-item">
-                        <p><b class="psis-icon psis-stop" id="pcs1Stop"></b></p>
+                        <p><b class="psis-icon psis-ssb psis-stop"></b></p>
                         <p>停机</p>
                     </div>
                     <div class="psi-status-item">
-                        <p><b class="psis-icon psis-start" id="pcs1Start"></b></p>
+                        <p><b class="psis-icon psis-ssb psis-start" ></b></p>
                         <p>开机</p>
                     </div>
                     <div class="psi-status-item">
-                        <p><b class="psis-icon psis-break" id="pcs1Break"></b></p>
+                        <p><b class="psis-icon psis-ssb psis-break"></b></p>
                         <p >故障</p>
                     </div>
                     <div class="psi-status-item">
-                        <p><b class="psis-icon psis-connect" id="pcs1Connect"></b></p>
+                        <p><b class="psis-icon psis-connect on" ></b></p>
                         <p>通讯</p>
                     </div>
                 </div>
             </div>
             <div class="psc-section-item psi-two">
                 <div class="pcs-center-status">
-                    <p class="pcsc-row"><span class="pcsc-column-tit">防雷器状态</span><b id="pcs1-las" class="pcsc-column-icon pcs-las-on"></b></p>
-                    <p class="pcsc-row"><span class="pcsc-column-tit">钥匙开关</span><b id="pcs1-keySwitch" class="pcsc-column-icon pcs-keySwitch-on"></b></p>
-                    <p class="pcsc-row"><span class="pcsc-column-tit">急停开关</span><b  id="pcs1-ess"class="pcsc-column-icon pcs-ess-on"></b></p>
-                    <p class="pcsc-row"><span class="pcsc-column-tit">接触器状态</span><b id="pcs1-cs" class="pcsc-column-icon"></b></p>
-                    <p class="pcsc-row"><span class="pcsc-column-tit">交流断路器</span><b id="pcs1-acbr" class="pcsc-column-icon pcs-acbr-off"></b></p>
-                    <p class="pcsc-row"><span class="pcsc-column-tit">充电状态</span><b id="pcs1-charge" class="pcsc-column-icon"></b></p>
-                    <p class="pcsc-row"><span class="pcsc-column-tit">放电状态</span><b id="pcs1-discharge" class="pcsc-column-icon"></b></p>
+                    <p class="pcsc-row"><span class="pcsc-column-tit">防雷器状态</span><b class="pcsc-column-icon pcs-las"></b></p>
+                    <p class="pcsc-row"><span class="pcsc-column-tit">钥匙开关</span><b class="pcsc-column-icon pcs-keySwitch"></b></p>
+                    <p class="pcsc-row"><span class="pcsc-column-tit">急停开关</span><b  class="pcsc-column-icon pcs-ess"></b></p>
+                    <p class="pcsc-row"><span class="pcsc-column-tit">接触器状态</span><b class="pcsc-column-icon pcs-cs"></b></p>
+                    <p class="pcsc-row"><span class="pcsc-column-tit">交流断路器</span><b class="pcsc-column-icon pcs-acbr"></b></p>
+                    <p class="pcsc-row"><span class="pcsc-column-tit">充电状态</span><b class="pcsc-column-icon pcs-charge pcs-concharge"></b></p>
+                    <p class="pcsc-row"><span class="pcsc-column-tit">放电状态</span><b class="pcsc-column-icon pcs-discharge pcs-concharge"></b></p>
                 </div>
             </div>
             <div class="psc-section-item psi-thr">
                 <div class="pcs-details">
-                    <div><label>A相电压：</label><span class="pcsd-val" id="pcsd1-val-apv">0.00</span> <span class="pcsd-unit" id="pcsd1-val-apvunit">V</span></div>
-                    <div><label>电网频率：</label><span class="pcsd-val" id="pcsd1-val-gf">0.00</span> <span class="pcsd-unit" id="pcsd1-val-gfunit">HZ</span></div>
-                    <div><label>A相IGBT温度：</label><span class="pcsd-val" id="pcsd1-val-aigbt">0.00</span> <span class="pcsd-unit" id="pcsd1-val-aigbtunit">℃</span></div>
-                    <div><label>B相电压：</label><span class="pcsd-val" id="pcsd1-val-bpv">0.00</span> <span class="pcsd-unit" id="pcsd1-val-bpvunit">V</span></div>
-                    <div><label>有功功率：</label><span class="pcsd-val" id="pcsd1-val-ap">0.00</span> <span class="pcsd-unit" id="csd1-val-apunit">kW</span></div>
-                    <div><label>B相IGBT温度：</label><span class="pcsd-val" id="pcsd1-bgbt">0.00</span> <span class="pcsd-unit" id="pcsd1-bgbtunit">℃</span></div>
+                    <div><label>A相电压：</label><span class="pcsd-val" id="pcs6_uina_rms">0.00</span></div>
+                    <div><label>电网频率：</label><span class="pcsd-val" id="pcs6_frequency">0.00</span></div>
+                    <div><label>A相IGBT温度：</label><span class="pcsd-val" id="pcs6_igbt_tempa0_ever">0.00</span></div>
+                    <div><label>B相电压：</label><span class="pcsd-val" id="pcs6_uinb_rms">0.00</span></div>
+                    <div><label>有功功率：</label><span class="pcsd-val" id="pcs6_activepower">0.00</span></div>
+                    <div><label>B相IGBT温度：</label><span class="pcsd-val" id="pcs6_igbt_tempb0_ever">0.00</span></div>
 
-                    <div><label>C相电压：</label><span class="pcsd-val" id="pcsd1-cpv">0.00</span> <span class="pcsd-unit" id="pcsd1-cpvunit">V</span></div>
-                    <div><label>无功功率：</label><span class="pcsd-val" id="pcsd1-rp">0.00</span> <span class="pcsd-unit" id="">kW</span></div>
-                    <div><label>C相IGBT温度：</label><span class="pcsd-val" id="pcsd1-cgbt">0.00</span> <span class="pcsd-unit" id="">℃</span></div>
+                    <div><label>C相电压：</label><span class="pcsd-val" id="pcs6_uinc_rms">0.00</span></div>
+                    <div><label>无功功率：</label><span class="pcsd-val" id="pcs6_reactivepower">0.00</span></div>
+                    <div><label>C相IGBT温度：</label><span class="pcsd-val" id="pcs6_igbt_tempc0_ever">0.00</span></div>
 
-                    <div><label>A相电流：</label><span class="pcsd-val" id="pcsd1-aav">0.00</span> <span class="pcsd-unit" id="">A</span></div>
-                    <div><label>直流电压：</label><span class="pcsd-val" id="pcsd1-dcv">0.00</span> <span class="pcsd-unit" id="">V</span></div>
+                    <div><label>A相电流：</label><span class="pcsd-val" id="pcs6_ibtra_ever">0.00</span></div>
+                    <div><label>直流电压：</label><span class="pcsd-val" id="pcs6_ubtra_ever">0.00</span></div>
                     <div></div>
-                    <div><label>B相电流：</label><span class="pcsd-val" id="pcsd1-bav">0.00</span> <span class="pcsd-unit" id="">A</span></div>
-                    <div><label>直流电流：</label><span class="pcsd-val" id="pcsd1-dca">0.00</span> <span class="pcsd-unit" id="">A</span></div>
+                    <div><label>B相电流：</label><span class="pcsd-val" id="pcs6_iinb_rms">0.00</span></div>
+                    <div><label>直流电流：</label><span class="pcsd-val" id="pcs6_iina_rms">0.00</span></div>
                     <div></div>
-                    <div><label>C相电流：</label><span class="pcsd-val" id="pcsd1-cav">0.00</span> <span class="pcsd-unit" id="">A</span></div>
-                    <div><label>直流功率：</label><span class="pcsd-val" id="pcsd1-dcp">0.00</span> <span class="pcsd-unit" id="">kW</span></div>
+                    <div><label>C相电流：</label><span class="pcsd-val" id="pcs6_iinc_rms">0.00</span></div>
+                    <div><label>直流功率：</label><span class="pcsd-val" id="pcs6_pbtra">0.00</span></div>
                     <div></div>
                 </div>
                 <div class="pcs-setting">
-                    <div class="pcs-right">控制权限：<span>EMS正在控制</span></div>
-                    <div class="pcs-running">运行模式：<span>电池维护模式</span></div>
+                    <input type="hidden" class="deviceUnId" value="111">
+                    <div class="pcs-right">控制权限：<span id="pcs6_sysstate1_4">EMS正在控制</span></div>
+                    <div class="pcs-running">运行模式：<span id="pcs6_sysstate1_13">电池维护模式</span></div>
                     <div class="pcs-remotecontrol"><a class="cus-img-btn" onclick="pcs.getRight(this)">遥控及设定</a></div>
                 </div>
             </div>

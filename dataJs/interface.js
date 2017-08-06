@@ -187,6 +187,57 @@ module.exports = {
         error:'',
         msg:''
     },
+    //PCS页面
+    getCurrentPCS: {
+        "success": true,
+        'data|6': [
+            {
+                "device_id|+1": [
+                    "pcs00001",
+                    "pcs00002",
+                    "pcs00003",
+                    "pcs00004",
+                    "pcs00005",
+                    "pcs00006"
+                ],
+                "device_name|+1": [
+                    "PCS01",
+                    "PCS02",
+                    "PCS03",
+                    "PCS04",
+                    "PCS05",
+                    "PCS06"
+                ],
+                "uina_rms": "0.00 V",
+                "uinb_rms": "0.00 V",
+                "uinc_rms": "0.00 V",
+                "iina_rms": "0.00 A",
+                "iinb_rms": "0.00 A",
+                "iinc_rms": "0.00 A",
+                "frequency": "0.00 HZ",
+                "activepower": "0.00 kW",
+                "reactivepower": "0.00 kW",
+                "ubtra_ever": "0.00 V",
+                "ibtra_ever": "0.00 A",
+                "pbtra": "0.00 kW",
+                "igbt_tempa0_ever": "0.00 ℃",
+                "igbt_tempb0_ever": "0.00 ℃",
+                "igbt_tempc0_ever": "0.00 ℃",
+                "sysstate1_11|1": [0,1],
+                "sysstate1_10|1": [0,1],
+                "sysstate1_9|1": [0,1],
+                "sysstate1_8|1": [0,1],
+                "sysstate1_7|1": [0,1],
+                "sysstate1_6|1": [0,1],
+                "sysstate1_5|1": [0,1],
+                "sysstate1_4|1": ["EMS正在控制","BMS正在控制","正在调试"],
+                "sysstate1_13|1": ["默认模式","电池维护模式","SOC标定模式","均压维护模式","恒压充放电模式"],
+                "sysstate1_0|1": [0,1,2],
+                "connected": 1
+            }],
+        "error": false,
+        "msg": ''
+    },
     setControlAuthority:{
         success:true,
         data:{"flag":"true","msg":"设置成功/什么错误"},

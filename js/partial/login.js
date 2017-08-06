@@ -5,8 +5,6 @@ var login = {
     Render:function () {
         $('#loginBtn').on('click',function () {
 
-            $('#sysBody').loadPage('partial/main.html');
-            console.log($(".cus-login-box").serializeArray());
             if(!$.trim($('#userName').val())){
                 App.alert('请输入用户名');
                 return;
@@ -14,18 +12,24 @@ var login = {
             if(!$.trim($('#passWord').val())){
                 App.alert('请输入密码');
                 return;
+            }else {
+                $('#passWord').val(hex_md5($('#passWord').val()));
             }
+            // console.log($(".cus-login-box").serializeArray());
+
             $.ajax({
                 url:'/loginAuth',
                 type:'post',
                 dataType:'JSON',
                 data:$(".cus-login-box").serializeArray(),
                 success:function (result) {
-                    if(result.success){
+                    /*if(result.success){
+                     result.data.token && Cookies.setCookByName('token', result.data.token);
                         $('#sysBody').loadPage('partial/main.html');
                     }else {
                         App.alert(result.msg);
-                    }
+                    }*/
+                    $('#sysBody').loadPage('partial/main.html');
                 },
                 error:function (e) {
                     console.log(e)

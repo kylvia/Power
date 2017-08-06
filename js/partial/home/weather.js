@@ -5,7 +5,7 @@ var weather = {
     Render:function () {
         //获取经纬度
         this.getLocation();
-        setTimeout(this.getLocation(),1800000);
+        setInterval(this.getLocation(),1800000);
     },
     getLocation:function () {
         var _this = this;
