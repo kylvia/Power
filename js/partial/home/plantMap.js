@@ -11,13 +11,13 @@ var plantMap = {
     getLocation:function () {
         var _this = this;
         $.ajax({
-            url:'/interface/getPlantPosition',
+            url:'/interface/getPlantInfo',
             type:'post',
             dataType:'JSON',
             data:JSON.stringify({token:Cookies.getCook('token')}),
             success:function (result) {
                 if(result.success){
-                    _this.setMap(result.data.loaction.reverse())
+                    _this.setMap(result.data.loaction)
                 }else {
                     App.alert(result.msg);
                 }

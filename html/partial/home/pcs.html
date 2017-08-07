@@ -403,7 +403,7 @@
     </div>
 </div>
 <!--控制权限配置-->
-<div id="rightControl">
+<div id="rightControl" class="pcs-userValidate">
     <form id="validateUserForm">
         <input type="hidden" name="deviceUnId" class="getDeviceUnId">
         <div class="rc-user">
@@ -420,16 +420,21 @@
 <div class="cus-win-pcscontent" id="cus-win-content" style="display: none">
     <input type="hidden" class="getDeviceUnId">
     <div class="cus-win-highLight">
+        <div class="cwh-setrange cwh-setting">
+            <label>设置范围:</label>
+            <div class="checkboxContainer"><input class="inputCheck" id="aiAl" type="checkbox"><label class="inputCheckBox" for="aiAl"></label>对所有设备生效</div>
+            <div class="checkboxContainer"><input class="inputCheck" id="aiEv" type="checkbox"><label class="inputCheckBox" for="aiEv"></label>对当前设备生效</div>
+        </div>
         <div class="cwh-dcc cwh-setting">
             <label>直流能量调控器控制权限</label>
-            <select name="" id="pcs-dCEnergy">
+            <select name="" id="pcs-dCEnergy" onchange="pcs.setAvpExcute(this.value)">
                 <option value=""></option>
             </select>
             <a class="cus-img-btn ceh-excut" onclick="pcs.dceExcute()">执行</a>
         </div>
         <div class="cwh-runmodel cwh-setting">
             <label>运行模式设置</label>
-            <select name="" id="pcs-runningModel" onchange="pcs.setAvpExcute(this.value)">
+            <select name="" id="pcs-runningModel">
                 <option value=""></option>
             </select>
             <a onclick="pcs.rnExcute()" class="cus-img-btn ceh-excut">执行</a>
@@ -438,8 +443,8 @@
     <div class="cus-win-condition">
         <div class="cus-win-mark"></div>
         <div class="cwc-content">
-            <div class="cwc-tit">注：仅P/Q模式下生效；有功设定：正为充电，负为放电；感性为正，容性为负；</div>
-            <div class="cwc-one">
+            <h2> 充放电策略使能（EMS控制模式下生效）</h2>
+            <!--<div class="cwc-one">
                 <div class="cwc-col cwc-col-one cwc-col-ap cwc-col-arp">
                     当前有功<span id="curAp" class="cwc-val">0</span><span class="cwc-unit curAvpUnit">kVar</span>
                 </div>
@@ -456,6 +461,21 @@
                     <label for="">设定值：<input class="pcs-input-clear" id="pcs-rpVal" type="text"></label></label>kW
                 </div>
                 <a class="cus-img-btn ceh-excut" onclick="pcs.rpExcute()">执行</a>
+            </div>-->
+            <div>
+                <div class="cwc-enable cwc-select">
+                    <label>充放电策略使能</label>
+                    <select name="" id="pcs-enable">
+                        <option value=""></option>
+                    </select>
+                    <a class="cus-img-btn ceh-excut" onclick="pcs.enableExcute()">执行</a>
+                </div>
+                <div class="cwc-tit">设置说明：充电电流充电为负，放电为正</div>
+                <div class="cwc-enable-content">
+                    <table id="pcs-timetable">
+                    </table>
+                    <a class="cus-img-btn ceh-excut" onclick="pcs.enableExcute()">执行</a>
+                </div>
             </div>
         </div>
     </div>

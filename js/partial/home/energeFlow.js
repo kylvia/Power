@@ -42,12 +42,13 @@ var energeFlow = {
                     for(var i = 0,len = deviceData.length;i<len;i++){
                         var item = deviceData[i];
                         //    功率
-                        $('#pTobPower'+(i+1)).text(item.power.substring(1));
+                        $('#pTobPower'+(i+1)).text(item.power);
+                        $('#batteryVla'+(i+1)).text(item.battery_SOC);
                         //设备状态
-                        switch (item.inverter_status){
-                            case '开机':deviceStatus = 'pscStatus-kj';break;
-                            case '关机':deviceStatus = 'pscStatus-gj';break;
-                            case '故障':deviceStatus = 'pscStatus-gz';break;
+                        switch (Number(item.inverter_status)){
+                            case 0:deviceStatus = 'pscStatus-kj';break;
+                            case 1:deviceStatus = 'pscStatus-gj';break;
+                            case 2:deviceStatus = 'pscStatus-gz';break;
                         }
                         $('#pscStatus'+(i+1)).removeClass().addClass('pscStatus '+deviceStatus);
                         var bsImg ;
@@ -72,15 +73,15 @@ var energeFlow = {
 
                         $('#breaker'+(i+1)).attr('src','/images/plantstatus/breakerDisc.png');
                     //    电池
-                        var csAr = item.charge_status;
+                        var csAr = Number(item.charge_status);
                         var batteryGifIcon;
-                        csAr === '+' ? batteryGifIcon = 'charge.gif' : batteryGifIcon = 'discharge.gif';
+                        csAr === 0 ? batteryGifIcon = 'charge.gif' : batteryGifIcon = 'discharge.gif';
                         var batterySrc = '/images/plantstatus/'+batteryGifIcon;
                         $('#battery'+(i+1)).attr('src',batterySrc);
                     //    电流方向
                         var fArrow;
                         var powerAr = item.power;
-                        powerAr.substring(0,1) === '+' ? fArrow = 'arrow-r' : fArrow = 'arrow-l';
+                        csAr === 1 ? fArrow = 'arrow-r' : fArrow = 'arrow-l';
                         var classNameAr = $('.cus-ef-arrow'+i).attr('class').split(' ');
                         if(classNameAr.length >2){
                             classNameAr.pop();

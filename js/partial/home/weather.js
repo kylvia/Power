@@ -10,14 +10,14 @@ var weather = {
     getLocation:function () {
         var _this = this;
         $.ajax({
-            url:'/interface/getPlantPosition',
+            url:'/interface/getPlantInfo',
             type:'post',
             dataType:'json',
             data:JSON.stringify({token:Cookies.getCook('token')}),
             success:function (result) {
                 if(result.success){
                     //获取天气
-                    _this.getWeather(result.data.loaction.join(','));
+                    _this.getWeather(result.data.loaction.reverse().join(','));
                 }else {
                     App.alert(result.msg);
                 }

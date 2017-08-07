@@ -185,12 +185,15 @@
 }
 .cus-win-pcscontent{
   margin: 15px 35px 0 35px;
-  .cwh-runmodel{
-    margin-top: 30px;
-  }
   .cwh-setting{
     label{
       width: 170px;
+      &.inputCheckBox{
+        width: 14px;
+      }
+    }
+    .checkboxContainer:first-of-type{
+      margin-left: 0;
     }
     select{
       width: 178px;
@@ -200,6 +203,9 @@
       border-radius: 2px;
       background: #011F43;
     }
+    &+.cwh-setting{
+      margin-top: 23px;
+    }
   }
   .ceh-excut{
     float: right;
@@ -208,7 +214,7 @@
     position: relative;
     margin-top: 26px;
     width: 550px;
-    height: 144px;
+    height: 172px;
     .cus-win-mark{
       position: absolute;
       z-index: 9;
@@ -222,11 +228,14 @@
       z-index: 8;
       width: 100%;
       height: 100%;
-      padding: 0 22px;
+      padding: 14px 22px;
       border: 1px solid #075e94;
       border-radius: 3px;
+      h2{
+        margin-left: -17px;
+      }
       .cwc-tit{
-        margin-top: 16px;
+        margin-top: 10px;
         font-size: 0.85714em;
       }
       .cwc-sec,.cwc-one{
@@ -251,5 +260,28 @@
         margin-left: 10px;
       }
     }
+  }
+
+  select{
+    width: 178px;
+    height: 28px;
+    line-height: 28px;
+    border: 1px solid #006699;
+    border-radius: 2px;
+    background: #011F43;
+  }
+}
+//  验证登陆权限
+.pcs-userValidate{
+  .rc-user{
+    margin-top: 12px;
+  }
+  label{
+    display: inline-block;
+    width: 28%;
+    text-align: right;
+  }
+  input{
+    border:1px solid #075e94;
   }
 }

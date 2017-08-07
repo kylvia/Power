@@ -163,6 +163,7 @@ var pcs = {
         })
 
     },
+    //权限校验
     getRight:function (dom) {
         var _this = this;
         var deviceId = $(dom).parents('.pcs-setting').find('.deviceUnId').val();
@@ -171,6 +172,7 @@ var pcs = {
         var getRightWin = App.dialog({
             title: "控制权限校验",
             width: 400,
+            height: 110,
             content: cusWinRightContent,
             buttons: [{text:'确认',id:'rightAccess',type:'cus-img-btn cus-ib-start'},
                 {text:'取消',type:'cus-img-btn cus-ib-shutdown',clickToClose :true}]
@@ -211,18 +213,63 @@ var pcs = {
             }
         })
     },
-    rightAccess:function (dom) {
-        this.pcsRcSetting(dom);
-    },
+    //下拉设置
     dialogFunc:function (deviceId) {
         require(['./main/enumeration'],function (Enumeration) {
             var dceTmp = Enumeration.DCEnergy;
             var rmTmp = Enumeration.RunningModel;
+            var enTmp = Enumeration.tXFTGEn;
             var sppendDce = Mustache.render('{{#enum}} <option value={{value}}>{{name}}</option> {{/enum}}',dceTmp);
             $('#pcs-dCEnergy').html(sppendDce);
             var runningModel = Mustache.render('{{#enum}} <option value={{value}}>{{name}}</option> {{/enum}}',rmTmp);
             $('#pcs-runningModel').html(runningModel);
+            var enModel = Mustache.render('{{#enum}} <option value={{value}}>{{name}}</option> {{/enum}}',enTmp);
+            $('#pcs-enable').html(enModel);
         })
+
+        $('#pcs-timetable').bootstrapTable({
+            method:'POST',
+            dataType:'json',
+            cache: false,
+            editable:true,//开启编辑模式
+            clickToSelect: true,
+            sidePagination: "server",           //分页方式：client客户端分页，server服务端分页（*）
+            url:'interface/setChargeTime',
+            striped:true,
+            // height: $(window).height() - 200,
+            width:$(window).width(),
+            pagination:true,
+            minimumCountColumns:2,
+            pageNumber:1,                       //初始化加载第一页，默认第一页
+            pageSize: 10,                       //每页的记录行数（*）
+            uniqueId: "id",                     //每一行的唯一标识，一般为主键列
+            columns: [
+                {
+                    field:"id",
+                    title:"时间段名称",
+                    align:"center",
+                    edit:false,
+                    formatter:function(value, row, index){
+                        return "时间段"+index ; //返回行号
+                    }
+                },
+                {
+                    field : 'alarmName',
+                    title : '告警名称',
+                    align : 'center',
+                    valign : 'middle'
+                }, {
+                    field : 'devName',
+                    title : '设备名称',
+                    align : 'center',
+                    valign : 'middle'
+                }, {
+                    field : 'devType',
+                    title : '设备类型',
+                    align : 'center',
+                    valign : 'middle'
+                }]
+        });
 
     },
     //运行模式设置
@@ -250,7 +297,7 @@ var pcs = {
             _this.resize();
         }
         //P/Q模式
-        if(val === '6'){
+        if(val === '2'){
             $('.cus-win-mark').height(0);
             var data = {
                 "token": Cookies.getCook('token'),

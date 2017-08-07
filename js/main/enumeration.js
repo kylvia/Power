@@ -10,5 +10,6 @@ var Enumeration={
     BMS:{enum:[{name:'BMS-01',value:'bms1'},{name:'BMS-02',value:'bms2'}]},
     PCS:{enum:[{name:'PCS-01',value:'bms1'},{name:'PCS-02',value:'bms2'}]},
     Ammeter:{enum:[{name:'电表-01',value:'bms1'},{name:'电表-02',value:'bms2'}]},
+    tXFTGEn:{enum:[{name:'使能策略',value:'0'},{name:'禁止策略',value:'1'}]}
 
 }

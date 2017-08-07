@@ -254,8 +254,9 @@ gulp.task("serve", ["build"], function () {
             //next();
         }
     }else{
-        var host = 'http://192.168.1.112:8080';
+        var host = 'http://192.168.1.104:8080';
         middleware = [
+            proxyMiddleware(['/loginAuth'], {target: host, changeOrigin: true}),
             proxyMiddleware(['/interface/getPlantInfo'], {target: host, changeOrigin: true}),
             proxyMiddleware(['/interface/getChargeTimes'], {target: host, changeOrigin: true}),
             proxyMiddleware(['/interface/getDailyPowerStatistics'], {target: host, changeOrigin: true}),

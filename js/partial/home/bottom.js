@@ -22,7 +22,6 @@ var bottom = {
                     $.each(getBS,function (item,value) {
                         $('#bs_'+item+"_value").text(value.value);
                         $('#bs_'+item+"_unit").text(value.unit);
-
                     })
                 }else {
                     App.alert(result.msg);

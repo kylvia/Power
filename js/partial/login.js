@@ -16,7 +16,6 @@ var login = {
                 $('#passWord').val(hex_md5($('#passWord').val()));
             }
             // console.log($(".cus-login-box").serializeArray());
-
             $.ajax({
                 url:'/loginAuth',
                 type:'post',
