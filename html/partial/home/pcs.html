@@ -1,4 +1,5 @@
-<div class="cus-pcs-container">
+<div class="cus-pcs-container-loading">正在加载......</div>
+<div class="cus-pcs-container" id="cus-pcs-container">
     <div class="cus-pcs-box" id="pcs01">
         <h2 class="pcs-tit" id="pcs1_device_name">PCS 01</h2>
         <div class="pcs-section clearfix">
@@ -423,7 +424,7 @@
         <div class="cwh-setrange cwh-setting">
             <label>设置范围:</label>
             <div class="checkboxContainer"><input class="inputCheck" id="aiAl" type="checkbox"><label class="inputCheckBox" for="aiAl"></label>对所有设备生效</div>
-            <div class="checkboxContainer"><input class="inputCheck" id="aiEv" type="checkbox"><label class="inputCheckBox" for="aiEv"></label>对当前设备生效</div>
+            <div class="checkboxContainer"><input class="inputCheck" checked id="aiEv" type="checkbox"><label class="inputCheckBox" for="aiEv"></label>对当前设备生效</div>
         </div>
         <div class="cwh-dcc cwh-setting">
             <label>直流能量调控器控制权限</label>
@@ -470,11 +471,58 @@
                     </select>
                     <a class="cus-img-btn ceh-excut" onclick="pcs.enableExcute()">执行</a>
                 </div>
-                <div class="cwc-tit">设置说明：充电电流充电为负，放电为正</div>
                 <div class="cwc-enable-content">
-                    <table id="pcs-timetable">
+                    <form id="setTimeLine">
+                    <table id="pcs-timetable" class="pcs-timetable">
+                        <thead>
+                        <tr><td>时间段名称</td><td>起始时间</td><td>结束时间</td><td>充放电电流(A)</td></tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>时间段1</td>
+                            <td>
+                                <input type="text" name="start_time1" class="Wdate" id="pcsdtime1" onclick="WdatePicker({dateFmt:'H:mm',maxDate:'#F{$dp.$D(\'pcsdtime11\')}',readOnly:true})"/>
+                            </td>
+                            <td>
+                                <input type="text" class="Wdate" name="stop_time1" id="pcsdtime11" onclick="WdatePicker({dateFmt:'H:mm',minDate:'#F{$dp.$D(\'pcsdtime1\')}',readOnly:true})"/>
+                            </td>
+                            <td><input type="text" name="power_set1" class="cus-table-input" id="chargeA1"></td>
+                        </tr>
+                        <tr>
+                            <td>时间段2</td>
+                            <td>
+                                <input type="text" class="Wdate" name="start_time2" id="pcsdtime2" onclick="WdatePicker({dateFmt:'H:mm',maxDate:'#F{$dp.$D(\'pcsdtime21\')}',readOnly:true})"/>
+                            </td>
+                            <td>
+                                <input type="text" class="Wdate" name="stop_time2" id="pcsdtime21" onclick="WdatePicker({dateFmt:'H:mm',minDate:'#F{$dp.$D(\'pcsdtime2\')}',readOnly:true})"/>
+                            </td>
+                            <td><input type="text" name="power_set2" class="cus-table-input" id="chargeA2"></td>
+                        </tr>
+                        <tr>
+                            <td>时间段3</td>
+                            <td>
+                                <input type="text" class="Wdate" name="start_time3" id="pcsdtime3" onclick="WdatePicker({dateFmt:'H:mm',maxDate:'#F{$dp.$D(\'pcsdtime31\')}',readOnly:true})"/>
+                            </td>
+                            <td>
+                                <input type="text" class="Wdate" name="stop_time3" id="pcsdtime31" onclick="WdatePicker({dateFmt:'H:mm',minDate:'#F{$dp.$D(\'pcsdtime3\')}',readOnly:true})"/>
+                            </td>
+                            <td><input type="text" name="power_set3" class="cus-table-input" id="chargeA3"></td>
+                        </tr>
+                        <tr>
+                            <td>时间段4</td>
+                            <td>
+                                <input type="text" class="Wdate" name="start_time4" id="pcsdtime4" onclick="WdatePicker({dateFmt:'H:mm',maxDate:'#F{$dp.$D(\'pcsdtime41\')}',readOnly:true})"/>
+                            </td>
+                            <td>
+                                <input type="text" class="Wdate" name="stop_time4" id="pcsdtime41" onclick="WdatePicker({dateFmt:'H:mm',minDate:'#F{$dp.$D(\'pcsdtime4\')}',readOnly:true})"/>
+                            </td>
+                            <td><input type="text" name="power_set4" class="cus-table-input" id="chargeA4"></td>
+                        </tr>
+                        </tbody>
                     </table>
-                    <a class="cus-img-btn ceh-excut" onclick="pcs.enableExcute()">执行</a>
+                    </form>
+                    <div class="cwc-tit">设置说明：充电电流充电为负，放电为正</div>
+                    <a class="cus-img-btn ceh-excut" onclick="pcs.timeLineExcute()">执行</a>
                 </div>
             </div>
         </div>

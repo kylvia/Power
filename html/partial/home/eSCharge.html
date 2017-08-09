@@ -1,39 +1,41 @@
-<div class="cus-esc-container">
-    <div class="cus-esc-box">
-        <h2 class="ess-tit">BMS 01</h2>
+<div class="cus-esc-container-loading">正在加载......</div>
+<div class="cus-esc-container" id="cus-esc-container">
+    <div class="cus-esc-box" id="bms01">
+        <h2 class="ess-tit" id="bms1_device_name">BMS 01</h2>
+        <input type="hidden" id="bms1_device_id" class="deviceBMSId" value="111">
         <div class="ess-section clearfix">
             <div class="psc-section-item psi-one">
                 <div class="bms-img">
                     <div class="bms-img-status">
                         <div class="mnf-img-val">
-                            <div class="mnf-img-per"></div>
+                            <div class="mnf-img-per" id="bms1_soc_per"></div>
                         </div>
                     </div>
                     <div class="bms-img-txt">
-                        <p>SOC<span class="bms-value">87%</span></p>
+                        <p>SOC<span class="bms-value" id="bms1_soc">87%</span></p>
                     </div>
                 </div>
                 <div class="psi-status">
                     <div class="psi-status-item">
-                        <p>生命信号 :<b class="psis-signal-off"></b></p>
+                        <p>生命信号 :<b class="psis-signal on"></b></p>
                     </div>
                     <div class="psi-status-item">
-                        <p>充电 :<b class="psis-icon psis-comm-on"></b></p>
+                        <p>充电 :<b class="psis-icon psis-charge psis-cdb on"></b></p>
                     </div>
                     <div class="psi-status-item">
-                        <p>放电 :<b class="psis-icon psis-comm-on"></b></p>
+                        <p>放电 :<b class="psis-icon psis-discharge psis-cdb on"></b></p>
                     </div>
                     <div class="psi-status-item">
-                        <p>通讯 :<b class="psis-icon psis-comm-on"></b></p>
+                        <p>通讯 :<b class="psis-icon psis-comm on"></b></p>
                     </div>
                     <div class="psi-status-item">
-                        <p>接触器 :<b class="psis-icon"></b></p>
+                        <p>接触器 :<b class="psis-icon psis-contactor"></b></p>
                     </div>
                     <div class="psi-status-item">
-                        <p>故障 :<b class="psis-icon psis-comm-on"></b></p>
+                        <p>故障 :<b class="psis-icon psis-break psis-cdb on"></b></p>
                     </div>
                     <div class="psi-status-item">
-                        <p>待机 :<b class="psis-icon psis-comm-on"></b></p>
+                        <p>待机 :<b class="psis-icon psis-standby psis-cdb on"></b></p>
                     </div>
                 </div>
             </div>
@@ -41,52 +43,52 @@
                 <div class="bms-details">
                     <table>
                         <tr>
-                            <td>单体最大电压（编号 052）：</td>
-                            <td><span class="bms-value">3.247</span><span class="bms-unit">V</span></td>
+                            <td>单体最大电压(编号 <span id="bms1_num_cellvoltmax">052</span>)：</td>
+                            <td><span class="bms-value" id="bms1_volt_cellmax">3.247</span><!----></td>
                             <td>SOH(电池健康度)：</td>
-                            <td><span class="bms-value">1005</span><span class="bms-unit"></span></td>
+                            <td><span class="bms-value" id="bms1_soh">1005</span><span class="bms-unit"></span></td>
                         </tr>
                         <tr>
-                            <td>单体最小电压（编号 052）：</td>
-                            <td><span class="bms-value">3.232</span><span class="bms-unit">V</span></td>
+                            <td>单体最小电压(编号 <span id="bms1_num_cellvoltmin">052</span>)：</td>
+                            <td><span class="bms-value" id="bms1_volt_cellmin">3.232</span></td>
                             <td>系统绝缘值：</td>
-                            <td><span class="bms-value">216</span><span class="bms-unit">V</span></td>
+                            <td><span class="bms-value" id="bms1_insulation_res">216</span></td>
                         </tr>
                         <tr>
                             <td>单体平均电压：</td>
-                            <td><span class="bms-value">3.247</span><span class="bms-unit">V</span></td>
+                            <td><span class="bms-value" id="bms1_volt_cellavg">3.247</span></td>
                             <td>系统当前充电电流上限：</td>
-                            <td><span class="bms-value">12</span><span class="bms-unit">A</span></td>
+                            <td><span class="bms-value" id="bms1_curr_chgLimit">12</span></td>
                         </tr>
                         <tr>
-                            <td>单体最高温度（编号 052）：</td>
-                            <td><span class="bms-value">36.4</span><span class="bms-unit">℃</span></td>
+                            <td>单体最高温度(编号 <span id="bms1_num_tempmax">052</span>)：</td>
+                            <td><span class="bms-value" id="bms1_temp_cellmax">36.4</span></td>
                             <td>系统当前放电电流上限：</td>
-                            <td><span class="bms-value">216</span><span class="bms-unit">V</span></td>
+                            <td><span class="bms-value" id="bms1_curr_dchLimit">216</span></td>
                         </tr>
                         <tr>
-                            <td>单体最低温度（编号 052）：</td>
-                            <td><span class="bms-value">28.7</span><span class="bms-unit">℃</span></td>
+                            <td>单体最低温度(编号 <span id="bms1_num_tempmin">052</span>)：</td>
+                            <td><span class="bms-value" id="bms1_temp_cellmin">28.7</span></td>
                             <td>系统当前充电功率上限：</td>
-                            <td><span class="bms-value">12</span><span class="bms-unit">W</span></td>
+                            <td><span class="bms-value" id="bms1_power_chgLimit">12</span></td>
                         </tr>
                         <tr>
-                            <td>单体平均温度（编号 052）：</td>
-                            <td><span class="bms-value">32.47</span><span class="bms-unit">℃</span></td>
+                            <td>单体平均温度：</td>
+                            <td><span class="bms-value" id="bms1_temp_cellave">32.47</span></td>
                             <td>系统当前放电功率上限：</td>
-                            <td><span class="bms-value">12</span><span class="bms-unit">W</span></td>
+                            <td><span class="bms-value" id="bms1_power_dchLimit">12</span></td>
                         </tr>
                         <tr>
                             <td>母线电压：</td>
-                            <td><span class="bms-value">327</span><span class="bms-unit">V</span></td>
+                            <td><span class="bms-value" id="bms1_udc_ever">327</span></td>
                             <td>系统最高允许充电电压：</td>
-                            <td><span class="bms-value">12</span><span class="bms-unit">V</span></td>
+                            <td><span class="bms-value" id="bms1_chg_packvoltmax_limit">12</span></td>
                         </tr>
                         <tr>
                             <td>母线电流：</td>
-                            <td><span class="bms-value">23</span><span class="bms-unit">A</span></td>
+                            <td><span class="bms-value" id="bms1_idc_ever">23</span></td>
                             <td>单体最高允许充电电压：</td>
-                            <td><span class="bms-value">12</span><span class="bms-unit">V</span></td>
+                            <td><span class="bms-value" id="bms1_chg_cellvoltmax_limit">12</span></td>
                         </tr>
                     </table>
 
@@ -94,41 +96,42 @@
             </div>
         </div>
     </div>
-    <div class="cus-esc-box">
-        <h2 class="ess-tit">BMS 02</h2>
+    <div class="cus-esc-box" id="bms02">
+        <h2 class="ess-tit" id="bms2_device_name">BMS 01</h2>
+        <input type="hidden" id="bms2_device_id" class="deviceBMSId" value="111">
         <div class="ess-section clearfix">
             <div class="psc-section-item psi-one">
                 <div class="bms-img">
                     <div class="bms-img-status">
                         <div class="mnf-img-val">
-                            <div class="mnf-img-per"></div>
+                            <div class="mnf-img-per" id="bms2_soc_per"></div>
                         </div>
                     </div>
                     <div class="bms-img-txt">
-                        <p>SOC<span class="bms-value">79%</span></p>
+                        <p>SOC<span class="bms-value" id="bms2_soc">87%</span></p>
                     </div>
                 </div>
                 <div class="psi-status">
                     <div class="psi-status-item">
-                        <p>生命信号 :<b class="psis-signal-off"></b></p>
+                        <p>生命信号 :<b class="psis-signal on"></b></p>
                     </div>
                     <div class="psi-status-item">
-                        <p>充电 :<b class="psis-icon psis-comm-on"></b></p>
+                        <p>充电 :<b class="psis-icon psis-charge psis-cdb on"></b></p>
                     </div>
                     <div class="psi-status-item">
-                        <p>放电 :<b class="psis-icon psis-comm-on"></b></p>
+                        <p>放电 :<b class="psis-icon psis-discharge psis-cdb on"></b></p>
                     </div>
                     <div class="psi-status-item">
-                        <p>通讯 :<b class="psis-icon psis-comm-on"></b></p>
+                        <p>通讯 :<b class="psis-icon psis-comm on"></b></p>
                     </div>
                     <div class="psi-status-item">
-                        <p>接触器 :<b class="psis-icon"></b></p>
+                        <p>接触器 :<b class="psis-icon psis-contactor"></b></p>
                     </div>
                     <div class="psi-status-item">
-                        <p>故障 :<b class="psis-icon psis-comm-on"></b></p>
+                        <p>故障 :<b class="psis-icon psis-break psis-cdb on"></b></p>
                     </div>
                     <div class="psi-status-item">
-                        <p>待机 :<b class="psis-icon psis-comm-on"></b></p>
+                        <p>待机 :<b class="psis-icon psis-standby psis-cdb on"></b></p>
                     </div>
                 </div>
             </div>
@@ -136,52 +139,52 @@
                 <div class="bms-details">
                     <table>
                         <tr>
-                            <td>单体最大电压（编号 052）：</td>
-                            <td><span class="bms-value">3.247</span><span class="bms-unit">V</span></td>
+                            <td>单体最大电压(编号 <span id="bms2_num_cellvoltmax">052</span>)：</td>
+                            <td><span class="bms-value" id="bms2_volt_cellmax">3.247</span><!----></td>
                             <td>SOH(电池健康度)：</td>
-                            <td><span class="bms-value">1005</span><span class="bms-unit"></span></td>
+                            <td><span class="bms-value" id="bms2_soh">1005</span><span class="bms-unit"></span></td>
                         </tr>
                         <tr>
-                            <td>单体最小电压（编号 052）：</td>
-                            <td><span class="bms-value">3.232</span><span class="bms-unit">V</span></td>
+                            <td>单体最小电压(编号 <span id="bms2_num_cellvoltmin">052</span>)：</td>
+                            <td><span class="bms-value" id="bms2_volt_cellmin">3.232</span></td>
                             <td>系统绝缘值：</td>
-                            <td><span class="bms-value">216</span><span class="bms-unit">V</span></td>
+                            <td><span class="bms-value" id="bms2_insulation_res">216</span></td>
                         </tr>
                         <tr>
                             <td>单体平均电压：</td>
-                            <td><span class="bms-value">3.247</span><span class="bms-unit">V</span></td>
+                            <td><span class="bms-value" id="bms2_volt_cellavg">3.247</span></td>
                             <td>系统当前充电电流上限：</td>
-                            <td><span class="bms-value">12</span><span class="bms-unit">A</span></td>
+                            <td><span class="bms-value" id="bms2_curr_chgLimit">12</span></td>
                         </tr>
                         <tr>
-                            <td>单体最高温度（编号 052）：</td>
-                            <td><span class="bms-value">36.4</span><span class="bms-unit">℃</span></td>
+                            <td>单体最高温度(编号 <span id="bms2_num_tempmax">052</span>)：</td>
+                            <td><span class="bms-value" id="bms2_temp_cellmax">36.4</span></td>
                             <td>系统当前放电电流上限：</td>
-                            <td><span class="bms-value">216</span><span class="bms-unit">V</span></td>
+                            <td><span class="bms-value" id="bms2_curr_dchLimit">216</span></td>
                         </tr>
                         <tr>
-                            <td>单体最低温度（编号 052）：</td>
-                            <td><span class="bms-value">28.7</span><span class="bms-unit">℃</span></td>
+                            <td>单体最低温度(编号 <span id="bms2_num_tempmin">052</span>)：</td>
+                            <td><span class="bms-value" id="bms2_temp_cellmin">28.7</span></td>
                             <td>系统当前充电功率上限：</td>
-                            <td><span class="bms-value">12</span><span class="bms-unit">W</span></td>
+                            <td><span class="bms-value" id="bms2_power_chgLimit">12</span></td>
                         </tr>
                         <tr>
-                            <td>单体平均温度（编号 052）：</td>
-                            <td><span class="bms-value">32.47</span><span class="bms-unit">℃</span></td>
+                            <td>单体平均温度：</td>
+                            <td><span class="bms-value" id="bms2_temp_cellave">32.47</span></td>
                             <td>系统当前放电功率上限：</td>
-                            <td><span class="bms-value">12</span><span class="bms-unit">W</span></td>
+                            <td><span class="bms-value" id="bms2_power_dchLimit">12</span></td>
                         </tr>
                         <tr>
                             <td>母线电压：</td>
-                            <td><span class="bms-value">327</span><span class="bms-unit">V</span></td>
+                            <td><span class="bms-value" id="bms2_udc_ever">327</span></td>
                             <td>系统最高允许充电电压：</td>
-                            <td><span class="bms-value">12</span><span class="bms-unit">V</span></td>
+                            <td><span class="bms-value" id="bms2_chg_packvoltmax_limit">12</span></td>
                         </tr>
                         <tr>
                             <td>母线电流：</td>
-                            <td><span class="bms-value">23</span><span class="bms-unit">A</span></td>
+                            <td><span class="bms-value" id="bms2_idc_ever">23</span></td>
                             <td>单体最高允许充电电压：</td>
-                            <td><span class="bms-value">12</span><span class="bms-unit">V</span></td>
+                            <td><span class="bms-value" id="bms2_chg_cellvoltmax_limit">12</span></td>
                         </tr>
                     </table>
 
@@ -189,41 +192,42 @@
             </div>
         </div>
     </div>
-    <div class="cus-esc-box">
-        <h2 class="ess-tit">BMS 03</h2>
+    <div class="cus-esc-box" id="bms03">
+        <h2 class="ess-tit" id="bms3_device_name">BMS 01</h2>
+        <input type="hidden" id="bms3_device_id" class="deviceBMSId" value="111">
         <div class="ess-section clearfix">
             <div class="psc-section-item psi-one">
                 <div class="bms-img">
                     <div class="bms-img-status">
                         <div class="mnf-img-val">
-                            <div class="mnf-img-per"></div>
+                            <div class="mnf-img-per" id="bms3_soc_per"></div>
                         </div>
                     </div>
                     <div class="bms-img-txt">
-                        <p>SOC<span class="bms-value">24%</span></p>
+                        <p>SOC<span class="bms-value" id="bms3_soc">87%</span></p>
                     </div>
                 </div>
                 <div class="psi-status">
                     <div class="psi-status-item">
-                        <p>生命信号 :<b class="psis-signal-off"></b></p>
+                        <p>生命信号 :<b class="psis-signal on"></b></p>
                     </div>
                     <div class="psi-status-item">
-                        <p>充电 :<b class="psis-icon psis-comm-on"></b></p>
+                        <p>充电 :<b class="psis-icon psis-charge psis-cdb on"></b></p>
                     </div>
                     <div class="psi-status-item">
-                        <p>放电 :<b class="psis-icon psis-comm-on"></b></p>
+                        <p>放电 :<b class="psis-icon psis-discharge psis-cdb on"></b></p>
                     </div>
                     <div class="psi-status-item">
-                        <p>通讯 :<b class="psis-icon psis-comm-on"></b></p>
+                        <p>通讯 :<b class="psis-icon psis-comm on"></b></p>
                     </div>
                     <div class="psi-status-item">
-                        <p>接触器 :<b class="psis-icon"></b></p>
+                        <p>接触器 :<b class="psis-icon psis-contactor"></b></p>
                     </div>
                     <div class="psi-status-item">
-                        <p>故障 :<b class="psis-icon psis-comm-on"></b></p>
+                        <p>故障 :<b class="psis-icon psis-break psis-cdb on"></b></p>
                     </div>
                     <div class="psi-status-item">
-                        <p>待机 :<b class="psis-icon psis-comm-on"></b></p>
+                        <p>待机 :<b class="psis-icon psis-standby psis-cdb on"></b></p>
                     </div>
                 </div>
             </div>
@@ -231,52 +235,52 @@
                 <div class="bms-details">
                     <table>
                         <tr>
-                            <td>单体最大电压（编号 052）：</td>
-                            <td><span class="bms-value">3.247</span><span class="bms-unit">V</span></td>
+                            <td>单体最大电压(编号 <span id="bms3_num_cellvoltmax">052</span>)：</td>
+                            <td><span class="bms-value" id="bms3_volt_cellmax">3.247</span><!----></td>
                             <td>SOH(电池健康度)：</td>
-                            <td><span class="bms-value">1005</span><span class="bms-unit"></span></td>
+                            <td><span class="bms-value" id="bms3_soh">1005</span><span class="bms-unit"></span></td>
                         </tr>
                         <tr>
-                            <td>单体最小电压（编号 052）：</td>
-                            <td><span class="bms-value">3.232</span><span class="bms-unit">V</span></td>
+                            <td>单体最小电压(编号 <span id="bms3_num_cellvoltmin">052</span>)：</td>
+                            <td><span class="bms-value" id="bms3_volt_cellmin">3.232</span></td>
                             <td>系统绝缘值：</td>
-                            <td><span class="bms-value">216</span><span class="bms-unit">V</span></td>
+                            <td><span class="bms-value" id="bms3_insulation_res">216</span></td>
                         </tr>
                         <tr>
                             <td>单体平均电压：</td>
-                            <td><span class="bms-value">3.247</span><span class="bms-unit">V</span></td>
+                            <td><span class="bms-value" id="bms3_volt_cellavg">3.247</span></td>
                             <td>系统当前充电电流上限：</td>
-                            <td><span class="bms-value">12</span><span class="bms-unit">A</span></td>
+                            <td><span class="bms-value" id="bms3_curr_chgLimit">12</span></td>
                         </tr>
                         <tr>
-                            <td>单体最高温度（编号 052）：</td>
-                            <td><span class="bms-value">36.4</span><span class="bms-unit">℃</span></td>
+                            <td>单体最高温度(编号 <span id="bms3_num_tempmax">052</span>)：</td>
+                            <td><span class="bms-value" id="bms3_temp_cellmax">36.4</span></td>
                             <td>系统当前放电电流上限：</td>
-                            <td><span class="bms-value">216</span><span class="bms-unit">V</span></td>
+                            <td><span class="bms-value" id="bms3_curr_dchLimit">216</span></td>
                         </tr>
                         <tr>
-                            <td>单体最低温度（编号 052）：</td>
-                            <td><span class="bms-value">28.7</span><span class="bms-unit">℃</span></td>
+                            <td>单体最低温度(编号 <span id="bms3_num_tempmin">052</span>)：</td>
+                            <td><span class="bms-value" id="bms3_temp_cellmin">28.7</span></td>
                             <td>系统当前充电功率上限：</td>
-                            <td><span class="bms-value">12</span><span class="bms-unit">W</span></td>
+                            <td><span class="bms-value" id="bms3_power_chgLimit">12</span></td>
                         </tr>
                         <tr>
-                            <td>单体平均温度（编号 052）：</td>
-                            <td><span class="bms-value">32.47</span><span class="bms-unit">℃</span></td>
+                            <td>单体平均温度：</td>
+                            <td><span class="bms-value" id="bms3_temp_cellave">32.47</span></td>
                             <td>系统当前放电功率上限：</td>
-                            <td><span class="bms-value">12</span><span class="bms-unit">W</span></td>
+                            <td><span class="bms-value" id="bms3_power_dchLimit">12</span></td>
                         </tr>
                         <tr>
                             <td>母线电压：</td>
-                            <td><span class="bms-value">327</span><span class="bms-unit">V</span></td>
+                            <td><span class="bms-value" id="bms3_udc_ever">327</span></td>
                             <td>系统最高允许充电电压：</td>
-                            <td><span class="bms-value">12</span><span class="bms-unit">V</span></td>
+                            <td><span class="bms-value" id="bms3_chg_packvoltmax_limit">12</span></td>
                         </tr>
                         <tr>
                             <td>母线电流：</td>
-                            <td><span class="bms-value">23</span><span class="bms-unit">A</span></td>
+                            <td><span class="bms-value" id="bms3_idc_ever">23</span></td>
                             <td>单体最高允许充电电压：</td>
-                            <td><span class="bms-value">12</span><span class="bms-unit">V</span></td>
+                            <td><span class="bms-value" id="bms3_chg_cellvoltmax_limit">12</span></td>
                         </tr>
                     </table>
 
@@ -284,41 +288,42 @@
             </div>
         </div>
     </div>
-    <div class="cus-esc-box">
-        <h2 class="ess-tit">BMS 04</h2>
+    <div class="cus-esc-box" id="bms04">
+        <h2 class="ess-tit" id="bms4_device_name">BMS 01</h2>
+        <input type="hidden" id="bms4_device_id" class="deviceBMSId" value="111">
         <div class="ess-section clearfix">
             <div class="psc-section-item psi-one">
                 <div class="bms-img">
                     <div class="bms-img-status">
                         <div class="mnf-img-val">
-                            <div class="mnf-img-per"></div>
+                            <div class="mnf-img-per" id="bms4_soc_per"></div>
                         </div>
                     </div>
                     <div class="bms-img-txt">
-                        <p>SOC<span class="bms-value">24%</span></p>
+                        <p>SOC<span class="bms-value" id="bms4_soc">87%</span></p>
                     </div>
                 </div>
                 <div class="psi-status">
                     <div class="psi-status-item">
-                        <p>生命信号 :<b class="psis-signal-off"></b></p>
+                        <p>生命信号 :<b class="psis-signal on"></b></p>
                     </div>
                     <div class="psi-status-item">
-                        <p>充电 :<b class="psis-icon psis-comm-on"></b></p>
+                        <p>充电 :<b class="psis-icon psis-charge psis-cdb on"></b></p>
                     </div>
                     <div class="psi-status-item">
-                        <p>放电 :<b class="psis-icon psis-comm-on"></b></p>
+                        <p>放电 :<b class="psis-icon psis-discharge psis-cdb on"></b></p>
                     </div>
                     <div class="psi-status-item">
-                        <p>通讯 :<b class="psis-icon psis-comm-on"></b></p>
+                        <p>通讯 :<b class="psis-icon psis-comm on"></b></p>
                     </div>
                     <div class="psi-status-item">
-                        <p>接触器 :<b class="psis-icon"></b></p>
+                        <p>接触器 :<b class="psis-icon psis-contactor"></b></p>
                     </div>
                     <div class="psi-status-item">
-                        <p>故障 :<b class="psis-icon psis-comm-on"></b></p>
+                        <p>故障 :<b class="psis-icon psis-break psis-cdb on"></b></p>
                     </div>
                     <div class="psi-status-item">
-                        <p>待机 :<b class="psis-icon psis-comm-on"></b></p>
+                        <p>待机 :<b class="psis-icon psis-standby psis-cdb on"></b></p>
                     </div>
                 </div>
             </div>
@@ -326,52 +331,52 @@
                 <div class="bms-details">
                     <table>
                         <tr>
-                            <td>单体最大电压（编号 052）：</td>
-                            <td><span class="bms-value">3.247</span><span class="bms-unit">V</span></td>
+                            <td>单体最大电压(编号 <span id="bms4_num_cellvoltmax">052</span>)：</td>
+                            <td><span class="bms-value" id="bms4_volt_cellmax">3.247</span><!----></td>
                             <td>SOH(电池健康度)：</td>
-                            <td><span class="bms-value">1005</span><span class="bms-unit"></span></td>
+                            <td><span class="bms-value" id="bms4_soh">1005</span><span class="bms-unit"></span></td>
                         </tr>
                         <tr>
-                            <td>单体最小电压（编号 052）：</td>
-                            <td><span class="bms-value">3.232</span><span class="bms-unit">V</span></td>
+                            <td>单体最小电压(编号 <span id="bms4_num_cellvoltmin">052</span>)：</td>
+                            <td><span class="bms-value" id="bms4_volt_cellmin">3.232</span></td>
                             <td>系统绝缘值：</td>
-                            <td><span class="bms-value">216</span><span class="bms-unit">V</span></td>
+                            <td><span class="bms-value" id="bms4_insulation_res">216</span></td>
                         </tr>
                         <tr>
                             <td>单体平均电压：</td>
-                            <td><span class="bms-value">3.247</span><span class="bms-unit">V</span></td>
+                            <td><span class="bms-value" id="bms4_volt_cellavg">3.247</span></td>
                             <td>系统当前充电电流上限：</td>
-                            <td><span class="bms-value">12</span><span class="bms-unit">A</span></td>
+                            <td><span class="bms-value" id="bms4_curr_chgLimit">12</span></td>
                         </tr>
                         <tr>
-                            <td>单体最高温度（编号 052）：</td>
-                            <td><span class="bms-value">36.4</span><span class="bms-unit">℃</span></td>
+                            <td>单体最高温度(编号 <span id="bms4_num_tempmax">052</span>)：</td>
+                            <td><span class="bms-value" id="bms4_temp_cellmax">36.4</span></td>
                             <td>系统当前放电电流上限：</td>
-                            <td><span class="bms-value">216</span><span class="bms-unit">V</span></td>
+                            <td><span class="bms-value" id="bms4_curr_dchLimit">216</span></td>
                         </tr>
                         <tr>
-                            <td>单体最低温度（编号 052）：</td>
-                            <td><span class="bms-value">28.7</span><span class="bms-unit">℃</span></td>
+                            <td>单体最低温度(编号 <span id="bms4_num_tempmin">052</span>)：</td>
+                            <td><span class="bms-value" id="bms4_temp_cellmin">28.7</span></td>
                             <td>系统当前充电功率上限：</td>
-                            <td><span class="bms-value">12</span><span class="bms-unit">W</span></td>
+                            <td><span class="bms-value" id="bms4_power_chgLimit">12</span></td>
                         </tr>
                         <tr>
-                            <td>单体平均温度（编号 052）：</td>
-                            <td><span class="bms-value">32.47</span><span class="bms-unit">℃</span></td>
+                            <td>单体平均温度：</td>
+                            <td><span class="bms-value" id="bms4_temp_cellave">32.47</span></td>
                             <td>系统当前放电功率上限：</td>
-                            <td><span class="bms-value">12</span><span class="bms-unit">W</span></td>
+                            <td><span class="bms-value" id="bms4_power_dchLimit">12</span></td>
                         </tr>
                         <tr>
                             <td>母线电压：</td>
-                            <td><span class="bms-value">327</span><span class="bms-unit">V</span></td>
+                            <td><span class="bms-value" id="bms4_udc_ever">327</span></td>
                             <td>系统最高允许充电电压：</td>
-                            <td><span class="bms-value">12</span><span class="bms-unit">V</span></td>
+                            <td><span class="bms-value" id="bms4_chg_packvoltmax_limit">12</span></td>
                         </tr>
                         <tr>
                             <td>母线电流：</td>
-                            <td><span class="bms-value">23</span><span class="bms-unit">A</span></td>
+                            <td><span class="bms-value" id="bms4_idc_ever">23</span></td>
                             <td>单体最高允许充电电压：</td>
-                            <td><span class="bms-value">12</span><span class="bms-unit">V</span></td>
+                            <td><span class="bms-value" id="bms4_chg_cellvoltmax_limit">12</span></td>
                         </tr>
                     </table>
 
@@ -379,41 +384,42 @@
             </div>
         </div>
     </div>
-    <div class="cus-esc-box">
-        <h2 class="ess-tit">BMS 05</h2>
+    <div class="cus-esc-box" id="bms05">
+        <h2 class="ess-tit" id="bms5_device_name">BMS 01</h2>
+        <input type="hidden" id="bms5_device_id" class="deviceBMSId" value="111">
         <div class="ess-section clearfix">
             <div class="psc-section-item psi-one">
                 <div class="bms-img">
                     <div class="bms-img-status">
                         <div class="mnf-img-val">
-                            <div class="mnf-img-per"></div>
+                            <div class="mnf-img-per" id="bms5_soc_per"></div>
                         </div>
                     </div>
                     <div class="bms-img-txt">
-                        <p>SOC<span class="bms-value">88%</span></p>
+                        <p>SOC<span class="bms-value" id="bms5_soc">87%</span></p>
                     </div>
                 </div>
                 <div class="psi-status">
                     <div class="psi-status-item">
-                        <p>生命信号 :<b class="psis-signal-off"></b></p>
+                        <p>生命信号 :<b class="psis-signal on"></b></p>
                     </div>
                     <div class="psi-status-item">
-                        <p>充电 :<b class="psis-icon psis-comm-on"></b></p>
+                        <p>充电 :<b class="psis-icon psis-charge psis-cdb on"></b></p>
                     </div>
                     <div class="psi-status-item">
-                        <p>放电 :<b class="psis-icon psis-comm-on"></b></p>
+                        <p>放电 :<b class="psis-icon psis-discharge psis-cdb on"></b></p>
                     </div>
                     <div class="psi-status-item">
-                        <p>通讯 :<b class="psis-icon psis-comm-on"></b></p>
+                        <p>通讯 :<b class="psis-icon psis-comm on"></b></p>
                     </div>
                     <div class="psi-status-item">
-                        <p>接触器 :<b class="psis-icon"></b></p>
+                        <p>接触器 :<b class="psis-icon psis-contactor"></b></p>
                     </div>
                     <div class="psi-status-item">
-                        <p>故障 :<b class="psis-icon psis-comm-on"></b></p>
+                        <p>故障 :<b class="psis-icon psis-break psis-cdb on"></b></p>
                     </div>
                     <div class="psi-status-item">
-                        <p>待机 :<b class="psis-icon psis-comm-on"></b></p>
+                        <p>待机 :<b class="psis-icon psis-standby psis-cdb on"></b></p>
                     </div>
                 </div>
             </div>
@@ -421,52 +427,52 @@
                 <div class="bms-details">
                     <table>
                         <tr>
-                            <td>单体最大电压（编号 052）：</td>
-                            <td><span class="bms-value">3.247</span><span class="bms-unit">V</span></td>
+                            <td>单体最大电压(编号 <span id="bms5_num_cellvoltmax">052</span>)：</td>
+                            <td><span class="bms-value" id="bms5_volt_cellmax">3.247</span><!----></td>
                             <td>SOH(电池健康度)：</td>
-                            <td><span class="bms-value">1005</span><span class="bms-unit"></span></td>
+                            <td><span class="bms-value" id="bms5_soh">1005</span><span class="bms-unit"></span></td>
                         </tr>
                         <tr>
-                            <td>单体最小电压（编号 052）：</td>
-                            <td><span class="bms-value">3.232</span><span class="bms-unit">V</span></td>
+                            <td>单体最小电压(编号 <span id="bms5_num_cellvoltmin">052</span>)：</td>
+                            <td><span class="bms-value" id="bms5_volt_cellmin">3.232</span></td>
                             <td>系统绝缘值：</td>
-                            <td><span class="bms-value">216</span><span class="bms-unit">V</span></td>
+                            <td><span class="bms-value" id="bms5_insulation_res">216</span></td>
                         </tr>
                         <tr>
                             <td>单体平均电压：</td>
-                            <td><span class="bms-value">3.247</span><span class="bms-unit">V</span></td>
+                            <td><span class="bms-value" id="bms5_volt_cellavg">3.247</span></td>
                             <td>系统当前充电电流上限：</td>
-                            <td><span class="bms-value">12</span><span class="bms-unit">A</span></td>
+                            <td><span class="bms-value" id="bms5_curr_chgLimit">12</span></td>
                         </tr>
                         <tr>
-                            <td>单体最高温度（编号 052）：</td>
-                            <td><span class="bms-value">36.4</span><span class="bms-unit">℃</span></td>
+                            <td>单体最高温度(编号 <span id="bms5_num_tempmax">052</span>)：</td>
+                            <td><span class="bms-value" id="bms5_temp_cellmax">36.4</span></td>
                             <td>系统当前放电电流上限：</td>
-                            <td><span class="bms-value">216</span><span class="bms-unit">V</span></td>
+                            <td><span class="bms-value" id="bms5_curr_dchLimit">216</span></td>
                         </tr>
                         <tr>
-                            <td>单体最低温度（编号 052）：</td>
-                            <td><span class="bms-value">28.7</span><span class="bms-unit">℃</span></td>
+                            <td>单体最低温度(编号 <span id="bms5_num_tempmin">052</span>)：</td>
+                            <td><span class="bms-value" id="bms5_temp_cellmin">28.7</span></td>
                             <td>系统当前充电功率上限：</td>
-                            <td><span class="bms-value">12</span><span class="bms-unit">W</span></td>
+                            <td><span class="bms-value" id="bms5_power_chgLimit">12</span></td>
                         </tr>
                         <tr>
-                            <td>单体平均温度（编号 052）：</td>
-                            <td><span class="bms-value">32.47</span><span class="bms-unit">℃</span></td>
+                            <td>单体平均温度：</td>
+                            <td><span class="bms-value" id="bms5_temp_cellave">32.47</span></td>
                             <td>系统当前放电功率上限：</td>
-                            <td><span class="bms-value">12</span><span class="bms-unit">W</span></td>
+                            <td><span class="bms-value" id="bms5_power_dchLimit">12</span></td>
                         </tr>
                         <tr>
                             <td>母线电压：</td>
-                            <td><span class="bms-value">327</span><span class="bms-unit">V</span></td>
+                            <td><span class="bms-value" id="bms5_udc_ever">327</span></td>
                             <td>系统最高允许充电电压：</td>
-                            <td><span class="bms-value">12</span><span class="bms-unit">V</span></td>
+                            <td><span class="bms-value" id="bms5_chg_packvoltmax_limit">12</span></td>
                         </tr>
                         <tr>
                             <td>母线电流：</td>
-                            <td><span class="bms-value">23</span><span class="bms-unit">A</span></td>
+                            <td><span class="bms-value" id="bms5_idc_ever">23</span></td>
                             <td>单体最高允许充电电压：</td>
-                            <td><span class="bms-value">12</span><span class="bms-unit">V</span></td>
+                            <td><span class="bms-value" id="bms5_chg_cellvoltmax_limit">12</span></td>
                         </tr>
                     </table>
 
@@ -474,41 +480,42 @@
             </div>
         </div>
     </div>
-    <div class="cus-esc-box">
-        <h2 class="ess-tit">BMS 06</h2>
+    <div class="cus-esc-box" id="bms06">
+        <h2 class="ess-tit" id="bms6_device_name">BMS 01</h2>
+        <input type="hidden" id="bms6_device_id" class="deviceBMSId" value="111">
         <div class="ess-section clearfix">
             <div class="psc-section-item psi-one">
                 <div class="bms-img">
                     <div class="bms-img-status">
                         <div class="mnf-img-val">
-                            <div class="mnf-img-per"></div>
+                            <div class="mnf-img-per" id="bms6_soc_per"></div>
                         </div>
                     </div>
                     <div class="bms-img-txt">
-                        <p>SOC<span class="bms-value">24%</span></p>
+                        <p>SOC<span class="bms-value" id="bms6_soc">87%</span></p>
                     </div>
                 </div>
                 <div class="psi-status">
                     <div class="psi-status-item">
-                        <p>生命信号 :<b class="psis-signal-off"></b></p>
+                        <p>生命信号 :<b class="psis-signal on"></b></p>
                     </div>
                     <div class="psi-status-item">
-                        <p>充电 :<b class="psis-icon psis-comm-on"></b></p>
+                        <p>充电 :<b class="psis-icon psis-charge psis-cdb on"></b></p>
                     </div>
                     <div class="psi-status-item">
-                        <p>放电 :<b class="psis-icon psis-comm-on"></b></p>
+                        <p>放电 :<b class="psis-icon psis-discharge psis-cdb on"></b></p>
                     </div>
                     <div class="psi-status-item">
-                        <p>通讯 :<b class="psis-icon psis-comm-on"></b></p>
+                        <p>通讯 :<b class="psis-icon psis-comm on"></b></p>
                     </div>
                     <div class="psi-status-item">
-                        <p>接触器 :<b class="psis-icon"></b></p>
+                        <p>接触器 :<b class="psis-icon psis-contactor"></b></p>
                     </div>
                     <div class="psi-status-item">
-                        <p>故障 :<b class="psis-icon psis-comm-on"></b></p>
+                        <p>故障 :<b class="psis-icon psis-break psis-cdb on"></b></p>
                     </div>
                     <div class="psi-status-item">
-                        <p>待机 :<b class="psis-icon psis-comm-on"></b></p>
+                        <p>待机 :<b class="psis-icon psis-standby psis-cdb on"></b></p>
                     </div>
                 </div>
             </div>
@@ -516,52 +523,52 @@
                 <div class="bms-details">
                     <table>
                         <tr>
-                            <td>单体最大电压（编号 052）：</td>
-                            <td><span class="bms-value">3.247</span><span class="bms-unit">V</span></td>
+                            <td>单体最大电压(编号 <span id="bms6_num_cellvoltmax">052</span>)：</td>
+                            <td><span class="bms-value" id="bms6_volt_cellmax">3.247</span><!----></td>
                             <td>SOH(电池健康度)：</td>
-                            <td><span class="bms-value">1005</span><span class="bms-unit"></span></td>
+                            <td><span class="bms-value" id="bms6_soh">1005</span><span class="bms-unit"></span></td>
                         </tr>
                         <tr>
-                            <td>单体最小电压（编号 052）：</td>
-                            <td><span class="bms-value">3.232</span><span class="bms-unit">V</span></td>
+                            <td>单体最小电压(编号 <span id="bms6_num_cellvoltmin">052</span>)：</td>
+                            <td><span class="bms-value" id="bms6_volt_cellmin">3.232</span></td>
                             <td>系统绝缘值：</td>
-                            <td><span class="bms-value">216</span><span class="bms-unit">V</span></td>
+                            <td><span class="bms-value" id="bms6_insulation_res">216</span></td>
                         </tr>
                         <tr>
                             <td>单体平均电压：</td>
-                            <td><span class="bms-value">3.247</span><span class="bms-unit">V</span></td>
+                            <td><span class="bms-value" id="bms6_volt_cellavg">3.247</span></td>
                             <td>系统当前充电电流上限：</td>
-                            <td><span class="bms-value">12</span><span class="bms-unit">A</span></td>
+                            <td><span class="bms-value" id="bms6_curr_chgLimit">12</span></td>
                         </tr>
                         <tr>
-                            <td>单体最高温度（编号 052）：</td>
-                            <td><span class="bms-value">36.4</span><span class="bms-unit">℃</span></td>
+                            <td>单体最高温度(编号 <span id="bms6_num_tempmax">052</span>)：</td>
+                            <td><span class="bms-value" id="bms6_temp_cellmax">36.4</span></td>
                             <td>系统当前放电电流上限：</td>
-                            <td><span class="bms-value">216</span><span class="bms-unit">V</span></td>
+                            <td><span class="bms-value" id="bms6_curr_dchLimit">216</span></td>
                         </tr>
                         <tr>
-                            <td>单体最低温度（编号 052）：</td>
-                            <td><span class="bms-value">28.7</span><span class="bms-unit">℃</span></td>
+                            <td>单体最低温度(编号 <span id="bms6_num_tempmin">052</span>)：</td>
+                            <td><span class="bms-value" id="bms6_temp_cellmin">28.7</span></td>
                             <td>系统当前充电功率上限：</td>
-                            <td><span class="bms-value">12</span><span class="bms-unit">W</span></td>
+                            <td><span class="bms-value" id="bms6_power_chgLimit">12</span></td>
                         </tr>
                         <tr>
-                            <td>单体平均温度（编号 052）：</td>
-                            <td><span class="bms-value">32.47</span><span class="bms-unit">℃</span></td>
+                            <td>单体平均温度：</td>
+                            <td><span class="bms-value" id="bms6_temp_cellave">32.47</span></td>
                             <td>系统当前放电功率上限：</td>
-                            <td><span class="bms-value">12</span><span class="bms-unit">W</span></td>
+                            <td><span class="bms-value" id="bms6_power_dchLimit">12</span></td>
                         </tr>
                         <tr>
                             <td>母线电压：</td>
-                            <td><span class="bms-value">327</span><span class="bms-unit">V</span></td>
+                            <td><span class="bms-value" id="bms6_udc_ever">327</span></td>
                             <td>系统最高允许充电电压：</td>
-                            <td><span class="bms-value">12</span><span class="bms-unit">V</span></td>
+                            <td><span class="bms-value" id="bms6_chg_packvoltmax_limit">12</span></td>
                         </tr>
                         <tr>
                             <td>母线电流：</td>
-                            <td><span class="bms-value">23</span><span class="bms-unit">A</span></td>
+                            <td><span class="bms-value" id="bms6_idc_ever">23</span></td>
                             <td>单体最高允许充电电压：</td>
-                            <td><span class="bms-value">12</span><span class="bms-unit">V</span></td>
+                            <td><span class="bms-value" id="bms6_chg_cellvoltmax_limit">12</span></td>
                         </tr>
                     </table>
 

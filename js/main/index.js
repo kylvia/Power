@@ -54,6 +54,7 @@ require(["jquery",
                 })
 
             }else {
+                debugger;
                 main.loadSys();
             }
 

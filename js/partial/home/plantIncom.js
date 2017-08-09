@@ -2,13 +2,16 @@ define(function(){
     return plantIncom
 });
 var plantIncom = {
+    interval:'',
     Render:function () {
         this.getData();
         var _this = this;
-        setInterval(_this.getData,5000);
+        if(_this.interval) clearInterval(_this.interval);
+        _this.interval = setInterval(_this.getData,5000);
     },
     getData:function () {
         var _this = this;
+        if(main.clearInterCharge(_this.interval,'ps-interval'))return;
         $.ajax({
             url:'/interface/getPlantRevenue',
             type:'post',

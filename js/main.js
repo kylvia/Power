@@ -62,4 +62,12 @@ define(['plugins/App','main/configure','plugins/right'],function(App,Configure,M
             $('#sysBody').loadPage('partial/main.html');
         }*/
     }
+    main.clearInterCharge = function(inter,domId){
+
+        if(!$('#'+domId).length){
+            clearInterval(inter);
+            return true;
+        }
+        return false;
+    }
 });

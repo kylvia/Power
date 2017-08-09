@@ -11,6 +11,11 @@
   border-color:@c;
   background-color: @c;
 }
+.cus-esc-container-loading {
+  height: 100%;
+  width: 100%;
+  padding-top: 2%;
+}
 .cus-esc-container{
   height: 100%;
   width: 100%;
@@ -127,20 +132,22 @@
     .psis-comm-on,.psis-contactor-on{
       .icon-circleBac;
     }
-    .psis-comm-off,.psis-contactor-off{
+    .psis-charge.on,.psis-discharge.on,.psis-comm.on,.psis-contactor.on,.psis-standby.on{
+      .icon-circleBac;
+    }
+    .psis-break.on{
       .icon-circleBac(#ff3333);
     }
-    .psis-signal-off{
+    .psis-signal{
       display: inline-block;
       width: 16px;
       vertical-align: middle;
       height: 16px;
-      margin-left: 10px;
-      background: url("/images/index/signal-green.png") no-repeat center;
-    }
-    .psis-signal-on{
-      .psis-signal-off;
+      margin-left: 8px;
       background: url("/images/index/signal-grey.png") no-repeat center;
+      &.on{
+        background: url("/images/index/signal-green.png") no-repeat center;
+      }
     }
     p:nth-child(2){
       margin-top:5px;

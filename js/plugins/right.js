@@ -24,7 +24,7 @@
 
         return {
             login: function (tokenId, user) {
-                tokenId && Cookies.setCookByName('token', tokenId);
+                tokenId && Cookies.setCookByName('hasToken', tokenId);
                 if (user) {
                     Cookies.setCookByName('userName', user.userName);
                     Cookies.setCookByName('loginName', user.loginName);

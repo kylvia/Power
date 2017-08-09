@@ -2,13 +2,17 @@ define(function(){
     return weather
 });
 var weather = {
+    interval:'',
     Render:function () {
+        var _this = this;
         //获取经纬度
-        this.getLocation();
-        setInterval(this.getLocation(),1800000);
+        _this.getLocation();
+        if(_this.interval) clearInterval(_this.interval);
+        _this.interval = setInterval(this.getLocation(),1800000);
     },
     getLocation:function () {
         var _this = this;
+        if(main.clearInterCharge(_this.interval,'ps-interval'))return;
         $.ajax({
             url:'/interface/getPlantInfo',
             type:'post',

@@ -9,6 +9,11 @@
   border-color:@c;
   background-color: @c;
 }
+.cus-pcs-container-loading{
+  height: 100%;
+  width: 100%;
+  padding-top: 2%;
+}
 .cus-pcs-container{
   height: 100%;
   width: 100%;
@@ -42,18 +47,28 @@
       float: left;
     }
     .psi-one{
-      width: 25.5%;
+      width: 21.5%;
     }
     .psi-two{
       width: 17.1%;
     }
     .psi-thr{
-      width: 57.4%;
+      width: 54%;
     }
   }
   .psi-one{
+    height: 84.3%;
+    border: 1px solid #012A5B;
+    border-radius: 3px;
+    width: 22%;
+    margin: 1.76% 22px 1.76% 30px;
+    .pcs-center-status{
+      height: 100%;
+      padding: 3% 10%;
+    }
     img{
-      margin-top: 6%;
+      margin-top: 13%;
+      vertical-align: top;
     }
   }
   .psi-two{
@@ -87,7 +102,7 @@
     .pcs-details{
       border: 1px solid #012A5B;
       border-radius: 3px;
-      width: 87%;
+      width: 92%;
       height: 76.19%;
       margin: auto;
       text-align: left;
@@ -117,7 +132,7 @@
       color: #00ff00;
     }
     .pcs-setting{
-      width: 87%;
+      width: 90%;
       height: 17%;
       margin: auto;
       margin-top: 5%;
@@ -159,18 +174,29 @@
     }
   }
   .psi-status{
-    width: 100%;
+    width: 32%;
+    display: inline-block;
     text-align: center;
-    margin-top: 9%;
+    margin-top: 13%;
+    vertical-align: top;
+    margin-left: 11px;
   }
   .psi-status-item{
     display: inline-block;
     margin-left: 5%;
+    >p{
+      float: left;
+      &:first-child{
+        margin-right: 5px;
+      }
+    }
     &:first-child{
       margin-left: 0;
     }
     .psis-icon{
-      .icon-circle
+      .icon-circle;
+      vertical-align: middle;
+      margin-bottom: 2px;
     }
     /*.psis-start,.psis-connect{
       .icon-circleBac
@@ -181,10 +207,19 @@
     .psis-break.on{
       .icon-circleBac(#ff3333);
     }
+    &:first-of-type{
+      margin-top: 7px;
+    }
+    &+.psi-status-item{
+      margin-top: 14px;
+    }
   }
 }
 .cus-win-pcscontent{
   margin: 15px 35px 0 35px;
+  label{
+    font-weight: 500;
+  }
   .cwh-setting{
     label{
       width: 170px;
@@ -212,9 +247,9 @@
   }
   .cus-win-condition{
     position: relative;
-    margin-top: 26px;
+    margin-top: 40px;
     width: 550px;
-    height: 172px;
+    height: 305px;
     .cus-win-mark{
       position: absolute;
       z-index: 9;
@@ -233,6 +268,7 @@
       border-radius: 3px;
       h2{
         margin-left: -17px;
+        font-weight: 700;
       }
       .cwc-tit{
         margin-top: 10px;
@@ -270,9 +306,41 @@
     border-radius: 2px;
     background: #011F43;
   }
+  .cwc-enable{
+    margin-top: 15px;
+    label{
+      margin-right: 10px;
+    }
+  }
+//  弹窗表格
+  .pcs-timetable{
+    text-align: center;
+    width: 100%;
+    border-top: 1px solid #006699;
+    border-left: 1px solid #006699;
+    margin-top: 15px;
+    td{
+      border-right: 1px solid #006699;
+      border-bottom: 1px solid #006699;
+      padding: 0 5px;
+      height: 30px;
+    }
+    .cus-table-input{
+      width: 80px;
+      border: none;
+      display: inline-block;
+      margin: auto;
+      &:focus{
+        outline: 0;border: none
+      }
+    }
+  }
 }
 //  验证登陆权限
 .pcs-userValidate{
+  label{
+    font-weight: 500;
+  }
   .rc-user{
     margin-top: 12px;
   }

@@ -2,24 +2,32 @@ define(function(){
     return energeFlow
 });
 var energeFlow = {
+    interval:'',
     Render:function () {
 
+        var _this = this;
         $('.cus-toPage').on('click',function () {
             $('#mainContainer').loadPage($(this).attr('attr-href'));
         })
-
-        setInterval(this.getData(),5000)
+        // this.getData()
+        _this.getData();
+        if(_this.interval) clearInterval(_this.interval);
+        _this.interval = setInterval(_this.getData,5000)
     },
 
     getData:function () {
         var _this = this;
+        if(main.clearInterCharge(_this.interval,'ps-interval'))return;
         $.ajax({
             url:'/interface/getCurrentPower',
             type:'post',
             dataType:'JSON',
             data:JSON.stringify({token:Cookies.getCook('token')}),
             success:function (result) {
+                $('.cus-efmain-loading').hide();
+                $('.cus-efmain').show();
                 if(result.success){
+                    if(!$('#egtUa').length)return
                     $('#egtUa').text(result.data.bus_voltage_a);
                     $('#egtUb').text(result.data.bus_voltage_b);
                     $('#egtUc').text(result.data.bus_voltage_c);

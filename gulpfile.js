@@ -226,7 +226,9 @@ gulp.task("serve", ["build"], function () {
                 try {
                     delete require.cache[require.resolve(mockDataFile)];
                     var data = require(mockDataFile) || {};
-                    var result,mockUrl = pathTree[2]+newSearch;
+                    var curNode = pathTree[2];
+                    if(!pathTree[2])curNode = pathTree[1]
+                    var result,mockUrl = curNode+newSearch;
                     console.log('[mockUrl]',mockUrl);
                     if(data[mockUrl] && typeof data[mockUrl] === "object"){
                         result = Mock.mock(data[mockUrl]);

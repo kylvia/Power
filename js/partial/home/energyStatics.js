@@ -2,11 +2,13 @@ define(function(){
     return energyStatics
 });
 var energyStatics = {
+    interval:'',
     Render:function () {
         var _this = this;
         this.getgetChargeTimesData();
         this.getDailyPowerStatisticsData();
-        setInterval(function(){
+        if(_this.interval) clearInterval(_this.interval);
+        _this.interval = setInterval(function(){
             _this.getgetChargeTimesData();
             _this.getDailyPowerStatisticsData();
         },5000);
@@ -14,6 +16,7 @@ var energyStatics = {
     //充放电次数
     getgetChargeTimesData:function () {
         var _this = this;
+        if(main.clearInterCharge(_this.interval,'ps-interval'))return;
         $.ajax({
             url:'/interface/getChargeTimes',
             type:'post',

@@ -28,6 +28,7 @@ var login = {
                     }else {
                         App.alert(result.msg);
                     }*/
+                    Menu.login(result.data.success);
                     $('#sysBody').loadPage('partial/main.html');
                 },
                 error:function (e) {

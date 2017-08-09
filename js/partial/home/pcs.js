@@ -2,13 +2,15 @@ define(function(){
     return pcs
 });
 var pcs = {
+    interval:'',
     cusWinContent:'',
     cusWinRightContent:'',
     Render:function () {
         var _this = this;
         this.resize();
         _this.getListTable();
-        setInterval(_this.getListTable,5000);
+        if(_this.interval) clearInterval(_this.interval);
+        _this.interval = setInterval(_this.getListTable,5000);
     },
     resize:function () {
         $('.cwc-col-arp').width('auto');
@@ -19,6 +21,8 @@ var pcs = {
     },
     //PCS列表页
     getListTable:function(){
+        var _this = this;
+        if(main.clearInterCharge(_this.interval,'cus-pcs-container'))return;
         function setStatueFunc(obj) {
             if(obj.name === obj.setName){
                 $('#pcs0'+obj.index+' '+obj.className).removeClass('on');
@@ -33,7 +37,8 @@ var pcs = {
             dataType:'JSON',
             success:function (result) {
                 if(result.success){
-
+                    $('.cus-pcs-container-loading').hide();
+                    $('.cus-pcs-container').show();
                     var listData = result.data;
                     $.each(listData,function (index,item) {
                         index +=1;
@@ -126,15 +131,14 @@ var pcs = {
             }
         });
     },
-    pcsRcSetting:function (dom) {
-        var deviceId = $(dom).parents('.pcs-setting').find('.deviceUnId').val();
+    pcsRcSetting:function (deviceId) {
         var _this = this;
         !_this.cusWinContent?_this.cusWinContent = $('#cus-win-content').detach():_this.cusWinContent;
         var winContent = _this.cusWinContent;
             App.dialog({
             title: "遥控及设定",
             width: 650,
-            height: 'auto',
+            height: 520,
             // backdrop: 'static',
             content: winContent,
             openEvent:_this.dialogFunc(deviceId),
@@ -185,8 +189,9 @@ var pcs = {
         })
 
     },
-    rightValidFunc:function (dom,getRightWin) {
+    rightValidFunc:function (deviceId,getRightWin) {
         var _this = this;
+        $('.getDeviceUnId').val(deviceId);
         if(!$.trim($('#rightUser').val())){
             App.alert('请输入账户名');
             return;
@@ -196,14 +201,14 @@ var pcs = {
             return;
         }
         $.ajax({
-            url:'/interface/validateRight',
+            url:'/interface/checkUserRights',
             type:'post',
             dataType:'JSON',
             data:$("#validateUserForm").serializeArray(),
             success:function (result) {
                 if(result.success){
                     $(".modal").modal("hide");
-                    _this.pcsRcSetting(dom);
+                    _this.pcsRcSetting(deviceId);
                 }else {
                     App.alert(result.msg);
                 }
@@ -225,51 +230,46 @@ var pcs = {
             $('#pcs-runningModel').html(runningModel);
             var enModel = Mustache.render('{{#enum}} <option value={{value}}>{{name}}</option> {{/enum}}',enTmp);
             $('#pcs-enable').html(enModel);
-        })
 
-        $('#pcs-timetable').bootstrapTable({
-            method:'POST',
-            dataType:'json',
-            cache: false,
-            editable:true,//开启编辑模式
-            clickToSelect: true,
-            sidePagination: "server",           //分页方式：client客户端分页，server服务端分页（*）
-            url:'interface/setChargeTime',
-            striped:true,
-            // height: $(window).height() - 200,
-            width:$(window).width(),
-            pagination:true,
-            minimumCountColumns:2,
-            pageNumber:1,                       //初始化加载第一页，默认第一页
-            pageSize: 10,                       //每页的记录行数（*）
-            uniqueId: "id",                     //每一行的唯一标识，一般为主键列
-            columns: [
-                {
-                    field:"id",
-                    title:"时间段名称",
-                    align:"center",
-                    edit:false,
-                    formatter:function(value, row, index){
-                        return "时间段"+index ; //返回行号
+
+            $.ajax({
+                url:'/interface/getCurrentSet',
+                type:'post',
+                dataType:'JSON',
+                success:function (result) {
+                    if(result.success){
+                        var data = result.data;
+                        $('#pcs-dCEnergy').length && $('#pcs-dCEnergy').val(data.controlAuthority);
+                        //EMS控制
+                        if(Number(data.controlAuthority) === 0){
+                            $('.cus-win-mark').height(0);
+                            /*var data = {
+                                "token": Cookies.getCook('token'),
+                                "device_id": $('.getDeviceUnId').val()
+                            }
+                            this.pcsAjax('interface/getSingleDevicePower',JSON.stringify(data),setAvpFunc);*/
+                        }
+
+                        $('#pcs-runningModel').length && $('#pcs-runningModel').val(data.runningMode);
+                        $('#pcs-enable').length && $('#pcs-enable').val(data.xftg_en);
+
+                        var tableVals = data.periods;
+                        var $findTr = $('#pcs-timetable tbody tr');
+                        $.each(tableVals,function (index,item) {
+                            for(var i in item){
+                                $($findTr[index]).find("[name=" + i + "]").length && $($findTr[index]).find("[name=" + i + "]").val(item[i]);
+                            }
+                        })
+                    }else {
+                        App.alert(result.message);
                     }
                 },
-                {
-                    field : 'alarmName',
-                    title : '告警名称',
-                    align : 'center',
-                    valign : 'middle'
-                }, {
-                    field : 'devName',
-                    title : '设备名称',
-                    align : 'center',
-                    valign : 'middle'
-                }, {
-                    field : 'devType',
-                    title : '设备类型',
-                    align : 'center',
-                    valign : 'middle'
-                }]
-        });
+                error:function (e) {
+                    console.log(e)
+                }
+            });
+        })
+
 
     },
     //运行模式设置
@@ -296,14 +296,14 @@ var pcs = {
 
             _this.resize();
         }
-        //P/Q模式
-        if(val === '2'){
+        //EMS控制
+        if(Number(val) === 0){
             $('.cus-win-mark').height(0);
             var data = {
                 "token": Cookies.getCook('token'),
                 "device_id": $('.getDeviceUnId').val()
             }
-            this.pcsAjax('interface/getSingleDevicePower',JSON.stringify(data),setAvpFunc);
+            // this.pcsAjax('interface/getSingleDevicePower',JSON.stringify(data),setAvpFunc);
         }
 
     },
@@ -334,11 +334,57 @@ var pcs = {
     //设置无功
     rpExcute:function () {
         var data = {
-            "token": Cookies.getCook('token'),
             "device_id": $('.getDeviceUnId').val(),
             "reactivepower": $('#pcs-rpVal').val()
         }
         this.pcsAjax('/interface/setReactivePower',JSON.stringify(data));
+    },
+    //设置使能
+    enableExcute:function () {
+        var data = {
+            "device_id": $('.getDeviceUnId').val(),
+            "reactivepower": $('#pcs-enable').val()
+        }
+        this.pcsAjax('/interface/setXFTG_en',JSON.stringify(data));
+    },
+    //时间段设置
+    timeLineExcute:function () {
+
+        var reg = /^[+-]\d/;
+        if(!reg.test($('.cus-table-input').val())){
+            App.alert({msg:"【充放电电流】栏应输入+数字或-数字"});
+            $('.cus-table-input').val('');
+            return;
+        }
+
+        var formData = $('#setTimeLine').serializeArray();
+        var operation=[];
+        var obj={};
+
+        /*var $tableTr = $('#pcs-timetable tbody tr');
+        for(var i=0,len = $tableTr.length;i<len;i++){
+            var obj={};
+            var inp = $tableTr.find('input')
+        }*/
+        for(var i=0,len = formData.length;i<len;i++){
+
+            var formItem = formData[i];
+            var objname = formItem.name;
+            var objval = formItem.value;
+            obj[objname] = objval;
+            if(i>0 && i % 3 === 2){
+                operation.push(obj);
+                obj = {};
+            }
+        }
+        var data = {
+            "setRange": $('#aiAl').val() ? 1 : 0 ,
+            "device_id": $('.getDeviceUnId').val(),
+            periods:operation
+        }
+        console.log(data);
+        // console.log('[setTimeLine]',$('#setTimeLine').serializeArray());
+        this.pcsAjax('/interface/setChargeTime',data);
     },
     bottomoprExcute:function (params) {
         if(!params)return;
@@ -373,7 +419,8 @@ var pcs = {
                         // callback.call();
                         callback(result.data);
                     }else {
-                        App.alert(result.data);
+                        var msg = '【'+result.data.device_name+'】于【'+result.data.time+'】，'+result.data.msg;
+                        App.alert(msg);
                     }
                 }else {
                     App.alert(result.message);

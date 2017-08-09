@@ -2,14 +2,17 @@ define(function(){
     return energyStatics
 });
 var energyStatics = {
+    interval:'',
     Render:function () {
         var _this = this;
         _this.getChargedCurveData();
-        setInterval(_this.getChargedCurveData,30000);
+        if(_this.interval) clearInterval(_this.interval);
+        _this.interval = setInterval(_this.getChargedCurveData,30000);
     },
     //echarts数据
     getChargedCurveData:function () {
         var _this = this;
+        if(main.clearInterCharge(_this.interval,'ps-interval'))return;
         $.ajax({
             url:'/interface/getChargedCurve',
             type:'post',
