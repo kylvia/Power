@@ -24,15 +24,15 @@ var bottom = {
                 if(result.success){
                     var getBS = result.data;
                     $.each(getBS,function (item,value) {
-                        $('#bs_'+item+"_value").text(value.value);
-                        $('#bs_'+item+"_unit").text(value.unit);
+                        $('#bs_'+item+"_value").length && $('#bs_'+item+"_value").text(value.value);
+                        $('#bs_'+item+"_unit").length && $('#bs_'+item+"_unit").text(value.unit);
                     })
                 }else {
                     App.alert(result.msg);
                 }
             },
             error:function (e) {
-                console.log(e)
+                console.log('e',e)
             }
         })
     },

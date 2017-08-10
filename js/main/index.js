@@ -12,6 +12,7 @@ require.config({
         'mCustomScrollbar': 'plugins/mCustomScrollbar/jquery.mCustomScrollbar.concat.min',
         'App': 'plugins/App',
         'main': 'main',
+        'jsLang': 'jsLang',
         'Cookies': 'plugins/Cookies',
         'md5': 'plugins/md5',
         'echarts': 'plugins/echarts/echarts.min',
@@ -34,6 +35,7 @@ require(["jquery",
     "echarts",
     "mustache",
     "WdatePicker",
+    "jsLang",
     "Cookies",
     "md5",
     "bootstrap",
@@ -54,7 +56,6 @@ require(["jquery",
                 })
 
             }else {
-                debugger;
                 main.loadSys();
             }
 

@@ -170,7 +170,7 @@ gulp.task('MockData', function (){
 
 });
 //同步刷新
-gulp.task("serve", ["build"], function () {
+gulp.task("serve", ['staticFile','minifycss','MockData', 'image', 'less', 'vendor', 'minifyjs', 'unscripts', 'html', "watch"], function () {
 
     var path = require('path');
     var url = require('url');

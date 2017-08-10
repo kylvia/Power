@@ -3,8 +3,11 @@ define(function(){
 });
 var login = {
     Render:function () {
-        $('#loginBtn').on('click',function () {
 
+
+        $('#loginBtn').unbind('click').on('click',function (e) {
+
+            e.stopPropagation();
             if(!$.trim($('#userName').val())){
                 App.alert('请输入用户名');
                 return;
@@ -22,14 +25,16 @@ var login = {
                 dataType:'JSON',
                 data:$(".cus-login-box").serializeArray(),
                 success:function (result) {
-                    /*if(result.success){
-                     result.data.token && Cookies.setCookByName('token', result.data.token);
-                        $('#sysBody').loadPage('partial/main.html');
+                    if(result.success){
+                     // result.data.token && Cookies.setCookByName('hasToken', result.data.token);
+                        main.loadSys();
                     }else {
                         App.alert(result.msg);
-                    }*/
-                    Menu.login(result.data.success);
-                    $('#sysBody').loadPage('partial/main.html');
+                    }
+                    /*Menu.login(result.data.success);
+                    main.loadSys();*/
+
+                    // $('#sysBody').loadPage('partial/main.html');
                 },
                 error:function (e) {
                     console.log(e)
@@ -43,6 +48,15 @@ var login = {
             }
             Menu.login('12344',user);*/
 
+        });
+
+        //绑定回车事件
+        $('#passWord').unbind('keypress').keypress(function (event) {
+            var key = event.which;
+            debugger;
+            if(key==13){
+                $('#loginBtn').click();
+            }
         });
     }
 }

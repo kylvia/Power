@@ -7,7 +7,7 @@ var homeIndex = {
         $('#exitSys').on('click',function () {
             // Cookies.clear('token');
             $('#sysBody').loadPage('partial/login.html');
-        })
+        });
         
         $('#topNav li').on('click',function () {
             $('#topNav li').removeClass('active');

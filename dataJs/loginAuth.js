@@ -4,10 +4,12 @@
 module.exports = {
     loginAuth:{
         success:true,
-        data:{
-            success: true
-        },
         error:'',
         msg:''
+    },
+    isLogin:{
+        success:false,
+        error:'true',
+        msg:'登陆失败'
     }
 }

@@ -20,17 +20,17 @@ var plantIncom = {
             success:function (result) {
                 if(result.success){
                     var getPR = result.data;
-                    $('#daily_revenue_unit').text(getPR.daily_revenue_unit);
-                    $('#total_revenue_unit').text(getPR.total_revenue_unit);
+                    $('#daily_revenue_unit').length && $('#daily_revenue_unit').text(getPR.daily_revenue_unit);
+                    $('#daily_revenue_unit').length && $('#total_revenue_unit').text(getPR.total_revenue_unit);
 
                     //当日收益
-                    var drArr = getPR.daily_revenue.toString().split('');
+                    var drArr = !getPR.daily_revenue ? 0:getPR.daily_revenue.toString().split('');
                     var fdrArr = formatterNumber(7,drArr);
                     $('#daily_revenue span').each(function (index,item){
                         $(item).text(fdrArr.shift());
                     })
                     //累计收益
-                    var trArr = getPR.total_revenue.toString().split('');
+                    var trArr = !getPR.total_revenue ? 0:getPR.total_revenue.toString().split('');
                     var ftrArr = formatterNumber(7,trArr);
                     $('#total_revenue span').each(function (index,item){
                         $(item).text(ftrArr.shift());

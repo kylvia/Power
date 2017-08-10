@@ -24,6 +24,7 @@ var plantView = {
                     });
                     //图片
                     var imgUrl = plantViewData.plantPhoto;
+                    if(!imgUrl)return;
                     for(var i = 0 ; i<imgUrl.length ; i++){
                         if($('#pv_img'+i).length){
                             $('#pv_img'+i).attr('src',imgUrl[i]);

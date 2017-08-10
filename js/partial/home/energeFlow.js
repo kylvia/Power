@@ -21,6 +21,7 @@ var energeFlow = {
         $.ajax({
             url:'/interface/getCurrentPower',
             type:'post',
+            timeout : 10000, //超时时间设置，单位毫秒
             dataType:'JSON',
             data:JSON.stringify({token:Cookies.getCook('token')}),
             success:function (result) {
@@ -44,7 +45,7 @@ var energeFlow = {
                     }else {
                         $('.cus-ef-arrow6').addClass(bpArrow);
                     }
-                    $('#egtP').text(bpower.substring(1) );
+                    $('#egtP').text(bpower);
 
                     var deviceData = result.data.device_status;
                     for(var i = 0,len = deviceData.length;i<len;i++){
@@ -107,7 +108,16 @@ var energeFlow = {
                 }
             },
             error:function (e) {
-                console.log(e)
+                console.log(e);
+                alert(Msg.connectError);
+            },
+            complete : function(XMLHttpRequest,status){ //请求完成后最终执行参数
+                if(status=='timeout'){//超时,status还有success,error等值的情况
+                    ajaxTimeoutTest.abort();
+
+                    $('.cus-efmain-loading').show();
+                    $('.cus-efmain').hide();
+                }
             }
         })
     },

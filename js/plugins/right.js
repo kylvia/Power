@@ -36,7 +36,22 @@
              * 判断是否登录系统
              */
             isLogin: function () {
-                return Cookies.getCook('token');
+                $.ajax({
+                    url:'/isLogin',
+                    type:'post',
+                    dataType:'JSON',
+                    data:$(".cus-login-box").serializeArray(),
+                    success:function (result) {
+                        if(result.success){
+                            $('#sysBody').loadPage('partial/main.html');
+                        }else {
+                            $('#sysBody').loadPage('partial/login.html');
+                        }
+                    },
+                    error:function (e) {
+                        console.log(e)
+                    }
+                })
             },
 
             /**

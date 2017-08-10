@@ -27,7 +27,7 @@ module.exports = {
         msg:''
     },
     getBatteryStatistics:{
-        success:true,
+        success:false,
         data:{
             "rechargeable_power": {
                 "unit": "kWh",
