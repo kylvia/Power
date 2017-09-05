@@ -25,11 +25,14 @@ var plantView = {
                     //图片
                     var imgUrl = plantViewData.plantPhoto;
                     if(!imgUrl)return;
-                    for(var i = 0 ; i<imgUrl.length ; i++){
+                    for(var i = 0 ; i<3 ; i++){
                         if($('#pv_img'+i).length){
-                            $('#pv_img'+i).attr('src',imgUrl[i]);
+                            !!imgUrl[i]  ? $('#pv_img'+i).attr('src',imgUrl[i]).one('error',function () {
+                                console.log(111);
+                                $(this).attr('src','/images/plantstatus/plant.png') }) : $('#pv_img'+i).attr('src','/images/plantstatus/plant.png')
                         }
                     }
+
                 }else {
                     App.alert(result.msg);
                 }

@@ -49,7 +49,7 @@ require(["jquery",
         window.Mustache = mustache;
 
         $(function(){
-            var isMock = false;
+            var isMock = true;
             if(isMock){
                 require(['./main/MockData'],function () {
                     main.loadSys();

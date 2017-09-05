@@ -5,9 +5,9 @@ var bottom = {
     interval:'',
     Render:function () {
         var _this = this;
-        $('.cus-bottom li > div').css('margin-top',($('.content-2.cus-item').height()-54)/2 + 'px')
+        $('.cus-bottom li > div').css('margin-top',($('.content-3.cus-item').height()-50)/2 + 'px')
         $(window).resize(function() {
-            $('.cus-bottom li > div').css('margin-top',($('.content-2.cus-item').height()-54)/2 + 'px')
+            $('.cus-bottom li > div').css('margin-top',($('.content-3.cus-item').height()-50)/2 + 'px')
         });
         if(_this.interval) clearInterval(_this.interval);
         _this.interval = setInterval(this.getData(),5000);

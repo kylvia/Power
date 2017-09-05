@@ -1,4 +1,14 @@
 module.exports = {
+    loginAuth:{
+        success:true,
+        error:'',
+        msg:''
+    },
+    isLogin:{
+        success:true,
+        error:'true',
+        msg:'登陆失败'
+    },
     getPlantInfo:{
         success:true,
         data:{
@@ -10,8 +20,7 @@ module.exports = {
             "loaction": [30.629169,104.079373],
             "plantPhoto": [
                 "/images/plantstatus/plant.png",
-                "/images/plantstatus/plant.png",
-                "/images/plantstatus/plant.png"
+                "/images/plantstatus/plant1.png"
             ],
             "plantAddr": "电站地址"
         },
@@ -27,23 +36,23 @@ module.exports = {
         msg:''
     },
     getBatteryStatistics:{
-        success:false,
+        success:true,
         data:{
             "rechargeable_power": {
-                "unit": "kWh",
-                "value": "7546.21"
+                "unit": "kVA",
+                "value": "243"
             },
             "total_charge_power": {
-                "unit": "kWh",
-                "value": "65435.21"
+                "unit": "%",
+                "value": "80"
             },
             "discharge_power": {
-                "unit": "kWh",
-                "value": "75424.64"
+                "unit": "万kW",
+                "value": "275.4"
             },
             "total_discharge_power": {
-                "unit": "kWh",
-                "value": "875645.6"
+                "unit": "%",
+                "value": "898"
             }
         },
         error:'',
@@ -60,16 +69,13 @@ module.exports = {
         error:'',
         msg:''
     },
-    getDailyPowerStatistics:{
+    //收益统计
+    getRevenueBar:{
         success:true,
         data:{
-            "unit":"千kWh",
-            "xData":["上网电量","下网电量","充电量","放电量","用电量"],
-            "yData":[{name:'上网电量',value:'4'},
-                {name:'下网电量',value:'6'},
-                {name:'充电量',value:'3'},
-                {name:'放电量',value:'8'},
-                {name:'用电量',value:'7'}]
+            "unit":"元",
+            "date":[3,4,5,6,7,8,9,10,11,12,13],
+            "revenue":[1025,2015,713,2851,2964,861,2348,2861,1592,567,2135]
         },
         error:'',
         msg:''
@@ -83,30 +89,74 @@ module.exports = {
         error:'',
         msg:''
     },
-    //实时充放电功率曲线
-    getChargedCurve:{
+    //充放电量柱状图
+    getChargedBar:{
         success:true,
         data:{
-            "time": ['00','01','02','03','04','05','06','07','08','09','10','11','12','13','14','15','16','17','18','19'],
-"unit": "千kWh",
+            "date": [4,5,6,7,8,9,10,11,12,13,14],
+"unit": "kWh",
     "power": [{
-                "name": "充放电功率",
-                "value": ['4','6','1.5','-1','0','1','2','4','3','1','4','6','1.5','-1','-1.4','1','3','4','6','1']
+                "name": "充电量",
+                "value": [2145,1758,1257,987,2345,845,1547,1023,845,567,1987]
 },
         {
-            "name": "SOC值",
-            "value": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
-        },
-        {
-            "name": "SOH值",
-            "value": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+            "name": "放电量",
+            "value": [1025,2015,713,2851,2964,1789,1302,1345,1592,530,1578]
         }
         ]
         },
         error:'',
         msg:''
     },
-    //组态实时信息
+    //实时功率曲线
+    getChargedCurve:{
+        success:true,
+        data:{
+            "date": [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22],
+"unit": "kW",
+    "power": [{
+                "name": "充放电功率",
+                "value": [-145,158,22,356,235,145,247,23,486,256,-200,159,400,257,87,345,45,47,123,-45,-67,187]
+},
+        {
+            "name": "电网功率",
+            "value": [125,215,-13,251,264,189,102,345,192,30,478,25,-215,313,151,264,189,-132,345,92,30,-78]
+        },
+        {
+            "name": "用电功率",
+            "value": [458,0,200,100,304,258,1,-300,-247,20,456,325,300,478,54,-100,189,102,345,192,-30,-178]
+        }
+        ]
+        },
+        error:'',
+        msg:''
+    },
+    //ems曲线
+    getCurrentEMS:{
+        success:true,
+        data:{
+            currentCurve:{
+                "time": ['0:00','0:15','0:30','0:45','1:00','1:15','1:30','1:45','2:00','2:15','2:30','2:45','3:00','3:15','3:30','3:45','4:00','4:15','4:30','4:45','5:00','5:15','5:30','5:45','6:00'],
+                "unit": "A",
+                "name": "电流",
+                "value": [20,20,20,20,20,-40,-40,-40,-40,-40,-40,-40,-40,80,80,80,80,-50,-50,-50,-50,-50,-50,-50,-50]
+
+            },
+
+            chargeSet:{
+                "total": 4,
+                'rows|4': [{
+                    "name|+1": ["时间段1","时间段2","时间段3","时间段4"],
+                    "start_time|+1": ["0:00","4:00","12:00","16:00"],
+                    "stop_time|+1": ["4:00","12:00","16:00","0:00"],
+                    "power_set|+1": [20,0,80,-50]
+                }]
+            }
+        },
+        error:'',
+        msg:''
+    },
+    //组态实时信息 废弃
     getCurrentPower:{
         success:true,
         data:{
@@ -188,6 +238,22 @@ module.exports = {
         error:'',
         msg:''
     },
+    //组态实时信息
+    getDynamicData:{
+        success:true,
+        data:{
+            "bus_activepower|1": ["-487.5kW","402.7kW"],
+            "bus_current": "10A",
+            "bus_frequency": "49.9Hz",
+            "bus_reactivepower": "2000kVar",
+            "bus_voltage": "200V",
+            "dc_current": "10A",
+            "dc_power": "234kW",
+            "dc_voltage": "200V"
+        },
+        error:'',
+        msg:''
+    },
     //PCS页面
     getCurrentPCS: {
         "success": true,
@@ -245,7 +311,7 @@ module.exports = {
             "device_name": "设备名称",
             "time": "执行时间",
             "flag": "true/false",
-            "msg": "切换EMS控制 成功/失败"
+            "msg": "切换控制权限 成功/失败"
         },
         error:'',
         msg:''
@@ -263,7 +329,7 @@ module.exports = {
                 {
                     "start_time1": "0:00",
                     "stop_time1": "6:20",
-                    "power_set1": "+22.22"
+                    "power_set1": "22.22"
                 },
                 {
                     "start_time2": "6:20",
@@ -273,12 +339,12 @@ module.exports = {
                 {
                     "start_time3": "6:20",
                     "stop_time3": "16:40",
-                    "power_set3": "+19.22"
+                    "power_set3": "-19.22"
                 },
                 {
                     "start_time4": "16:40",
                     "stop_time4": "23:59",
-                    "power_set4": "+22.05"
+                    "power_set4": "22.05"
                 }
             ]
         },
@@ -322,6 +388,17 @@ module.exports = {
         msg:''
     },
     setActivePower:{
+        success:true,
+        data:{
+            "device_name": "设备名称",
+            "time": "执行时间",
+            "flag": "true/false",
+            "msg": "切换EMS控制 成功/失败"},
+        error:'',
+        msg:''
+    },
+    //运行模式设置
+    setRunningMode:{
         success:true,
         data:{
             "device_name": "设备名称",
@@ -405,4 +482,68 @@ module.exports = {
         "error": false,
         "msg": ''
     },
+    //告警管理
+
+    alarmQuery: {
+        success:true,
+        data:{
+            "total": 800,
+            'maxId|1':[12,2,22,23],
+            'rows|10': [{
+                // 属性 id 是一个自增数，起始值为 1，每次增 1
+                'alarm_id|+1': 1,
+                "alarm_name": "@word(3, 5)",
+                "device_name": "@word(3, 5)",
+                "device_type": "@word(3, 5)",
+                "alarm_level|1": [
+                    "高",
+                    "中",
+                    "低"
+                ],
+                "alarm_type": "@word(3, 5)",
+                "status_name": "@word(3, 5)",
+                "change_time": "@datetime(yyyy-MM-dd HH:mm:ss:s)",
+                "status": "@word(3, 5)"
+            }]
+        },
+        "error": false,
+        "msg": ''
+    },
+    alarmClean:{
+        success:true,
+        "error": false,
+        "msg": '清除成功'
+    },
+    alarmConfirm:{
+        success:true,
+        "error": false,
+        "msg": '确认成功'
+    },
+//    报表管理——电站运行报表
+    runningReport: {
+        success:true,
+        data:{
+            "total": 800,
+            'maxId|1':[12,2,22,23],
+            'rows|10': [{
+                // 属性 id 是一个自增数，起始值为 1，每次增 1
+                'alarm_id|+1': 1,
+                "alarm_name": "@word(3, 5)",
+                "device_name": "@word(3, 5)",
+                "device_type": "@word(3, 5)",
+                "alarm_level|1": [
+                    "高",
+                    "中",
+                    "低"
+                ],
+                "alarm_type": "@word(3, 5)",
+                "status_name": "@word(3, 5)",
+                "change_time": "@datetime(yyyy-MM-dd HH:mm:ss:s)",
+                "status": "@word(3, 5)"
+            }]
+        },
+        "error": false,
+        "msg": ''
+    },
+
 }

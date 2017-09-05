@@ -37,7 +37,7 @@
              */
             isLogin: function () {
                 $.ajax({
-                    url:'/isLogin',
+                    url:'/interface/isLogin',
                     type:'post',
                     dataType:'JSON',
                     data:$(".cus-login-box").serializeArray(),

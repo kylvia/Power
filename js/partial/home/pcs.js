@@ -52,7 +52,6 @@ var pcs = {
                                 var statusArr = ['.psis-stop','.psis-start','.psis-break'];
                                 $('#pcs0'+index+' .psis-ssb').removeClass('on');
                                 if(index ===1)
-                                console.log(statusArr[Number(value)]);
                                 $('#pcs0'+index+' '+statusArr[Number(value)]).addClass('on');
                             }
                             //充放电状态
@@ -123,7 +122,7 @@ var pcs = {
                         });
                     });
                 }else {
-                    App.alert(result.message);
+                    App.alert(result.msg);
                 }
             },
             error:function (e) {
@@ -161,6 +160,7 @@ var pcs = {
             var data = {
                 "token": Cookies.getCook('token'),
                 "device_id": $('.getDeviceUnId').val(),
+                "setRange": $('#aiAl').val() ? 1 : 0 ,
                 "action": ['开机','关机','急停'].indexOf(val)
             }
             _this.pcsAjax('/interface/startOrTurnOff',JSON.stringify(data));
@@ -200,11 +200,13 @@ var pcs = {
             App.alert('请输入密码');
             return;
         }
+        var queryData = $("#validateUserForm").getForm();
+        queryData.rightsId = 2
         $.ajax({
             url:'/interface/checkUserRights',
             type:'post',
             dataType:'JSON',
-            data:$("#validateUserForm").serializeArray(),
+            data:queryData,
             success:function (result) {
                 if(result.success){
                     $(".modal").modal("hide");
@@ -261,7 +263,7 @@ var pcs = {
                             }
                         })
                     }else {
-                        App.alert(result.message);
+                        App.alert(result.msg);
                     }
                 },
                 error:function (e) {
@@ -277,9 +279,10 @@ var pcs = {
             var data = {
                 "token": Cookies.getCook('token'),
                 "device_id": $('.getDeviceUnId').val(),
+                "setRange": $('#aiAl').val() ? 1 : 0 ,
                 "action": $('#pcs-runningModel').val()
             }
-            this.pcsAjax('interface/setControlAuthority',JSON.stringify(data));
+            this.pcsAjax('interface/setRunningMode',JSON.stringify(data));
 
     },
 
@@ -301,6 +304,7 @@ var pcs = {
             $('.cus-win-mark').height(0);
             var data = {
                 "token": Cookies.getCook('token'),
+                "setRange": $('#aiAl').val() ? 1 : 0 ,
                 "device_id": $('.getDeviceUnId').val()
             }
             // this.pcsAjax('interface/getSingleDevicePower',JSON.stringify(data),setAvpFunc);
@@ -312,6 +316,7 @@ var pcs = {
         var data = {
             "token": Cookies.getCook('token'),
             "device_id": $('.getDeviceUnId').val(),
+            "setRange": $('#aiAl').val() ? 1 : 0 ,
             "action": $('#pcs-dCEnergy').val()
         }
         this.pcsAjax('/interface/setControlAuthority',JSON.stringify(data));
@@ -327,6 +332,7 @@ var pcs = {
         var data = {
             "token": Cookies.getCook('token'),
             "device_id": $('.getDeviceUnId').val(),
+            "setRange": $('#aiAl').val() ? 1 : 0 ,
             "activepower": $('#pcs-apVal').val()
         }
         this.pcsAjax('/interface/setActivePower',JSON.stringify(data));
@@ -335,6 +341,7 @@ var pcs = {
     rpExcute:function () {
         var data = {
             "device_id": $('.getDeviceUnId').val(),
+            "setRange": $('#aiAl').val() ? 1 : 0 ,
             "reactivepower": $('#pcs-rpVal').val()
         }
         this.pcsAjax('/interface/setReactivePower',JSON.stringify(data));
@@ -343,6 +350,7 @@ var pcs = {
     enableExcute:function () {
         var data = {
             "device_id": $('.getDeviceUnId').val(),
+            "setRange": $('#aiAl').val() ? 1 : 0 ,
             "reactivepower": $('#pcs-enable').val()
         }
         this.pcsAjax('/interface/setXFTG_en',JSON.stringify(data));
@@ -350,39 +358,22 @@ var pcs = {
     //时间段设置
     timeLineExcute:function () {
 
-        var reg = /^[+-]\d/;
+        var reg = /^[+]\d/;
         if(!reg.test($('.cus-table-input').val())){
-            App.alert({msg:"【充放电电流】栏应输入+数字或-数字"});
-            $('.cus-table-input').val('');
+            App.alert({msg:"【充放电电流】栏应输入数字"});
+            // $(this).val('');
             return;
         }
 
-        var formData = $('#setTimeLine').serializeArray();
-        var operation=[];
-        var obj={};
-
-        /*var $tableTr = $('#pcs-timetable tbody tr');
-        for(var i=0,len = $tableTr.length;i<len;i++){
-            var obj={};
-            var inp = $tableTr.find('input')
-        }*/
-        for(var i=0,len = formData.length;i<len;i++){
-
-            var formItem = formData[i];
-            var objname = formItem.name;
-            var objval = formItem.value;
-            obj[objname] = objval;
-            if(i>0 && i % 3 === 2){
-                operation.push(obj);
-                obj = {};
-            }
-        }
+        var $tableTr = $('#pcs-timetable tbody tr');
         var data = {
             "setRange": $('#aiAl').val() ? 1 : 0 ,
             "device_id": $('.getDeviceUnId').val(),
-            periods:operation
+            value1:$($tableTr[0]).getForm(),
+            value2:$($tableTr[1]).getForm(),
+            value3:$($tableTr[2]).getForm(),
+            value4:$($tableTr[3]).getForm()
         }
-        console.log(data);
         // console.log('[setTimeLine]',$('#setTimeLine').serializeArray());
         this.pcsAjax('/interface/setChargeTime',data);
     },
@@ -394,6 +385,7 @@ var pcs = {
                 var data = {
                     "token": Cookies.getCook('token'),
                     "device_id": $('.getDeviceUnId').val(),
+                    "setRange": $('#aiAl').val() ? 1 : 0 ,
                     "action": item.action
                 }
                 this.pcsAjax('interface/startOrTurnOff',JSON.stringify(data));
@@ -420,10 +412,15 @@ var pcs = {
                         callback(result.data);
                     }else {
                         var msg = '【'+result.data.device_name+'】于【'+result.data.time+'】，'+result.data.msg;
-                        App.alert(msg);
+                        App.dialog({
+                            title: "控制权限校验",
+                            width: 400,
+                            content: msg,
+                            buttons: [{text:'确认',id:'rightAccess',type:'cus-img-btn cus-ib-start',clickToClose :true}]
+                        });
                     }
                 }else {
-                    App.alert(result.message);
+                    App.alert(result.msg);
                 }
             },
             error:function (e) {

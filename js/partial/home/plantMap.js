@@ -30,6 +30,7 @@ var plantMap = {
     setMap:function (center) {
         var _this = this;
         require(['MapUtil'],function (MapUtil) {
+            if(!$('#plantMap').length) return;
             var map = L.map('plantMap', {
                 center: center || [],
                 zoomControl:false,

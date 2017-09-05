@@ -20,7 +20,7 @@ var login = {
             }
             // console.log($(".cus-login-box").serializeArray());
             $.ajax({
-                url:'/loginAuth',
+                url:'/interface/loginAuth',
                 type:'post',
                 dataType:'JSON',
                 data:$(".cus-login-box").serializeArray(),

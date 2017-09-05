@@ -14,7 +14,7 @@ var energyStatics = {
         var _this = this;
         if(main.clearInterCharge(_this.interval,'ps-interval'))return;
         $.ajax({
-            url:'/interface/getChargedCurve',
+            url:'/interface/getChargedBar',
             type:'post',
             dataType:'JSON',
             data:JSON.stringify({token:Cookies.getCook('token')}),
@@ -32,7 +32,7 @@ var energyStatics = {
 
         function esKpi(datas) {
 
-            var getId = document.getElementById('cPowerCurve');
+            var getId = document.getElementById('cPower');
             if(!getId)return;
             var esKpiChart = Echarts.init(getId);
 
@@ -54,35 +54,21 @@ var energyStatics = {
                     }
 
                 },
-                color:['RGB(4,138,48)','RGB(3,100,201)','RGB(192,114,49)'],
+                color:['#33CC66','#006699'],
                 legend: {
+                    top: '4%',
                     right: '20',
-                    itemGap: 40,
-                    icon: 'line',
+                    itemGap: 20,
                     textStyle:{
-                        color:'#a5e2f9',
-                        fontsize:12
+                        color:'#a5e2f9'
                     },
-                    top:'86%',
-                    left:'35%',
                     data:''
                 },
-                grid: {
-                    top:'15%',
-                    bottom:'25%',
-                    left: '6.8%',
-                    right: '6.8%'
-                },
                 xAxis: {
-                    // name:'日',
-                    boundaryGap: false,
+                    name:'日',
                     type: 'category',
                     splitLine:{
-                        show:true,
-                        lineStyle:{
-                            color: ['#272761'],
-                            type: 'dashed'
-                        }
+                        show:false
                     },
                     axisLabel:{
                         textStyle:{
@@ -91,26 +77,24 @@ var energyStatics = {
                     },
                     axisLine:{
                         lineStyle:{
-                            color:'#1c4c88'
+                            color:'#133d70'
                         }
-                    },
-                    axisTick:{
-                        alignWithLabel:true
                     },
                     nameTextStyle:{
                         color:'#a5e2f9'
                     },
                     data: xData
                 },
+                grid: {
+                    top:'25%',
+                    bottom:'10%',
+                    left: '12%'
+                },
                 yAxis: [{
-                    name:'('+datas.unit+')',
+                    name:datas.unit,
                     type: 'value',
                     splitLine:{
-                        show:true,
-                        lineStyle:{
-                            color: ['#272761'],
-                            type: 'dashed'
-                        }
+                        show:false
                     },
                     axisLabel:{
                         textStyle:{
@@ -119,7 +103,7 @@ var energyStatics = {
                     },
                     axisLine:{
                         lineStyle:{
-                            color:'#1c4c88'
+                            color:'#133d70'
                         }
                     },
                     nameTextStyle:{
@@ -164,17 +148,14 @@ var energyStatics = {
                 yDatas[i] = powers[i].value;
                 option.series.push({
                     name:powers[i].name,
-                    type:'line',
-                    data: powers[i].value,
-                    showSymbol: false,
-                    symbolSize: 1,
-                    areaStyle: {
+                    type:'bar',
+                    barWidth: '26%',
+                    itemStyle: {
                         normal: {
-                            // shadowColor: 'rgba(0, 0, 0, 0.1)',
-                            // shadowBlur: 10
-                            opacity:0.4
+                            barBorderRadius: 3
                         }
-                    }
+                    },
+                    data: powers[i].value
                 });
             }
             option.legend.data = legendData;

@@ -5,11 +5,11 @@ var energyStatics = {
     interval:'',
     Render:function () {
         var _this = this;
-        this.getgetChargeTimesData();
+        // this.getgetChargeTimesData();
         this.getDailyPowerStatisticsData();
         if(_this.interval) clearInterval(_this.interval);
         _this.interval = setInterval(function(){
-            _this.getgetChargeTimesData();
+            // _this.getgetChargeTimesData();
             _this.getDailyPowerStatisticsData();
         },5000);
     },
@@ -38,11 +38,11 @@ var energyStatics = {
     //echarts数据
     getDailyPowerStatisticsData:function () {
         var _this = this;
+        if(main.clearInterCharge(_this.interval,'ps-interval'))return;
         $.ajax({
-            url:'/interface/getDailyPowerStatistics',
+            url:'/interface/getRevenueBar',
             type:'post',
             dataType:'JSON',
-            data:JSON.stringify({token:Cookies.getCook('token')}),
             success:function (result) {
                 if(result.success){
                     _this.esKpi(result.data);
@@ -60,14 +60,36 @@ var energyStatics = {
         if(!getId)return;
         var esKpiChart = Echarts.init(getId);
 
-        var xData = datas.xData;
-        var yData = datas.yData;
-        var cutColor = ['#009A66','#006599','#009899','#0066CB','#343399'];
+        var xData = datas.date;
+        var yData = datas.revenue;
+        var cutColor = ['#009999'];
         var option = {
             tooltip:{
-                trigger:'axis'
+                trigger:'axis',
+                axisPointer:{
+                    lineStyle: {
+                        color: '#006699'
+                    }
+                },
+                formatter:'<div style="color: #a5e2f9">{b}日<br>收益: <span style="font-size: 1.3em">{c}</span>'+datas.unit+'</div>'
             },
-            dataZoom: [{
+            color:['#009999','#00ae2e'],
+            legend: {
+                show: true,
+                top: '4%',
+                right: '3',
+                textStyle:{
+                    color:'#a5e2f9'
+                },
+                selectedMode:false,
+                data:[{
+                    name:'收益（元）'
+                },{
+                    name:'均值（元）',
+                    icon:'line'
+                }]
+            },
+           /* dataZoom: [{
                 dataZoomIndex: 1,
                 type: 'inside',
                 startValue: 10,
@@ -79,11 +101,14 @@ var energyStatics = {
                 y: '90%',
                 startValue: 10,
                 endValue: 80
-            }],
+            }],*/
             xAxis: {
-                name:'h',
+                name:'日',
                 type: 'category',
                 splitLine:{
+                    show:false
+                },
+                axisTick:{
                     show:false
                 },
                 axisLabel:{
@@ -94,7 +119,7 @@ var energyStatics = {
                 },
                 axisLine:{
                     lineStyle:{
-                        color:'#272761'
+                        color:'#133d70'
                     }
                 },
                 nameTextStyle:{
@@ -104,13 +129,18 @@ var energyStatics = {
             },
             grid: {
                 top:'25%',
-                bottom:'10%'
+                bottom:'10%',
+                left: '12%'
+
             },
             yAxis: [{
                 name:datas.unit,
                 type: 'value',
                 splitLine:{
                     show:false
+                },
+                axisTick:{
+                    show:true
                 },
                 axisLabel:{
                     textStyle:{
@@ -119,38 +149,53 @@ var energyStatics = {
                 },
                 axisLine:{
                     lineStyle:{
-                        color:'#272761'
+                        color:'#133d70'
                     }
                 },
                 nameTextStyle:{
                     color:'#a5e2f9'
                 }
             }],
-            dataZoom: [{
-                type: 'inside',
-                start: 10,
-                end: 90
-            }],
             series: [
                 {
+                    name:'收益（元）',
                     type:'bar',
                     barWidth: '40%',
                     barBorderRadius: 4,
                     itemStyle: {
                         normal: {
 
-                            barBorderRadius: 4,
-                            // callback,设定每一bar颜色,配置项color顶axis一组bars颜色
-                            color: function(params) {
-                                var num=cutColor.length;
-                                return cutColor[params.dataIndex%num]
-                            }
+                            barBorderRadius: 4
                         }
                     },
-                    data: yData
+                    data: yData,
+                    markLine : {
+                        label:{
+                            normal:{
+                                show:true,
+                                position:'end',
+                                formatter:'{c}'
+                            }
+                        },
+                        lineStyle:{
+                            normal:{
+                                type: 'solid',
+                                color:'#00ae2e'
+                            }
+                        },
+                        symbol:'none',
+                        data : [
+                            {type:'average'}
+                        ]
+                    }
+                },
+                {
+                    name:'均值（元）',
+                    type:'line',
                 }
             ]
         };
+        // option.legend.data = ['收益','平均值'];
         // 使用刚指定的配置项和数据显示图表。
         esKpiChart.setOption(option);
     }

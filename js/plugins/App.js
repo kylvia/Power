@@ -168,6 +168,12 @@ define(['jquery'], function ($) {
             }
 
             return charArray.toString().replace(/,/g, "@");
+        },
+        //获取文字宽度
+        visualLength:function () {
+            var ruler = $("#ruler");
+            ruler.text(this);
+            return ruler[0].offsetWidth;
         }
     });
 
@@ -508,6 +514,66 @@ define(['jquery'], function ($) {
         }
     });
 
+    $.fn.setForm = function(jsonValue) {
+        var obj = this;
+        $.each(jsonValue, function (name, ival) {
+            var $oinput = obj.find("[name=" + name + "]");
+            if ($oinput.attr("type") == "radio" || $oinput.attr("type") == "checkbox") {
+                $oinput.each(function() {
+                    if (Object.prototype.toString.apply(ival) == '[object Array]') { //是复选框，并且是数组
+                        for (var i = 0; i < ival.length; i++) {
+                            if ($(this).val() == ival[i]) //或者文本相等
+                                $(this).prop("checked", true);
+                        }
+                    } else {
+                        if ($(this).val() == ival)
+                            $(this).prop("checked", true);
+                    }
+                });
+            } else if ($oinput.attr("type") == "textarea") { //多行文本框
+                obj.find("[name=" + name + "]").html(ival);
+            } else {
+                obj.find("[name=" + name + "]").val(ival);
+            }
+        });
+    };
+    //设置表单值
+    $.fn.getForm = function(jsonValue) {
+        var obj = this;
+        if(isEmptyObject(jsonValue)) return;
+        $.each(jsonValue, function (name, ival) {
+            var $oinput = obj.find("[name=" + name + "]");
+            if ($oinput.attr("type") == "radio" || $oinput.attr("type") == "checkbox") {
+                $oinput.each(function() {
+                    if (Object.prototype.toString.apply(ival) == '[object Array]') { //是复选框，并且是数组
+                        for (var i = 0; i < ival.length; i++) {
+                            if ($(this).val() == ival[i]) //或者文本相等
+                                $(this).prop("checked", true);
+                        }
+                    } else {
+                        if ($(this).val() == ival)
+                            $(this).prop("checked", true);
+                    }
+                });
+            } else if ($oinput.attr("type") == "textarea") { //多行文本框
+                obj.find("[name=" + name + "]").html(ival);
+            } else {
+                obj.find("[name=" + name + "]").val(ival);
+            }
+        });
+
+        return obj
+    };
+    //获取表单值
+    $.fn.getForm = function() {
+        var data = {};
+        $(this).find('input[name]').length && $(this).find('input[name]').each(function(){
+            var dom = $(this);
+            data[dom.attr('name')] = dom.val();
+        })
+
+        return data
+    }
     /************************************************ 工具方法封装 *****************************************************/
     var App;
     App = {
@@ -541,6 +607,15 @@ define(['jquery'], function ($) {
             })(jQuery);
         },
 
+        /*
+        * @description：判断对象是否为空
+        * */
+        isEmptyObject:function (e) {
+            var t;
+            for (t in e)
+                return !1;
+            return !0
+        },
         /**
          * 初始化 Ajax
          */
@@ -1600,6 +1675,7 @@ define(['jquery'], function ($) {
             }
             return unit;
         }
+
     };
 
     return App;

@@ -189,7 +189,7 @@ gulp.task("serve", ['staticFile','minifycss','MockData', 'image', 'less', 'vendo
                 next();
                 return;
             }
-            console.log('[requist] ', method, urlObj.pathname, paramObj);
+            // console.log('[requist] ', method, urlObj.pathname, paramObj);
             var rts = /([?&])_=[^&]*/;
             if(rts.test( req.url)){
                 delete paramObj._;
@@ -201,12 +201,12 @@ gulp.task("serve", ['staticFile','minifycss','MockData', 'image', 'less', 'vendo
             }
 
             var pathTree = urlObj.pathname.split('/');
-            console.log('[pathTree]',pathTree);
+            // console.log('[pathTree]',pathTree);
             var mockDataFile = path.join(__dirname + path.sep + 'dataJs', pathTree[1]) + ".js";
-            console.log('[mockDataFile]',mockDataFile);
+            // console.log('[mockDataFile]',mockDataFile);
             fs.access(mockDataFile, fs.F_OK, function (err) {
                 var isImage = req.headers.accept.indexOf('image') != -1;
-                console.log('[err]',err);
+                // console.log('[err]',err);
                 if (err) {
                     var c = {
                         "success": false,
@@ -229,7 +229,7 @@ gulp.task("serve", ['staticFile','minifycss','MockData', 'image', 'less', 'vendo
                     var curNode = pathTree[2];
                     if(!pathTree[2])curNode = pathTree[1]
                     var result,mockUrl = curNode+newSearch;
-                    console.log('[mockUrl]',mockUrl);
+                    // console.log('[mockUrl]',mockUrl);
                     if(data[mockUrl] && typeof data[mockUrl] === "object"){
                         result = Mock.mock(data[mockUrl]);
                     }else if(data[mockUrl]){
@@ -258,7 +258,7 @@ gulp.task("serve", ['staticFile','minifycss','MockData', 'image', 'less', 'vendo
     }else{
         var host = 'http://192.168.1.104:8080';
         middleware = [
-            proxyMiddleware(['/loginAuth'], {target: host, changeOrigin: true}),
+            proxyMiddleware(['/interface/loginAuth'], {target: host, changeOrigin: true}),
             proxyMiddleware(['/interface/getPlantInfo'], {target: host, changeOrigin: true}),
             proxyMiddleware(['/interface/getChargeTimes'], {target: host, changeOrigin: true}),
             proxyMiddleware(['/interface/getDailyPowerStatistics'], {target: host, changeOrigin: true}),

@@ -5,7 +5,13 @@ var plantRunning = {
     Render:function () {
         var _this = this;
         _this.datePicker();
+        // require([''])
         _this.tableFunc();
+
+        $('#conformBtn').on('click',function () {
+            // debugger;
+            $('#rm-table').tableExport({type:'excel'});
+        })
     },
     //日历控件
     datePicker:function () {
@@ -41,6 +47,10 @@ var plantRunning = {
             pageSize: 10,                       //每页的记录行数（*）
             pageList: [10, 25, 50, 100],        //可供选择的每页的行数（*）
             uniqueId: "id",                     //每一行的唯一标识，一般为主键列
+            showExport: true,  //是否显示导出按钮
+            buttonsAlign:"right",  //按钮位置
+            exportTypes:['excel'],  //导出文件类型
+            Icons:'glyphicon-export',
             onLoadSuccess: function (data) {
                 $('#rm-table').bootstrapTable('mergeCells', {index: 0, field: 'date', rowspan: 5});
                 $('#rm-table').bootstrapTable('mergeCells', {index: 5, field: 'date', rowspan: 5});
@@ -88,21 +98,6 @@ var plantRunning = {
                 }, {
                     field : 'cnsy',
                     title : '储能收益',
-                    align : 'center',
-                    valign : 'middle'
-                }, {
-                    field : 'doc',
-                    title : 'DOC',
-                    align : 'center',
-                    valign : 'middle'
-                }, {
-                    field : 'dod',
-                    title : 'DOD',
-                    align : 'center',
-                    valign : 'middle'
-                }, {
-                    field : 'cfdcs',
-                    title : '充放电次数',
                     align : 'center',
                     valign : 'middle'
                 }, {

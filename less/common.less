@@ -381,6 +381,9 @@ body{
   border: 1px solid #075e94;
   border-bottom: none;
 }
+.fixed-table-container thead th .sortable{
+  padding-right: 20px;
+}
 //日历
 input.Wdate{
   width: 126px;
@@ -388,6 +391,13 @@ input.Wdate{
   line-height: 26px;
   border-color: #075e94;
   background:transparent url(/images/btnIcon/date-btn.png) no-repeat 93% 5px
+}
+.table {
+  tbody td{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
 }
 /*
 @media screen and (max-width: 1500px){

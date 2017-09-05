@@ -42,7 +42,16 @@
     }
   }
   .bootstrap-table .table-hover > tbody > tr{
-    background-color: rgba(1, 30, 66, 0.1);;
+    background-color: rgba(1, 30, 66, 0.1);
+    &:hover{
+      td{
+        background-color: #011e42;
+      }
+      td:first-child{
+        background-color: transparent;
+      }
+    }
+
   }
   .bootstrap-table .table-hover > tbody > tr:nth-of-type(5n){
     background-color: rgba(1, 30, 66, 0.5);;
