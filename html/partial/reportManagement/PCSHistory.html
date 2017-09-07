@@ -2,13 +2,13 @@
     <form class="form-inline" role="form" style="float: left; width: 100%" method="post" id="queryForm">
         <div class="form-group">
             <label>PCS选择：</label>
-            <select name="" id="pcs-model">
+            <select name="pcsName" id="pcs-model">
                 <option value=""></option>
             </select>
         </div>
         <div class="form-group">
             <label>统计时间：</label>
-            <input type="text" class="Wdate" id="pcsd4311" onclick="WdatePicker({maxDate:'#F{$dp.$D(\'pcsd4312\')}',dateFmt:'yyyy-MM-dd HH:mm',readOnly:true})"/> &nbsp;--&nbsp;<input type="text" class="Wdate" id="pcsd4312" onclick="WdatePicker({minDate:'#F{$dp.$D(\'pcsd4311\')}',dateFmt:'yyyy-MM-dd HH:mm',readOnly:true})"/>
+            <input type="text" name="timeStart" class="Wdate" id="pcsd4311" onclick="WdatePicker({maxDate:'#F{$dp.$D(\'pcsd4312\')}',dateFmt:'yyyy-MM-dd HH:mm',readOnly:true})"/> &nbsp;--&nbsp;<input name="timeEnd" type="text" class="Wdate" id="pcsd4312" onclick="WdatePicker({minDate:'#F{$dp.$D(\'pcsd4311\')}',dateFmt:'yyyy-MM-dd HH:mm',readOnly:true})"/>
         </div>
         <div class="form-group">
             <a id="queryBtn" class="cus-img-btn cus-ib-query">查询</a>

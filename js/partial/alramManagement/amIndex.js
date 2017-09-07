@@ -11,9 +11,15 @@ var amIdex = {
         var _this = this;
         _this.getTableData();
         if(_this.interval) clearInterval(_this.interval);
+
+        //点击checkbox名字选中
+        $('.checkboxContainer span').on('click',function () {
+            $(this).siblings("label").click();
+        })
+
+        //实时刷新
         _this.interval = setInterval(function(){
-            // $("#am-table").bootstrapTable('destroy');
-            // _this.interTableData()
+            if(main.clearInterCharge(_this.interval,'alarmManagement'))return;
 
             $.ajax({
                 url:'interface/alarmQuery',
@@ -23,7 +29,6 @@ var amIdex = {
                 success:function (result) {
                     if(result.success){
                         if(result.data.maxId > _this.maxIdcache){
-                            // $("#am-table").bootstrapTable('destroy');
                             _this.maxIdcache = result.data.maxId;
                             $("#am-table").bootstrapTable('load',result.data);
                         }
@@ -39,9 +44,7 @@ var amIdex = {
 
         //查询
         $('#queryBtn').on('click',function(){
-            this.queryStatus = true;
-            $("#am-table").bootstrapTable('destroy');
-            _this.getTableData();
+            $("#am-table").bootstrapTable('refresh', {url:'/interface/alarmQuery'});
         })
 
         //清除
@@ -62,8 +65,7 @@ var amIdex = {
                     if(result.success){
                         _this.tableIds = [];
                         App.alert(result.msg,function () {
-                            $("#am-table").bootstrapTable('destroy');
-                            _this.getTableData()
+                            $("#am-table").bootstrapTable('refresh', {url:'/interface/alarmQuery'});
                         });
                     }else {
                         App.alert(result.msg);
@@ -92,11 +94,8 @@ var amIdex = {
                     if(result.success){
                         _this.tableIds = [];
                         App.alert(result.msg,function () {
-                            $("#am-table").bootstrapTable('destroy');
-                            _this.getTableData()
+                            $("#am-table").bootstrapTable('refresh', {url:'/interface/alarmQuery'});
                         });
-                        // $("#am-table").bootstrapTable('destroy');
-                        // _this.getTableData();
                     }else {
                         App.alert(result.msg);
                     }
@@ -157,11 +156,14 @@ var amIdex = {
             // search:true,
             minimumCountColumns:2,
             queryParams:function(params){
-                return {
+                var query = {
                     pageInfo : params,
                     param : _this.getQueryData()
-                }
+                };
+                console.log(query);
+                return query
             },
+
             onCheck:function(row){
                 _this.tableIds.indexOf(row.alarm_id) ===-1 && _this.tableIds.push(row.alarm_id);
                 // console.log( _this.tableIds);

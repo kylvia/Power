@@ -567,7 +567,7 @@ define(['jquery'], function ($) {
     //获取表单值
     $.fn.getForm = function() {
         var data = {};
-        $(this).find('input[name]').length && $(this).find('input[name]').each(function(){
+        $(this).find('[name]').length && $(this).find('[name]').each(function(){
             var dom = $(this);
             data[dom.attr('name')] = dom.val();
         })

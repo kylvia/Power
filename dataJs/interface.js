@@ -545,5 +545,111 @@ module.exports = {
         "error": false,
         "msg": ''
     },
+    //BMS页面报表
+    bmsHisData: {
+        success:true,
+        data:{
+            "total": 800,
+            'maxId|1':[12,2,22,23],
+            'rows|10': [{
+                // 属性 id 是一个自增数，起始值为 1，每次增 1
+                'id|+1': 1,
+                "SOC": "45.5%",
+                "SOH": "25.3%",
+                "batteryBusCurrent": 15,
+                "batteryBusVoltage": 220,
+                "batteryVoltage": 330,
+                "bmsName": "@word(3, 10)",
+                "time": "@datetime(yyyy-MM-dd HH:mm:ss:s)",
+                "temp_cellmin|5-15": 15,
+                "temp_cellmax|25-35": 35,
+                "temp_cellaver|20-25": 25,
+                "monomeraverVoltage|100-120": 100,
+                "monomerMinVoltage|80-100": 100,
+                "monomerMaxVoltage|120-220": 100,
+                "insulation_res|50-70.2": 50
+            }]
+        },
+        "error": false,
+        "msg": ''
+    },
+    //PCS页面报表
+    pcsHisData: {
+        success:true,
+        data:{
+            "total": 800,
+            'maxId|1':[12,2,22,23],
+            'rows|10': [{
+                // 属性 id 是一个自增数，起始值为 1，每次增 1
+                'id|+1': 1,
+                "pcsName": "@word(3, 5)",
+                "time": "@datetime(yyyy-MM-dd HH:mm:ss:s)",
+                "aCVoltage": "330",
+                "bCVoltage": "220",
+                "cCVoltage": "15",
+                "aCCurrent": "45.5%",
+                "bCCurrent": "330",
+                "cCCurrent": "110",
+                "gridFrequency": "220",
+                "ap": "25.3%",
+                "rp": "45.3",
+                "aGBT": "35.8",
+                "bGBT": "40.8",
+                "cGBT": "52.1"
+            }]
+        },
+        "error": false,
+        "msg": ''
+    },
+    //PCS页面报表
+    meterHisData: {
+        success:true,
+        data:{
+            "total": 800,
+            'rows|10': [{
+                "id|+1": 1,
+                "name": "@word(3, 5)",
+                "time": "@datetime(yyyy-MM-dd HH:mm:ss:s)",
+                "pointDischarge": 3134,
+                "peakDischarge": "1279",
+                "flatDischarge": "2479",
+                "valleyDischarge": "2781",
+                "tipCharging": "1348",
+                "peakCharging": "58.5%",
+                "flatCharge": "58.5%",
+                "valleyCharging": "1348"
+            }]
+        },
+        "error": false,
+        "msg": ''
+    },
+    //电站运行报表
+    runningReport: {
+        success:true,
+        data:{
+            "total": 800,
+            rowSpan:[3,3,3,1],
+            "rows|10": [{
+                "id|+1": 1,
+                "time": "@datetime(yyyy-MM)",
+                "timePeriod|+1": [
+                    "尖(08:00-10:00)",
+                    // "峰(08:00-10:00)",
+                    // "平(08:00-10:00)",
+                    "谷(08:00-10:00)",
+                    "当日总计"
+                ],
+                "price": "0.56",
+                "inputCapacity": 3134,
+                "outputCapacity": "1279",
+                "icPrice": "2479",
+                "ocPrice": "2781",
+                "esBenefits": "1348",
+                "efficiency": "@word(3, 5)"
+            }]
+        },
+        "error": false,
+        "msg": ''
+    },
 
 }

@@ -6,6 +6,11 @@ var PCSHistory = {
         var _this = this;
         _this.tableFunc();
         _this.selectFunc();
+
+        //查询
+        $('#queryBtn').on('click',function(){
+            $("#pcs-table").bootstrapTable('refresh', {url:'/interface/pcsHisData'});
+        })
     },
     selectFunc:function () {
         require(['./main/enumeration'],function (Enumeration) {
@@ -22,7 +27,20 @@ var PCSHistory = {
             dataType:'json',
             cache: false,
             sidePagination: "server",           //分页方式：client客户端分页，server服务端分页（*）
-            url:'/test/pcsTable',
+            url:'/interface/pcsHisData',
+            responseHandler:function(res){
+                //远程数据加载之前,处理程序响应数据格式,对象包含的参数: 我们可以对返回的数据格式进行处理
+                //在ajax后我们可以在这里进行一些事件的处理
+                return res.data;
+            },
+            queryParams:function(params){
+                var query = {
+                    pageInfo : params,
+                    param : $('#queryForm').getForm()
+                };
+                console.log(query);
+                return query
+            },
             striped:true,
             // height: $(window).height() - 400,
             width:$(window).width(),
@@ -37,85 +55,85 @@ var PCSHistory = {
                     field: 'id',
                     visible:false
                 }, {
-                    field: 'name',
+                    field: 'pcsName',
                     title : 'PCS名称',
                     align : 'center',
                     valign : 'middle'
                 }, {
-                    field: 'date',
+                    field: 'time',
                     title : '时间',
                     align : 'center',
                     valign : 'middle',
                     width:"11%"
                 },
                 {
-                    field : 'dczxtdc',
+                    field : 'aCVoltage',
                     title : '交流电压A相有效值(V)',
                     align : 'center',
                     valign : 'middle',
                     width:"6.5%"
                 }, {
-                    field : 'dczxtmxv',
+                    field : 'bCCurrent',
                     title : '交流电压B相有效值(V)',
                     align : 'center',
                     valign : 'middle',
                     width:"6.5%"
                 }, {
-                    field : 'dczxtmxa',
+                    field : 'cCCurrent',
                     title : '交流电压C相有效值(V)',
                     align : 'center',
                     valign : 'middle',
                     width:"6.5%"
                 }, {
-                    field : 'soc',
+                    field : 'aCCurrent',
                     title : '交流电流A相有效值(A)',
                     align : 'center',
                     valign : 'middle',
                     width:"6.5%"
                 }, {
-                    field : 'dtzdv',
+                    field : 'bCCurrent',
                     title : '交流电流B相有效值(A)',
                     align : 'center',
                     valign : 'middle',
                     width:"6.5%"
                 }, {
-                    field : 'dtzxv',
+                    field : 'cCCurrent',
                     title : '交流电流C相有效值(A)',
                     align : 'center',
                     valign : 'middle',
                     width:"6.5%"
                 }, {
-                    field : 'dtpjv',
+                    field : 'gridFrequency',
                     title : '电网频率(Hz)',
                     align : 'center',
                     valign : 'middle',
                     width:"6.5%"
                 }, {
-                    field : 'soh',
+                    field : 'ap',
                     title : '有功功率(kW)',
                     align : 'center',
                     valign : 'middle',
                     width:"6.5%"
                 }, {
-                    field : 'doc',
+                    field : 'rp',
                     title : '无功功率(kVar)',
                     align : 'center',
                     valign : 'middle',
                     width:"6.5%"
                 }, {
-                    field : 'dod',
+                    field : 'aGBT',
                     title : 'A相GBT温度(℃)',
                     align : 'center',
                     valign : 'middle',
                     width:"6.5%"
                 }, {
-                    field : 'cfdcs',
+                    field : 'bGBT',
                     title : 'B相GBT温度(℃)',
                     align : 'center',
                     valign : 'middle',
                     width:"6.5%"
                 }, {
-                    field : 'cfdxl',
+                    field : 'cGBT',
                     title : 'C相GBT温度(℃)',
                     align : 'center',
                     valign : 'middle',

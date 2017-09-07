@@ -6,6 +6,12 @@ var BMSHistory = {
         var _this = this;
         _this.tableFunc();
         _this.selectFunc();
+
+
+        //查询
+        $('#queryBtn').on('click',function(){
+            $("#bms-table").bootstrapTable('refresh', {url:'/interface/bmsHisData'});
+        })
     },
     selectFunc:function () {
         require(['./main/enumeration'],function (Enumeration) {
@@ -22,7 +28,20 @@ var BMSHistory = {
             dataType:'json',
             cache: false,
             sidePagination: "server",           //分页方式：client客户端分页，server服务端分页（*）
-            url:'/test/bmsTable',
+            url:'/interface/bmsHisData',
+            responseHandler:function(res){
+                //远程数据加载之前,处理程序响应数据格式,对象包含的参数: 我们可以对返回的数据格式进行处理
+                //在ajax后我们可以在这里进行一些事件的处理
+                return res.data;
+            },
+            queryParams:function(params){
+                var query = {
+                    pageInfo : params,
+                    param : $('#queryForm').getForm()
+                };
+                console.log(query);
+                return query
+            },
             striped:true,
             // height: $(window).height() - 400,
             width:$(window).width(),
@@ -37,85 +56,85 @@ var BMSHistory = {
                     field: 'id',
                     visible:false
                 }, {
-                    field: 'name',
+                    field: 'bmsName',
                     title : 'BMS名称',
                     align : 'center',
                     valign : 'middle'
                 }, {
-                    field: 'date',
+                    field: 'time',
                     title : '时间',
                     align : 'center',
                     valign : 'middle',
                     width:"11%"
                 },
                 {
-                    field : 'dczxtdc',
+                    field : 'batteryVoltage',
                     title : '电池组系统电池电压(V)',
                     align : 'center',
                     valign : 'middle',
                     width:"6.5%"
                 }, {
-                    field : 'dczxtmxv',
+                    field : 'batteryBusVoltage',
                     title : '电池组系统母线电压(V)',
                     align : 'center',
                     valign : 'middle',
                     width:"6.5%"
                 }, {
-                    field : 'dczxtmxa',
+                    field : 'batteryBusCurrent',
                     title : '电池组系统母线电流(A)',
                     align : 'center',
                     valign : 'middle',
                     width:"6.5%"
                 }, {
-                    field : 'soc',
+                    field : 'SOC',
                     title : '电池组系统SOC值',
                     align : 'center',
                     valign : 'middle',
                     width:"6.5%"
                 }, {
-                    field : 'dtzdv',
+                    field : 'temp_cellmax',
                     title : '单体最大电压(V)',
                     align : 'center',
                     valign : 'middle',
                     width:"6.5%"
                 }, {
-                    field : 'dtzxv',
+                    field : 'temp_cellmin',
                     title : '单体最小电压(V)',
                     align : 'center',
                     valign : 'middle',
                     width:"6.5%"
                 }, {
-                    field : 'dtpjv',
+                    field : 'temp_cellaver',
                     title : '单体平均电压(V)',
                     align : 'center',
                     valign : 'middle',
                     width:"6.5%"
                 }, {
-                    field : 'soh',
+                    field : 'SOH',
                     title : '电池组系统SOH值',
                     align : 'center',
                     valign : 'middle',
                     width:"6.5%"
                 }, {
-                    field : 'doc',
+                    field : 'monomerMaxVoltage',
                     title : '单体最高温度(℃)',
                     align : 'center',
                     valign : 'middle',
                     width:"6.5%"
                 }, {
-                    field : 'dod',
+                    field : 'monomerMinVoltage',
                     title : '单体最低温度(℃)',
                     align : 'center',
                     valign : 'middle',
                     width:"6.5%"
                 }, {
-                    field : 'cfdcs',
+                    field : 'monomeraverVoltage',
                     title : '单体平均温度(℃)',
                     align : 'center',
                     valign : 'middle',
                     width:"6.5%"
                 }, {
-                    field : 'cfdxl',
+                    field : 'insulation_res',
                     title : '电池组系统绝缘体',
                     align : 'center',
                     valign : 'middle',

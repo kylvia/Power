@@ -2,14 +2,14 @@
         <form class="form-inline" role="form" style="float: left; width: 100%" method="post" id="queryForm">
             <div class="form-group aiLevel">
                 <label>告警等级:</label>
-                <div class="checkboxContainer ai-cred"><input class="inputCheck" id="aiLevelH" type="checkbox" value="高"><label for="aiLevelH"></label>高</div>
-                <div class="checkboxContainer ai-cyellow"><input class="inputCheck" id="aiLevelM" type="checkbox" value="中"><label for="aiLevelM"></label>中</div>
-                <div class="checkboxContainer ai-purple"><input class="inputCheck"  id="aiLevelLo" type="checkbox" value="低"><label for="aiLevelLo"></label>低</div>
+                <div class="checkboxContainer ai-cred"><input class="inputCheck" id="aiLevelH" type="checkbox" value="高"><label for="aiLevelH"></label><span>高</span></div>
+                <div class="checkboxContainer ai-cyellow"><input class="inputCheck" id="aiLevelM" type="checkbox" value="中"><label for="aiLevelM"></label><span>中</span></div>
+                <div class="checkboxContainer ai-purple"><input class="inputCheck"  id="aiLevelLo" type="checkbox" value="低"><label for="aiLevelLo"></label><span>低</span></div>
             </div>
             <div class="form-group aiType">
                 <label>告警类型:</label>
-                <div class="checkboxContainer"><input class="inputCheck" id="aiAl" type="checkbox"><label for="aiAl"></label>告警</div>
-                <div class="checkboxContainer"><input class="inputCheck" id="aiEv" type="checkbox"><label for="aiEv"></label>事件</div>
+                <div class="checkboxContainer"><input class="inputCheck" id="aiAl" type="checkbox" value="0"><label for="aiAl"></label><span>告警</span></div>
+                <div class="checkboxContainer"><input class="inputCheck" id="aiEv" type="checkbox" value="1"><label for="aiEv"></label><span>事件</span></div>
             </div>
             <div class="form-group">
                 <label>发生时间：</label>
